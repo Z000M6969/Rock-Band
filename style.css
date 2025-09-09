@@ -41,6 +41,16 @@ header .logo {
         /* Centraliza horizontalmente e adiciona espaço abaixo */
 }
 
+/* Centralizar o subtítulo da seção "sobre" */
+#sobre h2 {
+    text-align: center; /* centraliza horizontalmente */
+    margin-bottom: 15px; /* opcional, espaço abaixo do título */
+}
+#sobre p {
+    text-align: center; /* centraliza o texto do parágrafo */
+}
+
+
 /* ==========================
    Navegação
    ========================== */
