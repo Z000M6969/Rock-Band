@@ -5,7 +5,7 @@
 
 /* Corpo */
 body {
-    font-family:'Actor', sans-serif; 
+    font-family:'Anton', sans-serif; 
         /* Define a fonte principal como 'Actor'; 'sans-serif' é fallback */
     margin: 0;
         /* Remove a margem padrão do navegador */
