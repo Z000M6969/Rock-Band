@@ -53,7 +53,7 @@ header {
 }
 
 .carousel-logo {
-    width: 120px;   /* tamanho da logo */
+    width: 300px;   /* tamanho da logo */
     height: auto;
     display: block;
     margin: 0 auto 10px;
