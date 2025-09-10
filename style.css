@@ -45,9 +45,9 @@ header {
 /* Logo centralizada sobre o carrossel */
 .carousel-logo {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 30%;
+    left: 30%;
+    transform: translate(-30%, -30%);
     z-index: 10;
     max-width: 120px; /* ajusta tamanho da logo */
     height: auto;
