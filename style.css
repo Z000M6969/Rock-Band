@@ -54,12 +54,13 @@ header .logo {
 .slides {
     display: flex;           /* coloca imagens lado a lado */
     width: 300%;             /* 100% * número de imagens */
-    animation: slide 12s infinite;
+    animation: slide 18s linear infinite;
 }
 
 .slides img {
-    width: 100%;             /* cada imagem ocupa toda a largura */
-    object-fit: cover;       /* preenche sem distorcer */
+    width: 100%;
+    height: 300px;
+    object-fit: cover;      /* corta a imagem sem distorcer */
 }
 
 /* Animação automática */
