@@ -31,16 +31,21 @@ header {
          /* Centraliza o conteúdo textual */
     padding: 20px;
         /* Espaçamento interno */
-}
-header .logo {
-    width: 300px;
-         /* Define largura da logo */
-    display: block;
-        /* Transforma a imagem em bloco (permite centralizar) */
-    margin: 0 auto 10px;
-        /* Centraliza horizontalmente e adiciona espaço abaixo */
+   
+/* logo por cima */
+.logo {
+  position: absolute;
+  top: 50%;              /* centraliza vertical */
+  left: 50%;             /* centraliza horizontal */
+  transform: translate(-50%, -50%);
+  z-index: 10;           /* fica na frente */
 }
 
+.logo img {
+  max-width: 200px;      /* tamanho da logo */
+  height: auto;
+}
+   
 /* ==========================
    Carrossel no header
    ========================== */
