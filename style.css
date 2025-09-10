@@ -18,6 +18,7 @@ header {
     position: relative;
 }
 
+/* Carrossel */
 .carousel {
     position: relative;
     width: 100%;
@@ -25,7 +26,6 @@ header {
     overflow: hidden;
 }
 
-/* Slides do carrossel */
 .slides {
     display: flex;
     width: calc(100% * 6);
@@ -39,8 +39,8 @@ header {
     object-position: bottom;
 }
 
-/* Container da logo e do título sobre o carrossel */
-.carousel-content {
+/* Overlay com logo e título */
+.carousel-overlay {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -50,16 +50,18 @@ header {
 }
 
 .carousel-logo {
-    width: 300px;  /* tamanho da logo ajustado */
+    width: 120px;  /* tamanho da logo */
     height: auto;
     margin-bottom: 10px;
 }
 
-.carousel-content h1 {
+.carousel-overlay h1 {
     color: #fff;
     font-size: 28px;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    margin: 0;
 }
+
 
 /* Navegação */
 nav {
