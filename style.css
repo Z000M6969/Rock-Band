@@ -41,6 +41,36 @@ header .logo {
         /* Centraliza horizontalmente e adiciona espaço abaixo */
 }
 
+/* ==========================
+   Carrossel no header
+   ========================== */
+.carousel {
+    width: 100%;
+    max-height: 300px;       /* altura do banner */
+    overflow: hidden;        /* esconde partes que passam da área */
+    position: relative;
+}
+
+.slides {
+    display: flex;           /* coloca imagens lado a lado */
+    width: 300%;             /* 100% * número de imagens */
+    animation: slide 12s infinite;
+}
+
+.slides img {
+    width: 100%;             /* cada imagem ocupa toda a largura */
+    object-fit: cover;       /* preenche sem distorcer */
+}
+
+/* Animação automática */
+@keyframes slide {
+    0%   { transform: translateX(0%); }
+    33%  { transform: translateX(-100%); }
+    66%  { transform: translateX(-200%); }
+    100% { transform: translateX(0%); }
+}
+
+
 /* Centralizar o subtítulo da seção "sobre" */
 #sobre h2 {
     text-align: center; /* centraliza horizontalmente */
