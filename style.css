@@ -1,4 +1,17 @@
-/* Cabeçalho */
+/* ==========================
+   Estilo geral
+   ========================== */
+body {
+    font-family: 'Bebas Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #111;
+}
+
+/* ==========================
+   Cabeçalho e Carrossel
+   ========================== */
 header {
     text-align: center;
     position: relative;
@@ -9,13 +22,13 @@ header {
 .carousel {
     position: relative;
     width: 100%;
-    height: 300px;       /* altura do banner */
+    height: 300px;
     overflow: hidden;
 }
 
 .slides {
     display: flex;
-    width: calc(100% * 6);  /* 6 imagens no total */
+    width: calc(100% * 6); /* 6 imagens */
     animation: slide 20s linear infinite;
 }
 
@@ -26,18 +39,20 @@ header {
     object-position: bottom;
 }
 
-/* Logo fixa no centro do carrossel */
+/* Logo sobre o carrossel */
 .carousel-logo {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
-    max-width: 150px;   /* reduz o tamanho da logo */
+    max-width: 150px;
     height: auto;
 }
 
-/* Navegação */
+/* ==========================
+   Navegação
+   ========================== */
 nav {
     background-color: #000;
     text-align: center;
@@ -55,8 +70,39 @@ nav a:hover {
     background-color: #555;
 }
 
-/* Animação do carrossel */
+/* ==========================
+   Seção principal
+   ========================== */
+#sobre h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#sobre p {
+    text-align: center;
+}
+
+section {
+    padding: 20px;
+}
+
+/* ==========================
+   Rodapé
+   ========================== */
+footer {
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* ==========================
+   Animação do carrossel
+   ========================== */
 @keyframes slide {
     from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+    to { transform: translateX(-50%); } /* percorre metade da largura */
 }
