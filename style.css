@@ -87,38 +87,40 @@ nav a:hover {
 
 /* Seção principal: #sobre */
 #sobre {
-    max-width: 900px;      /* largura máxima do texto */
-    margin: 0 auto;        /* centraliza horizontalmente */
-    padding: 60px 20px;    /* espaço interno maior */
-    line-height: 1.6;      /* espaçamento entre linhas */
-    text-align: center;    /* alinhamento central */
+    max-width: 900px;       /* largura máxima do texto */
+    margin: 0 auto;         /* centraliza horizontalmente */
+    padding: 80px 40px;     /* mais espaço interno: 80px topo/baixo, 40px laterais */
+    line-height: 1.8;       /* espaçamento maior entre linhas */
+    text-align: center;     /* alinhamento central */
+    font-size: 1.2em;       /* aumenta tamanho da fonte geral */
 }
 
 #sobre h2 {
-    font-size: 2.5em;
-    margin-bottom: 25px;
+    font-size: 3em;         /* título maior */
+    margin-bottom: 30px;
 }
 
 #sobre p {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 #sobre ul {
-    list-style-type: none; /* remove marcador padrão */
+    list-style-type: none;  /* remove marcador padrão */
     padding: 0;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 #sobre ul li {
-    margin-bottom: 15px;
-    font-size: 1.1em;
+    margin-bottom: 20px;    /* mais espaço entre itens da lista */
+    font-size: 1.25em;      /* aumenta tamanho da fonte da lista */
 }
 
 #sobre ul li strong {
     display: block;
-    font-size: 1.2em;
+    font-size: 1.4em;       /* título dos itens ainda maior */
     margin-bottom: 5px;
 }
+
 
 /* Rodapé */
 footer {
