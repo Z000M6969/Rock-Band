@@ -90,13 +90,14 @@ nav a:hover {
 #sobre {
     max-width: 900px;       /* largura máxima do texto */
     margin: 0 auto;         /* centraliza horizontalmente */
-    padding: 80px 40px;     /* espaço interno: topo/baixo 80px, laterais 40px */
+    padding: 40px 40px 80px 40px;  /* topo 40px (reduzido), laterais 40px, bottom 80px */
     line-height: 1.8;       /* espaçamento entre linhas */
     text-align: center;     
 }
 
 #sobre h2 {
     font-size: 3em;         /* título grande */
+    margin-top: 0;           /* remove margem extra acima do título */
     margin-bottom: 30px;
 }
 
