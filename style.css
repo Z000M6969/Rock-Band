@@ -10,18 +10,14 @@ body {
     font-family: 'Bebas Neue', sans-serif;
     background-color: #fff;
     color: #111;
-    position: relative;
     padding-bottom: 60px; /* espaço para rodapé fixo */
 }
 
-/* Cabeçalho */
+/* Cabeçalho e carrossel */
 header {
-    text-align: center;
-    color: #fff;
     position: relative;
 }
 
-/* Carrossel */
 .carousel {
     position: relative;
     width: 100%;
@@ -29,6 +25,7 @@ header {
     overflow: hidden;
 }
 
+/* Slides do carrossel */
 .slides {
     display: flex;
     width: calc(100% * 6);
@@ -42,15 +39,26 @@ header {
     object-position: bottom;
 }
 
-/* Logo centralizada sobre o carrossel */
-.carousel-logo {
+/* Container da logo e do título sobre o carrossel */
+.carousel-content {
     position: absolute;
-    top: 30%;
-    left: 30%;
-    transform: translate(-30%, -30%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
     z-index: 10;
-    max-width: 120px; /* ajusta tamanho da logo */
+}
+
+.carousel-logo {
+    width: 120px;  /* tamanho da logo ajustado */
     height: auto;
+    margin-bottom: 10px;
+}
+
+.carousel-content h1 {
+    color: #fff;
+    font-size: 28px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
 }
 
 /* Navegação */
@@ -85,7 +93,7 @@ section {
     padding: 20px;
 }
 
-/* Rodapé fixo */
+/* Rodapé */
 footer {
     background-color: #111;
     color: #fff;
@@ -94,7 +102,7 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
-    z-index: 20; /* garante que fique acima de tudo */
+    z-index: 20;
 }
 
 /* Animação do carrossel */
