@@ -54,7 +54,7 @@ header .logo {
 .slides {
     display: flex;           /* coloca imagens lado a lado */
     width: 300%;             /* 100% * número de imagens */
-    animation: slide 25s linear infinite;
+    animation: slide 20s linear infinite;
 }
 
 .slides img {
