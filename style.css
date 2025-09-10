@@ -1,21 +1,24 @@
-/* ==========================
-   Estilo geral
-   ========================== */
-body {
-    font-family: 'Bebas Neue', sans-serif;
+/* Reset */
+* {
     margin: 0;
     padding: 0;
-    background-color: #fff;
-    color: #111;
+    box-sizing: border-box;
 }
 
-/* ==========================
-   Cabeçalho e Carrossel
-   ========================== */
+/* Corpo */
+body {
+    font-family: 'Bebas Neue', sans-serif;
+    background-color: #fff;
+    color: #111;
+    position: relative;
+    padding-bottom: 60px; /* espaço para rodapé fixo */
+}
+
+/* Cabeçalho */
 header {
     text-align: center;
-    position: relative;
     color: #fff;
+    position: relative;
 }
 
 /* Carrossel */
@@ -28,7 +31,7 @@ header {
 
 .slides {
     display: flex;
-    width: calc(100% * 6); /* 6 imagens */
+    width: calc(100% * 6);
     animation: slide 20s linear infinite;
 }
 
@@ -39,20 +42,18 @@ header {
     object-position: bottom;
 }
 
-/* Logo sobre o carrossel */
+/* Logo centralizada sobre o carrossel */
 .carousel-logo {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
-    max-width: 150px;
+    max-width: 120px; /* ajusta tamanho da logo */
     height: auto;
 }
 
-/* ==========================
-   Navegação
-   ========================== */
+/* Navegação */
 nav {
     background-color: #000;
     text-align: center;
@@ -70,9 +71,7 @@ nav a:hover {
     background-color: #555;
 }
 
-/* ==========================
-   Seção principal
-   ========================== */
+/* Seção principal */
 #sobre h2 {
     text-align: center;
     margin-bottom: 15px;
@@ -86,9 +85,7 @@ section {
     padding: 20px;
 }
 
-/* ==========================
-   Rodapé
-   ========================== */
+/* Rodapé fixo */
 footer {
     background-color: #111;
     color: #fff;
@@ -97,12 +94,11 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+    z-index: 20; /* garante que fique acima de tudo */
 }
 
-/* ==========================
-   Animação do carrossel
-   ========================== */
+/* Animação do carrossel */
 @keyframes slide {
     from { transform: translateX(0); }
-    to { transform: translateX(-50%); } /* percorre metade da largura */
+    to { transform: translateX(-50%); }
 }
