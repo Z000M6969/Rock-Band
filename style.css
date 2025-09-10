@@ -79,6 +79,7 @@ nav a {
     padding: 14px 20px;
     text-decoration: none;
     display: inline-block;
+    font-size: 1.3em; /* aumenta a letra do nav */
 }
 
 nav a:hover {
@@ -89,19 +90,19 @@ nav a:hover {
 #sobre {
     max-width: 900px;       /* largura máxima do texto */
     margin: 0 auto;         /* centraliza horizontalmente */
-    padding: 80px 40px;     /* mais espaço interno: 80px topo/baixo, 40px laterais */
-    line-height: 1.8;       /* espaçamento maior entre linhas */
-    text-align: center;     /* alinhamento central */
-    font-size: 1.2em;       /* aumenta tamanho da fonte geral */
+    padding: 80px 40px;     /* espaço interno: topo/baixo 80px, laterais 40px */
+    line-height: 1.8;       /* espaçamento entre linhas */
+    text-align: center;     
 }
 
 #sobre h2 {
-    font-size: 3em;         /* título maior */
+    font-size: 3em;         /* título grande */
     margin-bottom: 30px;
 }
 
 #sobre p {
-    margin-bottom: 30px;
+    font-size: 1.15em;      /* texto normal menor que lista */
+    margin-bottom: 25px;
 }
 
 #sobre ul {
@@ -111,16 +112,15 @@ nav a:hover {
 }
 
 #sobre ul li {
-    margin-bottom: 20px;    /* mais espaço entre itens da lista */
-    font-size: 1.25em;      /* aumenta tamanho da fonte da lista */
+    margin-bottom: 20px;    /* espaço entre itens da lista */
+    font-size: 1.25em;      /* mantém tamanho da lista */
 }
 
 #sobre ul li strong {
     display: block;
-    font-size: 1.4em;       /* título dos itens ainda maior */
+    font-size: 1.4em;       /* título dos itens da lista */
     margin-bottom: 5px;
 }
-
 
 /* Rodapé */
 footer {
