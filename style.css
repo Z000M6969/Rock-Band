@@ -17,20 +17,28 @@ body {
 header {
     position: relative;
     width: 100%;
-    height: 400px; /* altura do carrossel fixa */
+    height: 400px; /* altura fixa para todas as páginas */
     overflow: hidden;
+}
+
+/* Container do Carrossel */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 /* Slides do Carrossel */
 .carousel {
     display: flex;
     width: calc(100% * 6); /* 6 imagens duplicadas */
+    height: 100%;
     animation: slide 20s linear infinite;
 }
 
 .carousel img {
     width: 100%;
-    height: 400px;
+    height: 100%;
     object-fit: cover;
     object-position: center;
 }
@@ -46,19 +54,21 @@ header {
     pointer-events: none;
 }
 
+/* Logo */
 .carousel-overlay img {
-    width: 300px;     /* tamanho fixo da logo */
-    max-width: none;  /* evita que a logo diminua em telas pequenas */
+    width: 300px;      /* tamanho fixo da logo */
     height: auto;
     display: block;
     margin: 0 auto 10px;
 }
 
+/* Título */
 .carousel-overlay h1 {
     color: #fff;
     font-size: 36px;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
     margin: 0;
+    line-height: 1.2;
 }
 
 /* Animação carrossel */
@@ -79,58 +89,38 @@ nav a {
     padding: 14px 20px;
     text-decoration: none;
     display: inline-block;
-    font-size: 1.3em; /* aumenta a letra do nav */
+    font-size: 1.3em;
 }
 
 nav a:hover {
     background-color: #555;
 }
 
-/* Seção principal: #sobre */
-#sobre {
-    max-width: 900px;       /* largura máxima do texto */
-    margin: 0 auto;         /* centraliza horizontalmente */
-    padding: 40px 40px 80px 40px;  /* topo 40px, laterais 40px, bottom 80px */
-    line-height: 1.8;       /* espaçamento entre linhas */
-    text-align: center;     
+/* Responsivo: telas pequenas */
+@media (max-width: 768px) {
+    header {
+        height: 300px; /* reduz altura do header em telas pequenas */
+    }
+
+    .carousel-overlay img {
+        width: 200px; /* logo menor em telas pequenas */
+    }
+
+    .carousel-overlay h1 {
+        font-size: 28px; /* título menor em telas pequenas */
+    }
 }
 
-#sobre h2 {
-    font-size: 3em;         /* título grande */
-    margin-top: 0;           /* remove margem extra acima do título */
-    margin-bottom: 30px;
-}
+@media (max-width: 480px) {
+    header {
+        height: 250px;
+    }
 
-#sobre p {
-    font-size: 1.15em;      /* texto normal menor que lista */
-    margin-bottom: 25px;
-}
+    .carousel-overlay img {
+        width: 150px;
+    }
 
-#sobre ul {
-    list-style-type: none;  /* remove marcador padrão */
-    padding: 0;
-    margin-bottom: 30px;
-}
-
-#sobre ul li {
-    margin-bottom: 20px;    /* espaço entre itens da lista */
-    font-size: 1.25em;      /* mantém tamanho da lista */
-}
-
-#sobre ul li strong {
-    display: block;
-    font-size: 1.4em;       /* título dos itens da lista */
-    margin-bottom: 5px;
-}
-
-/* Rodapé */
-footer {
-    background-color: #111;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    z-index: 20;
+    .carousel-overlay h1 {
+        font-size: 22px;
+    }
 }
