@@ -141,10 +141,10 @@ section ul li strong {
 }
 
 .fundador img {
-    width: 200px; /* mesmo tamanho para as duas imagens */
-    height: auto;
+    width: 200px;      /* mesma largura */
+    height: 200px;     /* força a mesma altura */
     border-radius: 10px;
-    object-fit: cover;
+    object-fit: cover; /* recorta a imagem para caber no quadrado */
 }
 
 .fundador p {
