@@ -130,6 +130,29 @@ section ul li strong {
     margin-bottom: 5px;
 }
 
+/* Seção fundador com duas imagens */
+.fundador {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap; /* permite quebrar linha em telas pequenas */
+    margin-top: 30px;
+}
+
+.fundador img {
+    width: 200px; /* mesmo tamanho para as duas imagens */
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.fundador p {
+    max-width: 900px;
+    font-size: 1.15em;
+    margin-top: 20px;
+}
+
 /* Rodapé */
 footer {
     background-color: #111;
@@ -147,10 +170,16 @@ footer {
     header { height: 300px; }
     .carousel-overlay img { width: 200px; }
     .carousel-overlay h1 { font-size: 28px; }
+    .fundador img { width: 150px; }
 }
 
 @media (max-width: 480px) {
     header { height: 250px; }
     .carousel-overlay img { width: 150px; }
     .carousel-overlay h1 { font-size: 22px; }
+    .fundador {
+        flex-direction: column; /* imagens uma embaixo da outra em telas pequenas */
+        gap: 15px;
+    }
+    .fundador img { width: 100%; max-width: 250px; margin: 0 auto; }
 }
