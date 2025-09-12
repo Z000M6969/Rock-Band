@@ -115,17 +115,19 @@ section p {
     overflow: hidden;
     width: 100%;
     margin: 40px 0;
+    position: relative;
 }
 
 .band-track {
     display: flex;
-    width: max-content; /* evita quebrar com muitas bandas */
+    gap: 20px;
+    white-space: nowrap;
+    animation: scroll-bands 30s linear infinite; /* ajusta a velocidade aqui */
 }
 
 .band-slide {
     flex: 0 0 auto;
     width: 200px;
-    margin: 0 10px;
     text-align: center;
 }
 
@@ -140,6 +142,16 @@ section p {
     margin-top: 10px;
     font-size: 1.2em;
     color: #111;
+}
+
+/* Animação contínua */
+@keyframes scroll-bands {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 /* Fundador */
