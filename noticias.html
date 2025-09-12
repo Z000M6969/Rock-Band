@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 <body>
-   <script src="script.js"></script>
 
 <header>
     <div class="carousel-container">
@@ -50,31 +49,43 @@
     <p>&copy; 2025 ROCKBAND - NTH</p>
 </footer>
 
-<!-- Script para puxar as notícias -->
+<!-- Script para puxar notícias -->
 <script>
 async function carregarNoticias() {
-  // Converte o RSS do Whiplash em JSON
-  const url = "https://api.rss2json.com/v1/api.json?rss_url=https://whiplash.net/rss";
+  // Substitua pela URL do seu Google Apps Script
+  const url = "COLE_AQUI_A_URL_DO_SCRIPT"; 
+
   try {
     const resposta = await fetch(url);
-    const dados = await resposta.json();
+    const xmlText = await resposta.text();
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(xmlText, "text/xml");
 
+    const items = xml.querySelectorAll("item");
     const container = document.getElementById("feed");
     container.innerHTML = "";
 
-    dados.items.slice(0, 5).forEach(noticia => {
+    items.forEach((item, i) => {
+      if(i >= 5) return; // só 5 notícias
+      const titulo = item.querySelector("title").textContent;
+      const link = item.querySelector("link").textContent;
+      const descricao = item.querySelector("description").textContent;
+
       container.innerHTML += `
         <article>
-          <h3><a href="${noticia.link}" target="_blank">${noticia.title}</a></h3>
-          <p>${noticia.description}</p>
+          <h3><a href="${link}" target="_blank">${titulo}</a></h3>
+          <p>${descricao}</p>
         </article>
       `;
     });
+
   } catch (erro) {
     document.getElementById("feed").innerHTML = "<p>Erro ao carregar notícias 😢</p>";
+    console.error(erro);
   }
 }
 
+// Executa ao carregar a página
 carregarNoticias();
 </script>
 
