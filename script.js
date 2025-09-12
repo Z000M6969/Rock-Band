@@ -77,6 +77,32 @@ nextBtn.addEventListener('click', () => {
     track.style.transform = `translateX(-${scrollAmount}px)`;
 });
 
+// ------------------------
+// BANDAS - Carrossel de Bandas
+// ------------------------
+document.querySelectorAll('.band-track').forEach(track => {
+    // Duplica imagens para loop infinito
+    track.innerHTML += track.innerHTML;
+
+    let posBand = 0;
+    const speedBand = 2; // pixels por frame
+    let paused = false;
+
+    function animateBand() {
+        if (!paused) {
+            posBand += speedBand;
+            if (posBand >= track.scrollWidth / 2) posBand = 0;
+            track.style.transform = `translateX(-${posBand}px)`;
+        }
+        requestAnimationFrame(animateBand);
+    }
+    animateBand();
+
+    // Pausa animação ao passar o mouse
+    track.parentElement.addEventListener('mouseenter', () => paused = true);
+    track.parentElement.addEventListener('mouseleave', () => paused = false);
+});
+
 
 
 
