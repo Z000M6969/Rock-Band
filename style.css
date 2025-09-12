@@ -137,7 +137,6 @@ section ul li strong {
 .band-track {
     display: flex;
     width: max-content; /* evita quebrar com muitas bandas */
-    animation: slide-bandas 120s linear infinite; /* aumenta tempo para diminuir velocidade */
 }
 
 .band-slide {
