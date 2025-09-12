@@ -160,10 +160,12 @@ section ul li strong {
     color: #111;
 }
 
-@keyframes slide-bandas {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+.band-track {
+    display: flex;
+    gap: 20px;
+    white-space: nowrap;
 }
+
 
 /* Fundador */
 .fundador {
