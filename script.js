@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         track.innerHTML += track.innerHTML;
 
         let position = 0;
-        const speed = 0.5; // pixels por frame (ajuste conforme desejado)
+        const speed = 2; // pixels por frame (ajuste conforme desejado)
         let paused = false;
 
         function animate() {
