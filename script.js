@@ -4,23 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Duplica o conteúdo para loop infinito
         track.innerHTML += track.innerHTML;
 
-        let position = 0;
-        const speed = 10; // pixels por frame (ajuste conforme desejado)
-        let paused = false;
+        // Pausa animação ao passar o mouse
+        track.parentElement.addEventListener('mouseenter', () => {
+            track.style.animationPlayState = 'paused';
+        });
 
-        function animate() {
-            if (!paused) {
-                position += speed;
-                if (position >= track.scrollWidth / 2) position = 0;
-                track.style.transform = `translateX(-${position}px)`;
-            }
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-
-        // Pausa quando o mouse passa sobre o carrossel
-        track.parentElement.addEventListener('mouseenter', () => paused = true);
-        track.parentElement.addEventListener('mouseleave', () => paused = false);
+        track.parentElement.addEventListener('mouseleave', () => {
+            track.style.animationPlayState = 'running';
+        });
     });
 });
