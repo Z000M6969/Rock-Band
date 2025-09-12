@@ -29,9 +29,9 @@ header {
 
 .carousel {
     display: flex;
-    width: max-content; /* evita que quebre mesmo com mais imagens */
+    width: max-content;
     height: 100%;
-    animation: slide 30s linear infinite; /* aumenta tempo = diminui velocidade */
+    animation: slide 30s linear infinite; /* Header continua animando via CSS */
 }
 
 .carousel img {
@@ -110,23 +110,6 @@ section p {
     margin-bottom: 25px;
 }
 
-section ul {
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 30px;
-}
-
-section ul li {
-    margin-bottom: 20px;
-    font-size: 1.25em;
-}
-
-section ul li strong {
-    display: block;
-    font-size: 1.4em;
-    margin-bottom: 5px;
-}
-
 /* Carrossel de bandas */
 .band-carousel {
     overflow: hidden;
@@ -158,13 +141,6 @@ section ul li strong {
     font-size: 1.2em;
     color: #111;
 }
-
-.band-track {
-    display: flex;
-    gap: 20px;
-    white-space: nowrap;
-}
-
 
 /* Fundador */
 .fundador {
@@ -219,3 +195,4 @@ footer {
     .carousel-overlay img { width: 150px; }
     .carousel-overlay h1 { font-size: 22px; }
 }
+
