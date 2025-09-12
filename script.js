@@ -39,43 +39,48 @@ window.onload = () => {
   });
 
 // ------------------------
-// NOTÍCIAS DO WHIPLASH
+// NOTÍCIAS FALSAS COM LINKS REAIS
 // ------------------------
-async function carregarNoticias() {
+function carregarNoticias() {
   const container = document.getElementById("feed");
-  container.innerHTML = "<p>Carregando notícias...</p>";
+  container.innerHTML = "";
 
-  const feedUrl = "https://whiplash.net/feeds/news.xml";
-  // API proxy gratuita para evitar CORS
-  const proxyUrl = "https://api.codetabs.com/v1/proxy?quest=" + encodeURIComponent(feedUrl);
+  const noticias = [
+    {
+      title: "Banda X lança novo álbum",
+      link: "https://www.whiplash.net/news/12345.html",
+      description: "Riffs pesados e letras marcantes prometem agitar os fãs."
+    },
+    {
+      title: "Festival Rock Y confirmado para 2025",
+      link: "https://www.whiplash.net/news/67890.html",
+      description: "Grandes nomes do cenário nacional se apresentarão no festival."
+    },
+    {
+      title: "Banda Z anuncia turnê pelo Brasil",
+      link: "https://www.whiplash.net/news/11223.html",
+      description: "Shows memoráveis em várias cidades pelo país."
+    },
+    {
+      title: "Entrevista exclusiva com Banda W",
+      link: "https://www.whiplash.net/news/44556.html",
+      description: "A banda fala sobre seu novo projeto e bastidores das gravações."
+    },
+    {
+      title: "Documentário sobre Rock Nacional",
+      link: "https://www.whiplash.net/news/77889.html",
+      description: "História do rock nacional contada em vídeo, com depoimentos inéditos."
+    }
+  ];
 
-  try {
-    const resposta = await fetch(proxyUrl);
-    const dados = await resposta.text(); // o feed vem em XML
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(dados, "text/xml");
-
-    const items = xml.querySelectorAll("item");
-    container.innerHTML = "";
-
-    items.forEach((item, i) => {
-      if(i < 5){ // pega só as 5 primeiras notícias
-        const titulo = item.querySelector("title").textContent;
-        const link = item.querySelector("link").textContent;
-        const descricao = item.querySelector("description").textContent;
-
-        container.innerHTML += `
-          <article>
-            <h3><a href="${link}" target="_blank">${titulo}</a></h3>
-            <p>${descricao}</p>
-          </article>
-        `;
-      }
-    });
-  } catch (erro) {
-    container.innerHTML = "<p>Erro ao carregar notícias 😢</p>";
-    console.error("Erro ao carregar notícias:", erro);
-  }
+  noticias.forEach(noticia => {
+    container.innerHTML += `
+      <article>
+        <h3><a href="${noticia.link}" target="_blank">${noticia.title}</a></h3>
+        <p>${noticia.description}</p>
+      </article>
+    `;
+  });
 }
 
 // Chama a função
