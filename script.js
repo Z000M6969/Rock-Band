@@ -57,3 +57,14 @@ async function carregarNoticias() {
 }
 
 carregarNoticias();
+
+.band-carousel { position: relative; margin: 40px 0; overflow: hidden; }
+.band-track { display: flex; transition: transform 0.4s ease; gap: 20px; }
+.band-slide { flex: 0 0 auto; width: 200px; text-align: center; }
+.band-slide img { width: 200px; height: 200px; object-fit: cover; border-radius: 10px; }
+.band-slide p { margin-top: 10px; font-size: 1.2em; }
+
+/* Botões */
+.carousel-controls { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); }
+.carousel-controls button { background: rgba(0,0,0,0.5); color: #fff; border: none; font-size: 2rem; cursor: pointer; padding: 5px 10px; }
+
