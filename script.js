@@ -5,11 +5,14 @@ document.querySelectorAll('.band-track').forEach(track => {
 
     let position = 0;
     const speed = 0.5; // pixels por frame (aumente para mais rápido)
+    let paused = false;
 
     function animate() {
-        position += speed;
-        if(position >= track.scrollWidth / 2) position = 0; // reseta para infinito
-        track.style.transform = `translateX(-${position}px)`;
+        if(!paused) {
+            position += speed;
+            if(position >= track.scrollWidth / 2) position = 0; // reseta para infinito
+            track.style.transform = `translateX(-${position}px)`;
+        }
         requestAnimationFrame(animate);
     }
 
@@ -17,9 +20,9 @@ document.querySelectorAll('.band-track').forEach(track => {
 
     // Pausa quando o mouse passa sobre o carrossel
     track.parentElement.addEventListener('mouseenter', () => {
-        track.style.animationPlayState = 'paused';
+        paused = true;
     });
     track.parentElement.addEventListener('mouseleave', () => {
-        track.style.animationPlayState = 'running';
+        paused = false;
     });
 });
