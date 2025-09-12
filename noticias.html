@@ -49,44 +49,39 @@
     <p>&copy; 2025 ROCKBAND - NTH</p>
 </footer>
 
-<!-- Script para puxar notícias -->
 <script>
-async function carregarNoticias() {
-  // Substitua pela URL do seu Google Apps Script
-  const url = "COLE_AQUI_A_URL_DO_SCRIPT"; 
-
-  try {
-    const resposta = await fetch(url);
-    const xmlText = await resposta.text();
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(xmlText, "text/xml");
-
-    const items = xml.querySelectorAll("item");
+document.addEventListener("DOMContentLoaded", async () => {
     const container = document.getElementById("feed");
-    container.innerHTML = "";
+    const rssUrl = "https://whiplash.net/rss";
+    const apiUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(rssUrl);
 
-    items.forEach((item, i) => {
-      if(i >= 5) return; // só 5 notícias
-      const titulo = item.querySelector("title").textContent;
-      const link = item.querySelector("link").textContent;
-      const descricao = item.querySelector("description").textContent;
+    try {
+        const resposta = await fetch(apiUrl);
+        const dados = await resposta.json();
 
-      container.innerHTML += `
-        <article>
-          <h3><a href="${link}" target="_blank">${titulo}</a></h3>
-          <p>${descricao}</p>
-        </article>
-      `;
-    });
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(dados.contents, "text/xml");
+        const items = xml.querySelectorAll("item");
 
-  } catch (erro) {
-    document.getElementById("feed").innerHTML = "<p>Erro ao carregar notícias 😢</p>";
-    console.error(erro);
-  }
-}
+        container.innerHTML = "";
+        items.forEach((item, i) => {
+            if (i >= 5) return; // só 5 notícias
+            const titulo = item.querySelector("title").textContent;
+            const link = item.querySelector("link").textContent;
+            const descricao = item.querySelector("description").textContent;
 
-// Executa ao carregar a página
-carregarNoticias();
+            container.innerHTML += `
+                <article>
+                    <h3><a href="${link}" target="_blank">${titulo}</a></h3>
+                    <p>${descricao}</p>
+                </article>
+            `;
+        });
+    } catch (erro) {
+        container.innerHTML = "<p>Erro ao carregar notícias 😢</p>";
+        console.error(erro);
+    }
+});
 </script>
 
 </body>
