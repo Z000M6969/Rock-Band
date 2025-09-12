@@ -1,24 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Header
+    const headerTrack = document.querySelector('.carousel');
+    let posHeader = 0;
+    const speedHeader = 0.5; // pixels por frame
+    function animateHeader() {
+        posHeader += speedHeader;
+        if(posHeader >= headerTrack.scrollWidth / 2) posHeader = 0;
+        headerTrack.style.transform = `translateX(-${posHeader}px)`;
+        requestAnimationFrame(animateHeader);
+    }
+    animateHeader();
+
+    // Bandas (seu código atual)
     document.querySelectorAll('.band-track').forEach(track => {
-        // Duplica conteúdo para loop infinito
         track.innerHTML += track.innerHTML;
-
-        let position = 0;
-        const speed = 4; // pixels por frame, aumente para mais rápido
+        let position = 4;
         let paused = false;
-
         function animate() {
             if(!paused){
-                position += speed;
+                position += 4;
                 if(position >= track.scrollWidth / 2) position = 0;
                 track.style.transform = `translateX(-${position}px)`;
             }
             requestAnimationFrame(animate);
         }
-
         animate();
-
-        // Pausa ao passar o mouse
         track.parentElement.addEventListener('mouseenter', () => paused = true);
         track.parentElement.addEventListener('mouseleave', () => paused = false);
     });
