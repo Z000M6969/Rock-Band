@@ -10,7 +10,7 @@ window.addEventListener('load', () => {
 
     function animateHeader() {
       posHeader += speedHeader;
-      if(posHeader >= headerTrack.scrollWidth / 2) posHeader = 0;
+      if (posHeader >= headerTrack.scrollWidth / 2) posHeader = 0;
       headerTrack.style.transform = `translateX(-${posHeader}px)`;
       requestAnimationFrame(animateHeader);
     }
@@ -21,23 +21,25 @@ window.addEventListener('load', () => {
   // BANDAS - Carrossel de Bandas
   // ------------------------
   document.querySelectorAll('.band-track').forEach(track => {
-    track.innerHTML += track.innerHTML; // Duplica para loop
-    let posBand = 0;
-    const speedBand = 2;
-    let paused = false;
+    if(track){
+      track.innerHTML += track.innerHTML; // Duplica imagens para loop
+      let posBand = 0;
+      const speedBand = 2;
+      let paused = false;
 
-    function animateBand() {
-      if(!paused){
-        posBand += speedBand;
-        if(posBand >= track.scrollWidth / 2) posBand = 0;
-        track.style.transform = `translateX(-${posBand}px)`;
+      function animateBand() {
+        if(!paused){
+          posBand += speedBand;
+          if(posBand >= track.scrollWidth / 2) posBand = 0;
+          track.style.transform = `translateX(-${posBand}px)`;
+        }
+        requestAnimationFrame(animateBand);
       }
-      requestAnimationFrame(animateBand);
-    }
-    animateBand();
+      animateBand();
 
-    track.parentElement.addEventListener('mouseenter', () => paused = true);
-    track.parentElement.addEventListener('mouseleave', () => paused = false);
+      track.parentElement.addEventListener('mouseenter', () => paused = true);
+      track.parentElement.addEventListener('mouseleave', () => paused = false);
+    }
   });
 
   // ------------------------
@@ -45,7 +47,8 @@ window.addEventListener('load', () => {
   // ------------------------
   const container = document.getElementById("feed");
   if(container){
-    container.innerHTML = "";
+    container.innerHTML = ""; // Limpa conteúdo inicial
+
     const noticias = [
       {title: "Banda X lança novo álbum", link:"https://www.whiplash.net/news/12345.html", description:"Riffs pesados e letras marcantes."},
       {title: "Festival Rock Y confirmado para 2025", link:"https://www.whiplash.net/news/67890.html", description:"Grandes nomes do cenário nacional."},
@@ -64,4 +67,3 @@ window.addEventListener('load', () => {
     });
   }
 });
-
