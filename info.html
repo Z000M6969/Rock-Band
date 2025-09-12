@@ -38,20 +38,43 @@
     </nav>
 
     <!-- Conteúdo principal -->
-    <section id="info">
-        <h2>Sobre o ROCKBAND</h2>
-        <p>O ROCKBAND é um site dedicado a todos os fãs de rock. Aqui você encontra notícias, informações sobre bandas, teorias, shows e muito mais.</p>
+  <section id="info">
+    <h2>Sobre o ROCKBAND</h2>
+    <p>O ROCKBAND é um site dedicado a todos os fãs de rock. Aqui você encontra notícias, informações sobre bandas, teorias, shows e muito mais.</p>
 
-        <h2>Contato</h2>
-        <p>Você pode entrar em contato conosco através do e-mail: <a href="mailto:contato@rockband.com">contato@rockband.com</a></p>
+    <!-- Criador -->
+    <div class="fundador">
+        <img src="foto_criador.jpg" alt="Foto do criador">
+        <div class="creator-details">
+            <h3>Isabelly Bohn</h3>
+            <p>Desenvolvedora do site ROCKBAND</p>
+            <p>Email: <a href="mailto:contato@rockband.com">contato@rockband.com</a></p>
+            <p>Formação: Ensino Médio / Informática / Desenvolvimento Web</p>
+        </div>
+    </div>
 
-        <h2>Curiosidades</h2>
-        <ul>
-            <li>O rock surgiu na década de 1950 e revolucionou a música mundial.</li>
-            <li>Grandes bandas como Queen, AC/DC e Nirvana marcaram gerações.</li>
-            <li>O estilo é conhecido por sua energia, riffs de guitarra e letras marcantes.</li>
-        </ul>
-    </section>
+    <!-- Carrossel de fotos em grupo -->
+    <div class="band-carousel">
+        <h3>Fotos em Grupo</h3>
+        <div class="band-track" id="groupCarousel">
+            <div class="band-slide"><img src="grupo1.jpg" alt="Foto do grupo 1"><p>Evento 1</p></div>
+            <div class="band-slide"><img src="grupo2.jpg" alt="Foto do grupo 2"><p>Evento 2</p></div>
+            <div class="band-slide"><img src="grupo3.jpg" alt="Foto do grupo 3"><p>Evento 3</p></div>
+            <div class="band-slide"><img src="grupo4.jpg" alt="Foto do grupo 4"><p>Evento 4</p></div>
+        </div>
+        <div class="carousel-controls">
+            <button id="prevGroup">❮</button>
+            <button id="nextGroup">❯</button>
+        </div>
+    </div>
+
+    <!-- Dedicação -->
+    <div class="dedication">
+        <h3>Dedico este projeto a:</h3>
+        <p>Todos os fãs de rock que inspiram minha paixão pela música e tecnologia.</p>
+    </div>
+</section>
+
 
     <!-- Rodapé -->
     <footer>
