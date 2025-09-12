@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 <body>
-
+<script src="script.js"></script>
 <header>
     <div class="carousel-container">
         <div class="carousel">
@@ -26,7 +26,6 @@
     </div>
 </header>
 
-<!-- Navegação -->
 <nav>
     <a href="index.html">Início</a>
     <a href="noticias.html">Notícias</a>
@@ -36,7 +35,6 @@
     <a href="info.html">Info</a>
 </nav>
 
-<!-- Conteúdo principal -->
 <section id="noticias">
     <h2>Últimas Notícias</h2>
     <div id="feed">
@@ -44,45 +42,10 @@
     </div>
 </section>
 
-<!-- Rodapé -->
 <footer>
     <p>&copy; 2025 ROCKBAND - NTH</p>
 </footer>
 
-<script>
-document.addEventListener("DOMContentLoaded", async () => {
-    const container = document.getElementById("feed");
-    const rssUrl = "https://whiplash.net/rss";
-    const apiUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(rssUrl);
-
-    try {
-        const resposta = await fetch(apiUrl);
-        const dados = await resposta.json();
-
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(dados.contents, "text/xml");
-        const items = xml.querySelectorAll("item");
-
-        container.innerHTML = "";
-        items.forEach((item, i) => {
-            if (i >= 5) return; // só 5 notícias
-            const titulo = item.querySelector("title").textContent;
-            const link = item.querySelector("link").textContent;
-            const descricao = item.querySelector("description").textContent;
-
-            container.innerHTML += `
-                <article>
-                    <h3><a href="${link}" target="_blank">${titulo}</a></h3>
-                    <p>${descricao}</p>
-                </article>
-            `;
-        });
-    } catch (erro) {
-        container.innerHTML = "<p>Erro ao carregar notícias 😢</p>";
-        console.error(erro);
-    }
-});
-</script>
-    
+<script src="script.js"></script>
 </body>
 </html>
