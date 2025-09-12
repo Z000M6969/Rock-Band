@@ -58,5 +58,25 @@ async function carregarNoticias() {
 
 carregarNoticias();
 
+// Carrossel de fotos em grupo
+const track = document.getElementById('groupCarousel');
+const prevBtn = document.getElementById('prevGroup');
+const nextBtn = document.getElementById('nextGroup');
+let scrollAmount = 0;
+
+prevBtn.addEventListener('click', () => {
+    scrollAmount -= 220; // largura do slide + gap
+    if (scrollAmount < 0) scrollAmount = 0;
+    track.style.transform = `translateX(-${scrollAmount}px)`;
+});
+
+nextBtn.addEventListener('click', () => {
+    scrollAmount += 220;
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    if (scrollAmount > maxScroll) scrollAmount = maxScroll;
+    track.style.transform = `translateX(-${scrollAmount}px)`;
+});
+
+
 
 
