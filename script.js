@@ -3,13 +3,13 @@ window.onload = () => {
   // HEADER - Carrossel Principal
   // ------------------------
   const headerTrack = document.querySelector('.carousel');
-  headerTrack.innerHTML += headerTrack.innerHTML; // Duplica imagens para loop
+  headerTrack.innerHTML += headerTrack.innerHTML; // Duplica imagens
   let posHeader = 0;
   const speedHeader = 1; // pixels por frame
 
   function animateHeader() {
     posHeader += speedHeader;
-    if(posHeader >= headerTrack.scrollWidth / 2) posHeader = 0;
+    if (posHeader >= headerTrack.scrollWidth / 2) posHeader = 0;
     headerTrack.style.transform = `translateX(-${posHeader}px)`;
     requestAnimationFrame(animateHeader);
   }
@@ -39,42 +39,25 @@ window.onload = () => {
   });
 
   // ------------------------
-  // NOTÍCIAS - Whiplash reais
+  // NOTÍCIAS (simuladas)
   // ------------------------
-  async function carregarNoticiasReais() {
-    const feedUrl = "https://whiplash.net/feeds/news.xml";
-    const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(feedUrl);
+  const container = document.getElementById("feed");
+  container.innerHTML = "";
 
-    try {
-      const resposta = await fetch(proxyUrl);
-      const dados = await resposta.json(); // AllOrigins retorna { contents: "XML..." }
-      const parser = new DOMParser();
-      const xml = parser.parseFromString(dados.contents, "text/xml");
+  const noticias = [
+    {title: "Banda X lança novo álbum", link:"#", description:"Riffs pesados e letras marcantes."},
+    {title: "Festival Rock Y confirmado para 2025", link:"#", description:"Grandes nomes do cenário nacional."},
+    {title: "Banda Z anuncia turnê pelo Brasil", link:"#", description:"Shows memoráveis em várias cidades."},
+    {title: "Entrevista exclusiva com Banda W", link:"#", description:"Banda fala sobre novo projeto."},
+    {title: "Lançamento de documentário sobre Rock", link:"#", description:"História do rock nacional em vídeo."}
+  ];
 
-      const items = xml.querySelectorAll("item");
-      const container = document.getElementById("feed");
-      container.innerHTML = "";
-
-      items.forEach((item, i) => {
-        if(i < 5){
-          const titulo = item.querySelector("title").textContent;
-          const link = item.querySelector("link").textContent;
-          const descricao = item.querySelector("description").textContent;
-
-          container.innerHTML += `
-            <article>
-              <h3><a href="${link}" target="_blank">${titulo}</a></h3>
-              <p>${descricao}</p>
-            </article>
-          `;
-        }
-      });
-
-    } catch (erro) {
-      document.getElementById("feed").innerHTML = "<p>Erro ao carregar notícias 😢</p>";
-      console.error(erro);
-    }
-  }
-
-  carregarNoticiasReais();
+  noticias.forEach(noticia => {
+    container.innerHTML += `
+      <article>
+        <h3><a href="${noticia.link}" target="_blank">${noticia.title}</a></h3>
+        <p>${noticia.description}</p>
+      </article>
+    `;
+  });
 };
