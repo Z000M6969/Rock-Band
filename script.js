@@ -1,21 +1,25 @@
-// Função para criar carrossel infinito
-function makeCarouselInfinite(trackId, speed) {
-    const track = document.getElementById(trackId);
-    // Duplica os slides automaticamente
-    track.innerHTML += track.innerHTML; 
-    let scrollAmount = 0;
+// Carrossel de bandas com JS
+document.querySelectorAll('.band-track').forEach(track => {
+    // Duplica slides para looping infinito
+    track.innerHTML += track.innerHTML;
+
+    let position = 0;
+    const speed = 1; // pixels por frame, ajuste para mais rápido ou mais lento
 
     function animate() {
-        scrollAmount += speed;
-        // Quando chegar na metade, reinicia o scroll
-        if(scrollAmount >= track.scrollWidth / 2) scrollAmount = 0;
-        track.style.transform = `translateX(-${scrollAmount}px)`;
+        position += speed;
+        if(position >= track.scrollWidth / 2) position = 0;
+        track.style.transform = `translateX(-${position}px)`;
         requestAnimationFrame(animate);
     }
 
     animate();
-}
 
-// Inicia os carrosséis
-makeCarouselInfinite('bandTrack', 1);   // Carrossel de bandas icônicas
-makeCarouselInfinite('modernTrack', 1); // Carrossel de bandas modernas
+    // Pausa ao passar o mouse
+    track.parentElement.addEventListener('mouseenter', () => {
+        track.style.animationPlayState = 'paused';
+    });
+    track.parentElement.addEventListener('mouseleave', () => {
+        track.style.animationPlayState = 'running';
+    });
+});
