@@ -29,9 +29,9 @@ header {
 
 .carousel {
     display: flex;
-    width: calc(100% * 3);
+    width: max-content; /* evita que quebre mesmo com mais imagens */
     height: 100%;
-    animation: slide 20s linear infinite;
+    animation: slide 30s linear infinite; /* aumenta tempo = diminui velocidade */
 }
 
 .carousel img {
@@ -67,8 +67,8 @@ header {
 }
 
 @keyframes slide {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 /* Navegação */
@@ -136,8 +136,8 @@ section ul li strong {
 
 .band-track {
     display: flex;
-    width: calc(100% * 14);
-    animation: slide-bandas 40s linear infinite;
+    width: max-content; /* evita quebrar com muitas bandas */
+    animation: slide-bandas 120s linear infinite; /* aumenta tempo para diminuir velocidade */
 }
 
 .band-slide {
