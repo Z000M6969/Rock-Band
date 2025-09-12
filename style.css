@@ -122,7 +122,7 @@ section p {
     display: flex;
     gap: 20px;
     white-space: nowrap;
-    animation: scroll-bands 30s linear infinite; /* ajusta a velocidade aqui */
+    animation: scroll-bands 20s linear infinite; /* ajusta a velocidade aqui */
 }
 
 .band-slide {
