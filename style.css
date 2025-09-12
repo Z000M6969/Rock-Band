@@ -137,7 +137,7 @@ section ul li strong {
 .band-track {
     display: flex;
     width: calc(100% * 14);
-    animation: slide-bandas 30s linear infinite;
+    animation: slide-bandas 40s linear infinite;
 }
 
 .band-slide {
