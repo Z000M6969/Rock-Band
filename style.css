@@ -2,81 +2,83 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: 'Bebas Neue', sans-serif; background:#fff; color:#111; padding-bottom:60px; }
 
+/* ===================== CARROSÉIS ===================== */
+
+/* Containers gerais */
 .carousel-container {
   position: relative;
   width: 100%;
-  height: 400px;
   overflow: hidden;
+  margin-bottom: 40px;
 }
 
-.carousel {
-  display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-}
-
-.carousel .slide {
-  min-width: 100%; /* cada slide ocupa 100% da tela */
-  height: 100%;
-  object-fit: cover;
-}
-
-.band-carousel {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  margin-bottom: 50px;
-}
-
-.band-track {
+/* Track comum para todos carrosséis */
+.carousel-track {
   display: flex;
   width: max-content;
-  transition: transform 0.1s linear;
 }
 
-.band-slide {
-  flex: none;           /* impede que encolham */
-  width: 200px;         /* largura fixa */
-  margin-right: 20px;   /* espaçamento entre slides */
-  text-align: center;
-}
-
-.band-slide img {
-  width: 100%;
-  height: 150px;
+.slide, .band-slide {
+  flex: none;
   object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 5px;
+  margin-right: 20px;
 }
 
-.band-slide p {
-  font-size: 1em;
-  font-weight: bold;
+/* Header específico */
+header .carousel-track .slide {
+  width: 100%;      /* slide ocupa 100% da tela */
+  height: 400px;
 }
 
+.carousel-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  z-index: 10;
+  pointer-events: none;
+}
 
+.carousel-overlay img { width: 300px; margin-bottom: 10px; }
+.carousel-overlay h1 { color: #fff; font-size: 36px; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); }
 
-/* Menu */
+/* Bandas */
+.band-slide { width: 200px; text-align: center; }
+.band-slide img { width: 100%; height: 150px; }
+.band-slide p { font-weight: bold; }
+
+/* ===================== MENU ===================== */
 nav { background:#000; display:flex; justify-content:center; align-items:center; gap:20px; padding:10px 0; }
 nav a { color:#fff; padding:14px 20px; text-decoration:none; font-size:1.3em; transition: color 0.3s; }
 nav a:hover { background:#555; }
 nav a.active { color:#8B0000; }
 nav a.login-btn img { width:32px; height:32px; vertical-align:middle; }
 
-/* Seções */
+/* ===================== SEÇÕES ===================== */
 section { max-width:900px; margin:0 auto; padding:40px 40px 80px 40px; line-height:1.8; text-align:center; }
 section h2 { font-size:3em; margin:0 0 30px 0; }
 section p, section ul { font-size:1.15em; margin-bottom:25px; }
 .fundador { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:40px; }
 .fundador img { width:400px; height:400px; object-fit:cover; border-radius:10px; }
 
-/* Rodapé */
+/* ===================== RODAPÉ ===================== */
 footer { background:#111; color:#fff; text-align:center; padding:10px; position:fixed; width:100%; bottom:0; z-index:20; }
 
-/* Responsivo */
+/* ===================== RESPONSIVO ===================== */
 @media (max-width:900px) { .fundador img{width:300px;height:300px;} }
-@media (max-width:768px) { header{height:300px;} .carousel-overlay img{width:200px;} .carousel-overlay h1{font-size:28px;} }
-@media (max-width:600px) { .fundador{flex-direction:column;gap:15px;} .fundador img{width:90%;height:auto;} }
-@media (max-width:480px) { header{height:250px;} .carousel-overlay img{width:150px;} .carousel-overlay h1{font-size:22px;} }
+@media (max-width:768px) { 
+  header{height:300px;} 
+  .carousel-overlay img{width:200px;} 
+  .carousel-overlay h1{font-size:28px;} 
+}
+@media (max-width:600px) { 
+  .fundador{flex-direction:column;gap:15px;} 
+  .fundador img{width:90%;height:auto;} 
+}
+@media (max-width:480px) { 
+  header{height:250px;} 
+  .carousel-overlay img{width:150px;} 
+  .carousel-overlay h1{font-size:22px;} 
+}
