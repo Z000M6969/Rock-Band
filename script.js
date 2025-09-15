@@ -1,46 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Seleciona todos os slides
-  const slides = document.querySelectorAll('.carousel .slide');
-  const prevBtn = document.querySelector('.prev');
-  const nextBtn = document.querySelector('.next');
-  let currentIndex = 0;
-  let interval = null;
 
-  // Mostra o slide atual
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.style.display = i === index ? 'block' : 'none';
-    });
-  }
+  // Função genérica para iniciar um carrossel
+  function initCarousel(carouselSelector, intervalTime = 3000) {
+    const carousel = document.querySelector(carouselSelector);
+    if (!carousel) return;
 
-  // Próximo slide
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
+    const slides = carousel.querySelectorAll('.slide');
+    const prevBtn = carousel.querySelector('.prev');
+    const nextBtn = carousel.querySelector('.next');
+    let currentIndex = 0;
+    let interval = null;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => slide.style.display = i === index ? 'block' : 'none');
+    }
+
+    function nextSlide() { currentIndex = (currentIndex + 1) % slides.length; showSlide(currentIndex); }
+    function prevSlide() { currentIndex = (currentIndex - 1 + slides.length) % slides.length; showSlide(currentIndex); }
+
+    function startInterval() { interval = setInterval(nextSlide, intervalTime); }
+    function resetInterval() { clearInterval(interval); startInterval(); }
+
+    if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
+    if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
+
     showSlide(currentIndex);
-  }
-
-  // Slide anterior
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    showSlide(currentIndex);
-  }
-
-  // Inicia o avanço automático
-  function startInterval() {
-    interval = setInterval(nextSlide, 3000); // muda a cada 3s
-  }
-
-  // Reseta o intervalo quando clica nos botões
-  function resetInterval() {
-    clearInterval(interval);
     startInterval();
   }
 
-  // Eventos dos botões
-  if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
-  if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
-
-  // Inicializa
-  showSlide(currentIndex);
-  startInterval();
+  // Inicializa carrosséis individualmente
+  initCarousel('.header-carousel', 3000); // header
+  initCarousel('.band-carousel', 4000);   // bandas
 });
