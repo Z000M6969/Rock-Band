@@ -1,67 +1,39 @@
-window.addEventListener('load', () => {
-  const track = document.querySelector('.carousel');
-  const slides = Array.from(track.children);
+// Função genérica para carrosséis infinitos
+function startCarousel(trackSelector, speed=1){
+  const track = document.querySelector(trackSelector);
+  if(!track) return;
 
-  // Clonar slides para loop infinito
-  slides.forEach(slide => track.appendChild(slide.cloneNode(true)));
+  // duplicar slides para loop infinito
+  track.innerHTML += track.innerHTML;
 
-  let position = 0;
-  const speed = 1; // pixels por frame
+  let pos = 0;
+  let currentSpeed = speed;
 
-  function animate() {
-    position -= speed;
-    
-    // Reinicia quando passar metade do conteúdo (slides duplicados)
-    if (Math.abs(position) >= track.scrollWidth / 2) {
-      position = 0;
-    }
-
-    track.style.transform = `translateX(${position}px)`;
+  function animate(){
+    pos += currentSpeed;
+    if(pos >= track.scrollWidth / 2) pos = 0;
+    track.style.transform = `translateX(-${pos}px)`;
     requestAnimationFrame(animate);
   }
 
   animate();
-});
 
-  // ------------------------
-  // BANDAS - Carrossel de Bandas
-  // ------------------------
-document.querySelectorAll('.band-track').forEach(track => {
-  if(track){
-    // duplicar slides para loop infinito
-    track.innerHTML += track.innerHTML;
+  // pausa ao passar o mouse
+  track.parentElement.addEventListener('mouseenter', () => currentSpeed = 0);
+  track.parentElement.addEventListener('mouseleave', () => currentSpeed = speed);
+}
 
-    let posBand = 0;
-    const speedBand = 1; // pixels por frame
-    let paused = false;
+window.addEventListener('load', () => {
 
-    function animateBand() {
-      if(!paused){
-        posBand += speedBand;
-        // reinicia quando passar metade do conteúdo
-        if(posBand >= track.scrollWidth / 2){
-          posBand = 0;
-        }
-        track.style.transform = `translateX(-${posBand}px)`;
-      }
-      requestAnimationFrame(animateBand);
-    }
+  // CARROSÉIS
+  startCarousel('.header-carousel .carousel-track', 0.5);
+  startCarousel('.band-carousel .carousel-track', 1);
+  startCarousel('.fotos-carousel .carousel-track', 0.7);
 
-    animateBand();
-
-    // pausa quando o mouse estiver sobre o carrossel
-    track.parentElement.addEventListener('mouseenter', () => paused = true);
-    track.parentElement.addEventListener('mouseleave', () => paused = false);
-  }
-});
-
-  // ------------------------
-  // NOTÍCIAS FALSAS COM LINKS REAIS
-  // ------------------------
+  // NOTÍCIAS FALSAS
   const container = document.getElementById("feed");
   if(container){
-    container.innerHTML = ""; // Limpa conteúdo inicial
-
+    container.innerHTML = "";
     const noticias = [
       {title: "Banda X lança novo álbum", link:"https://www.whiplash.net/news/12345.html", description:"Riffs pesados e letras marcantes."},
       {title: "Festival Rock Y confirmado para 2025", link:"https://www.whiplash.net/news/67890.html", description:"Grandes nomes do cenário nacional."},
@@ -79,4 +51,5 @@ document.querySelectorAll('.band-track').forEach(track => {
       `;
     });
   }
+
 });
