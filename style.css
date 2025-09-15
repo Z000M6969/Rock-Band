@@ -1,88 +1,34 @@
 /* Reset e corpo */
 * { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Bebas Neue', sans-serif; background:#fff; color:#111; padding-bottom:60px; }
 
-body 
-
-{ font-family: 'Bebas Neue', sans-serif; background:#fff; color:#111; padding-bottom:60px; }
-
-/* Header e carrossel */
-header 
-{
-    position: relative; width:100%; height:400px; overflow:hidden;
+/* Header e Carrossel */
+.carousel-container { position: relative; width: 100%; height: 400px; overflow: hidden; }
+.carousel { position: relative; width: 100%; height: 100%; }
+.carousel .slide { display: none; width: 100%; height: 100%; object-fit: cover; }
+.carousel-overlay {
+    position: absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    text-align:center; z-index:10; pointer-events:none;
 }
-
-.carousel-container {
-    position:relative; width:100%; height:100%; 
-}
-
-.carousel {
-    display: flex;
-    width: max-content; /* mantém todas as imagens em linha */
-    height: 100%;
-    transform: translateX(0); /* inicia com posição 0 */
-    /* Remova a linha abaixo: */
-    /* animation: slide 30s linear infinite; */
-}
-
-.carousel img { width:100%; height:100%; object-fit:cover; object-position:center; }
-.carousel-overlay { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; z-index:10; pointer-events:none; }
 .carousel-overlay img { width:300px; display:block; margin:0 auto 10px; }
-.carousel-overlay h1 { color:#fff; font-size:36px; text-shadow:2px 2px 8px rgba(0,0,0,0.7); line-height:1.2; }
-nav {
-    background:#000;
-    display: flex;              /* flex para centralizar */
-    justify-content: center;    /* centraliza horizontalmente */
-    align-items: center;        /* centraliza verticalmente */
-    gap: 20px;                  /* espaço entre itens */
-    padding:10px 0;
-}
+.carousel-overlay h1 { color:#fff; font-size:36px; text-shadow:2px 2px 8px rgba(0,0,0,0.7); }
 
-nav {
-    background:#000;
-    display: flex;              /* flex para centralizar */
-    justify-content: center;    /* centraliza horizontalmente */
-    align-items: center;        /* centraliza verticalmente */
-    gap: 20px;                  /* espaço entre itens */
-    padding:10px 0;
+.carousel-controls {
+    position: absolute; top:50%; width:100%; display:flex; justify-content:space-between; transform:translateY(-50%);
 }
+.carousel-controls button { background: rgba(0,0,0,0.5); color: #fff; border: none; font-size: 2rem; cursor: pointer; padding:5px 10px; }
 
-nav a {
-    color:#fff;
-    padding:14px 20px;
-    text-decoration:none;
-    font-size:1.3em;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    background:#555;
-}
-
-/* link ativo */
-nav a.active {
-    color: #8B0000; /* vermelho escuro */
-}
-
-/* botão de login (imagem) */
-nav a.login-btn img {
-    width: 32px;
-    height: 32px;
-    vertical-align: middle;
-}
+/* Menu */
+nav { background:#000; display:flex; justify-content:center; align-items:center; gap:20px; padding:10px 0; }
+nav a { color:#fff; padding:14px 20px; text-decoration:none; font-size:1.3em; transition: color 0.3s; }
+nav a:hover { background:#555; }
+nav a.active { color:#8B0000; }
+nav a.login-btn img { width:32px; height:32px; vertical-align:middle; }
 
 /* Seções */
 section { max-width:900px; margin:0 auto; padding:40px 40px 80px 40px; line-height:1.8; text-align:center; }
 section h2 { font-size:3em; margin:0 0 30px 0; }
-section p { font-size:1.15em; margin-bottom:25px; }
-
-/* Carrossel de bandas */
-.band-carousel { overflow:hidden; width:100%; margin:40px 0; position:relative; }
-.band-track { display:flex; gap:20px; white-space:nowrap; }
-.band-slide { flex:0 0 auto; width:200px; text-align:center; }
-.band-slide img { width:200px; height:200px; object-fit:cover; border-radius:10px; }
-.band-slide p { margin-top:10px; font-size:1.2em; color:#111; }
-
-/* Fundador */
+section p, section ul { font-size:1.15em; margin-bottom:25px; }
 .fundador { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:40px; }
 .fundador img { width:400px; height:400px; object-fit:cover; border-radius:10px; }
 
@@ -90,19 +36,7 @@ section p { font-size:1.15em; margin-bottom:25px; }
 footer { background:#111; color:#fff; text-align:center; padding:10px; position:fixed; width:100%; bottom:0; z-index:20; }
 
 /* Responsivo */
-@media (max-width:900px) { .band-slide img{width:150px;height:150px;} .fundador img{width:300px;height:300px;} }
+@media (max-width:900px) { .fundador img{width:300px;height:300px;} }
 @media (max-width:768px) { header{height:300px;} .carousel-overlay img{width:200px;} .carousel-overlay h1{font-size:28px;} }
-@media (max-width:600px) { .band-track{flex-wrap:wrap; justify-content:center;} .band-slide{width:45%; margin-bottom:15px;} .band-slide img{width:100%;height:auto;} .fundador{flex-direction:column;gap:15px;} .fundador img{width:90%;height:auto;} }
+@media (max-width:600px) { .fundador{flex-direction:column;gap:15px;} .fundador img{width:90%;height:auto;} }
 @media (max-width:480px) { header{height:250px;} .carousel-overlay img{width:150px;} .carousel-overlay h1{font-size:22px;} }
-
-.band-carousel { position: relative; margin: 40px 0; overflow: hidden; }
-.band-track { display: flex; transition: transform 0.4s ease; gap: 20px; }
-.band-slide { flex: 0 0 auto; width: 200px; text-align: center; }
-.band-slide img { width: 200px; height: 200px; object-fit: cover; border-radius: 10px; }
-.band-slide p { margin-top: 10px; font-size: 1.2em; }
-
-/* Botões */
-.carousel-controls { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); }
-.carousel-controls button { background: rgba(0,0,0,0.5); color: #fff; border: none; font-size: 2rem; cursor: pointer; padding: 5px 10px; }
-
-
