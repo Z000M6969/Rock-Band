@@ -1,64 +1,41 @@
-/* =====================
-   CARROSSEL
-===================== */
 document.addEventListener('DOMContentLoaded', () => {
-  const carousels = document.querySelectorAll('.carousel');
+  const carousel = document.querySelector('.carousel');
+  const slides = carousel.querySelectorAll('.slide');
+  const prevBtn = document.querySelector('.prev');
+  const nextBtn = document.querySelector('.next');
+  let currentIndex = 0;
+  let interval = null;
 
-  carousels.forEach(carousel => {
-    const slides = carousel.querySelectorAll('.slide');
-    const prevBtn = carousel.querySelector('.prev');
-    const nextBtn = carousel.querySelector('.next');
-    let currentIndex = 0;
-    let interval = null;
-    const slideCount = slides.length;
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.style.display = i === index ? 'block' : 'none';
+    });
+  }
 
-    // Função para mostrar o slide correto
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.style.display = (i === index) ? 'block' : 'none';
-      });
-    }
-
-    // Próximo slide
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % slideCount;
-      showSlide(currentIndex);
-    }
-
-    // Slide anterior
-    function prevSlide() {
-      currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-      showSlide(currentIndex);
-    }
-
-    // Inicializa o carrossel
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
     showSlide(currentIndex);
+  }
 
-    // Eventos dos botões
-    if (nextBtn) nextBtn.addEventListener('click', () => {
-      nextSlide();
-      resetInterval();
-    });
-    if (prevBtn) prevBtn.addEventListener('click', () => {
-      prevSlide();
-      resetInterval();
-    });
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(currentIndex);
+  }
 
-    // Avanço automático
-    function startInterval() {
-      interval = setInterval(nextSlide, 5000); // muda a cada 5s
-    }
+  function startInterval() {
+    interval = setInterval(nextSlide, 3000);
+  }
 
-    function resetInterval() {
-      if (interval) clearInterval(interval);
-      startInterval();
-    }
-
+  function resetInterval() {
+    clearInterval(interval);
     startInterval();
-  });
-});
+  }
 
-/* =====================
-   FUTURAS FUNÇÕES
-===================== */
-// Aqui você pode adicionar funções de login, modais, navegação, etc
+  // Botões
+  nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
+  prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
+
+  // Inicializa
+  showSlide(currentIndex);
+  startInterval();
+});
