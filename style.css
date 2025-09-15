@@ -2,10 +2,70 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: 'Bebas Neue', sans-serif; background:#fff; color:#111; padding-bottom:60px; }
 
-/* Header e Carrossel */
-.carousel { position: relative; width: 100%; height: 100%; overflow: hidden; }
-.carousel .slide { display: none; width: 100%; height: 100%; object-fit: cover; }
-.carousel .slide.active { display: block; } /* só a ativa aparece */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  width: max-content; /* Largura baseada nas imagens */
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.carousel .slide {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.carousel-overlay img {
+  width: 300px;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.carousel-overlay h1 {
+  color: #fff;
+  font-size: 36px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+/* Botões */
+.carousel-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  z-index: 11;
+}
+
+.carousel-controls button {
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
 
 /* Menu */
 nav { background:#000; display:flex; justify-content:center; align-items:center; gap:20px; padding:10px 0; }
