@@ -23,6 +23,40 @@ body { font-family: 'Bebas Neue', sans-serif; background:#fff; color:#111; paddi
   object-fit: cover;
 }
 
+.band-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.band-track {
+  display: flex;
+  width: max-content;
+  transition: transform 0.1s linear;
+}
+
+.band-slide {
+  flex: none;           /* impede que encolham */
+  width: 200px;         /* largura fixa */
+  margin-right: 20px;   /* espaçamento entre slides */
+  text-align: center;
+}
+
+.band-slide img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+.band-slide p {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+
 
 /* Menu */
 nav { background:#000; display:flex; justify-content:center; align-items:center; gap:20px; padding:10px 0; }
