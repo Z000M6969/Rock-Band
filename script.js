@@ -1,6 +1,5 @@
 window.addEventListener('load', () => {
   const track = document.querySelector('.carousel');
-  const slides = Array.from(track.children);
   
   // Duplicar slides para loop infinito
   track.innerHTML += track.innerHTML;
@@ -21,18 +20,6 @@ window.addEventListener('load', () => {
   }
 
   animate();
-
-  // Botões
-  const prevBtn = document.querySelector('.carousel-controls .prev');
-  const nextBtn = document.querySelector('.carousel-controls .next');
-
-  prevBtn.addEventListener('click', () => {
-    position += 200; // move para trás
-  });
-
-  nextBtn.addEventListener('click', () => {
-    position -= 200; // move para frente
-  });
 });
 
 
