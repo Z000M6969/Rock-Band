@@ -1,41 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login RockBand</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
 <div class="container section">
-    <!-- Cabeçalho -->
-    <div style="display:flex; justify-content:space-between; align-items:center;">
-      <h2>Gerenciar Cadastros</h2>
-      <button id="logoutBtn" class="btn">Sair</button>
-    </div>
+  <h2 class="center">RockBand - Login</h2>
 
-    <!-- Tabela de usuários -->
-    <table id="usersTable" border="1" cellpadding="8" style="width:100%; border-collapse:collapse; margin-top:20px;">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Nascimento</th>
-          <th>Email</th>
-          <th>Telefone</th>
-          <th>Usuário</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+  <!-- Mensagem de erro/sucesso -->
+  <div id="authMsg" class="msg"></div>
 
-    <!-- Formulário de edição -->
-    <div id="editFormContainer" class="hidden" style="margin-top:30px;">
-      <h3>Editar Cadastro</h3>
-      <form id="editForm" class="form">
-        <input type="hidden" id="editId">
-        <div class="field"><label>Nome completo</label><input id="editNome" required /></div>
-        <div class="field"><label>Nascimento</label><input id="editNascimento" type="date" /></div>
-        <div class="field"><label>Email</label><input id="editEmail" type="email" required /></div>
-        <div class="field"><label>Telefone</label><input id="editTelefone" /></div>
-        <div class="field"><label>Usuário</label><input id="editUsuario" required /></div>
-        <button type="submit" class="btn">Salvar</button>
-        <button type="button" id="cancelEdit" class="btn ghost">Cancelar</button>
-      </form>
-    </div>
-
-    <div id="msg" class="msg"></div>
+  <!-- Abas -->
+  <div class="tabs">
+    <button class="tab active" data-tab="login-pane">Entrar</button>
+    <button class="tab" data-tab="register-pane">Cadastrar</button>
   </div>
 
-  <script type="module" src="admin.js"></script>
+  <!-- Login -->
+  <div id="login-pane" class="pane active">
+    <form id="loginForm" class="form">
+      <div class="field">
+        <label>Email ou Usuário</label>
+        <input type="text" id="loginUser" required>
+      </div>
+      <div class="field">
+        <label>Senha</label>
+        <input type="password" id="loginPass" required>
+      </div>
+      <button type="submit" class="btn full">Entrar</button>
+    </form>
+  </div>
+
+  <!-- Cadastro -->
+  <div id="register-pane" class="pane">
+    <form id="registerForm" class="form">
+      <div class="field"><label>Nome completo</label><input id="regNome" required></div>
+      <div class="field"><label>Data de Nascimento</label><input type="date" id="regNascimento"></div>
+      <div class="field"><label>Email</label><input type="email" id="regEmail" required></div>
+      <div class="field"><label>Telefone</label><input id="regTelefone"></div>
+      <div class="field"><label>Usuário</label><input id="regUsuario" required></div>
+      <div class="field"><label>Senha</label><input type="password" id="regSenha" required></div>
+      <button type="submit" class="btn full">Cadastrar</button>
+    </form>
+  </div>
+
+</div>
+
+<script type="module" src="login.js"></script>
+</body>
+</html>
+></script>
