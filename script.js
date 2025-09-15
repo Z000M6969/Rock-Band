@@ -1,17 +1,22 @@
 window.addEventListener('load', () => {
   const track = document.querySelector('.carousel');
-  
-  // Duplicar slides para loop infinito
-  track.innerHTML += track.innerHTML;
+  const slides = Array.from(track.children);
+
+  // Clonar slides para loop infinito
+  slides.forEach(slide => {
+    const clone = slide.cloneNode(true);
+    track.appendChild(clone);
+  });
 
   let position = 0;
-  const speed = 1; // pixels por frame
+  const speed = 0.5; // pixels por frame
 
   function animate() {
     position -= speed;
 
-    // Quando passar metade da largura total, reinicia
-    if (Math.abs(position) >= track.scrollWidth / 2) {
+    // Se passar a largura total do primeiro conjunto de slides, reinicia
+    const totalWidth = slides.length * track.offsetWidth / slides.length;
+    if (Math.abs(position) >= totalWidth) {
       position = 0;
     }
 
@@ -21,7 +26,6 @@ window.addEventListener('load', () => {
 
   animate();
 });
-
 
   // ------------------------
   // BANDAS - Carrossel de Bandas
