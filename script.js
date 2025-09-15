@@ -23,7 +23,6 @@ window.addEventListener('load', () => {
     track.style.transform = `translateX(${position}px)`;
     requestAnimationFrame(animate);
   }
-
   animate();
 });
 
