@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login / Cadastro</title>
-  <link rel="stylesheet" href="login.css">
+  <title>Login / Cadastro / Área do Usuário</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="authContainer">
     <!-- Abas -->
     <div class="tabs">
       <button id="tabLogin" class="active">Login</button>
       <button id="tabCadastro">Cadastro</button>
     </div>
 
-    <!-- Formulário de Login -->
+    <!-- Login -->
     <form id="loginForm" class="form active">
       <div class="field">
         <input type="email" id="loginEmail" placeholder="Email" required>
@@ -26,7 +26,7 @@
       <div id="loginMsg" class="msg"></div>
     </form>
 
-    <!-- Formulário de Cadastro -->
+    <!-- Cadastro -->
     <form id="cadastroForm" class="form">
       <div class="field">
         <input type="email" id="cadastroEmail" placeholder="Email" required>
@@ -34,12 +34,21 @@
       <div class="field">
         <input type="password" id="cadastroPass" placeholder="Senha" required>
       </div>
+      <div class="field">
+        <input type="text" id="cadastroName" placeholder="Nome" required>
+      </div>
       <button type="submit" class="btn">Cadastrar</button>
       <div id="cadastroMsg" class="msg"></div>
     </form>
   </div>
 
-  <!-- JS -->
+  <!-- Área do usuário -->
+  <div class="container" id="userContainer" style="display:none; text-align:center;">
+    <img id="userAvatar" src="avatar-padrao.png" alt="Avatar" class="avatar" style="width:100px; height:100px; border-radius:50%; margin-bottom:10px;">
+    <h3 id="userName">Usuário</h3>
+    <button id="logoutBtn" class="btn">Sair</button>
+  </div>
+
   <script type="module" src="auth.js"></script>
   <script>
     // Alternar abas
