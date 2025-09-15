@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // CARROSSEL HEADER
-  const headerCarousel = document.querySelector('.carousel-container .carousel');
-  if (headerCarousel) {
-    const slides = headerCarousel.querySelectorAll('img');
-    const prevBtn = headerCarousel.parentElement.querySelector('.prev');
-    const nextBtn = headerCarousel.parentElement.querySelector('.next');
+  /* =====================
+     CARROSSEL HEADER
+  ===================== */
+  const headerCarousel = document.querySelector('header .carousel');
+  if(headerCarousel){
+    const slides = headerCarousel.querySelectorAll('.slide');
+    const prevBtn = document.querySelector('header .prev');
+    const nextBtn = document.querySelector('header .next');
     let index = 0;
     let interval = null;
 
@@ -16,16 +18,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function next() { index = (index + 1) % slides.length; showSlide(); }
     function prev() { index = (index - 1 + slides.length) % slides.length; showSlide(); }
 
-    if (nextBtn) nextBtn.addEventListener('click', () => { next(); reset(); });
-    if (prevBtn) prevBtn.addEventListener('click', () => { prev(); reset(); });
+    if(nextBtn) nextBtn.addEventListener('click', () => { next(); resetInterval(); });
+    if(prevBtn) prevBtn.addEventListener('click', () => { prev(); resetInterval(); });
 
-    function reset() { clearInterval(interval); interval = setInterval(next, 5000); }
+    function resetInterval() { clearInterval(interval); interval = setInterval(next, 5000); }
 
     showSlide();
     interval = setInterval(next, 5000);
   }
 
-  // CARROSSEIS DE BANDAS / FOTOS EM GRUPO
+  /* =====================
+     CARROSSEL BANDAS / FOTOS
+  ===================== */
   const bandCarousels = document.querySelectorAll('.band-carousel');
   bandCarousels.forEach(carousel => {
     const track = carousel.querySelector('.band-track');
@@ -35,17 +39,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let index = 0;
 
     function updateTrack() {
-      const slideWidth = slides[0].offsetWidth + 20; // gap: 20px
+      if(!slides[0]) return;
+      const slideWidth = slides[0].offsetWidth + 20; // gap entre slides
       track.style.transform = `translateX(${-index * slideWidth}px)`;
     }
 
     function next() { index = (index + 1) % slides.length; updateTrack(); }
     function prev() { index = (index - 1 + slides.length) % slides.length; updateTrack(); }
 
-    if (nextBtn) nextBtn.addEventListener('click', next);
-    if (prevBtn) prevBtn.addEventListener('click', prev);
+    if(nextBtn) nextBtn.addEventListener('click', next);
+    if(prevBtn) prevBtn.addEventListener('click', prev);
 
-    // Auto slide a cada 4s
+    // Auto-slide a cada 4s
     setInterval(next, 4000);
 
     window.addEventListener('resize', updateTrack);
