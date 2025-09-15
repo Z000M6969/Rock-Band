@@ -1,9 +1,10 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-// Configuração Supabase
+// Sua URL e chave anônima diretamente (não use process.env)
 const SUPABASE_URL = "https://vwbbzvwluvgllkueixqo.supabase.co";
-const SUPABASE_ANON_KEY = "COLOQUE_SUA_ANON_KEY_AQUI"; // Substitua pela sua anon key
+const SUPABASE_ANON_KEY = "SUA_ANON_KEY_AQUI";
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 
 // Elementos
 const tabs = document.querySelectorAll('.tab');
