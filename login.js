@@ -1,12 +1,22 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-// URL do seu Supabase
+// URL do Supabase
 const SUPABASE_URL = "https://vwbbzvwluvgllkueixqo.supabase.co";
 
-// Chave anônima (anon key) — você pega no Supabase → Settings → API → anon key
-const SUPABASE_ANON_KEY = "COLOQUE_SUA_ANON_KEY_AQUI";
+// Chave anônima (JWT que você me passou)
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ3YmJ6dndsdXZnbGxrdWVpeHFvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc5Mzg4NzksImV4cCI6MjA3MzUxNDg3OX0.vap3Az_gUqwYJ1MxFHdFDAjBx51iI9ucbGYNVb8lBfY";
 
+// Inicializa Supabase
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// Exemplo rápido de teste: pegar usuários cadastrados
+async function test() {
+  const { data, error } = await supabase.from('users').select('*');
+  if (error) console.error(error);
+  else console.log(data);
+}
+
+test();
 
 
 // Elementos
