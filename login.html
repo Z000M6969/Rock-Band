@@ -3,26 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - RockBand</title>
-  <link rel="stylesheet" href="login.css">
+  <title>Autenticação - RockBand</title>
+  <link rel="stylesheet" href="auth.css">
 </head>
 <body>
   <div class="container">
-    <h2>Login</h2>
-    <div id="authMsg" class="msg"></div>
-    <form id="loginForm" class="form">
+    <div class="tabs">
+      <button id="tabLogin" class="active">Login</button>
+      <button id="tabCadastro">Cadastro</button>
+    </div>
+
+    <!-- Login -->
+    <form id="loginForm" class="form active">
+      <h2>Login</h2>
       <div class="field">
-        <label>Usuário ou Email</label>
-        <input id="loginUser" required />
+        <label>Email</label>
+        <input type="email" id="loginEmail" required>
       </div>
       <div class="field">
         <label>Senha</label>
-        <input id="loginPass" type="password" required />
+        <input type="password" id="loginPass" required>
       </div>
       <button type="submit" class="btn">Entrar</button>
+      <div id="loginMsg" class="msg"></div>
+    </form>
+
+    <!-- Cadastro -->
+    <form id="cadastroForm" class="form">
+      <h2>Cadastro</h2>
+      <div class="field">
+        <label>Nome</label>
+        <input type="text" id="cadName" required>
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="cadEmail" required>
+      </div>
+      <div class="field">
+        <label>Senha</label>
+        <input type="password" id="cadPass" required>
+      </div>
+      <button type="submit" class="btn">Cadastrar</button>
+      <div id="cadMsg" class="msg"></div>
     </form>
   </div>
 
-  <script type="module" src="login.js"></script>
+  <script src="auth.js"></script>
 </body>
 </html>
