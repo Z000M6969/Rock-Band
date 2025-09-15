@@ -11,7 +11,7 @@ body { font-family: 'Bebas Neue', sans-serif; background:#fff; color:#111; paddi
 
 .carousel {
   display: flex;
-  width: max-content; /* Largura baseada nas imagens */
+  width: max-content;
   position: absolute;
   top: 0;
   left: 0;
@@ -45,27 +45,6 @@ body { font-family: 'Bebas Neue', sans-serif; background:#fff; color:#111; paddi
   font-size: 36px;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
 }
-
-/* Botões */
-.carousel-controls {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
-  z-index: 11;
-}
-
-.carousel-controls button {
-  background: rgba(0,0,0,0.5);
-  color: #fff;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 5px 10px;
-}
-
 
 /* Menu */
 nav { background:#000; display:flex; justify-content:center; align-items:center; gap:20px; padding:10px 0; }
