@@ -6,37 +6,9 @@
     <title>ROCKBAND</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <style>
-        /* Área do usuário */
-        #userArea {
-            display: none;
-            position: absolute;
-            top: 50px;
-            right: 20px;
-            background: #111827;
-            color: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            min-width: 150px;
-            text-align: center;
-            z-index: 1000;
-        }
-        #userArea button {
-            margin-top: 10px;
-            padding: 8px 12px;
-            border: none;
-            border-radius: 6px;
-            background: #8B0000;
-            color: #fff;
-            cursor: pointer;
-        }
-        #userArea button:hover {
-            background: #a00000;
-        }
-    </style>
 </head>
 <body class="index">
-<script type="module" src="home.js"></script>
+<script src="script.js"></script>
 
 <header>
     <div class="carousel-container">
@@ -53,16 +25,10 @@
 </header>
 
 <nav>
-    <!-- Botão de login / avatar -->
-    <a href="#" id="userBtn" class="login-btn">
-        <img id="userAvatar" src="1177568.png" alt="Login/Avatar" style="width:32px; height:32px; border-radius:50%;">
+    <!-- Botão de login -->
+    <a href="login.html" class="login-btn">
+        <img src="1177568.png" alt="Login" style="width:32px; height:32px;">
     </a>
-
-    <!-- Área do usuário -->
-    <div id="userArea">
-        <h4 id="userName">Usuário</h4>
-        <button id="logoutBtn">Sair</button>
-    </div>
 
     <!-- Menu de navegação -->
     <a href="home.html" class="active">Início</a>
