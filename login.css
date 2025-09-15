@@ -25,6 +25,7 @@ body {
   width: 100%;
   max-width: 380px;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  text-align: center;
 }
 
 .tabs {
@@ -49,13 +50,8 @@ body {
   color: var(--primary);
 }
 
-.form {
-  display: none;
-}
-
-.form.active {
-  display: block;
-}
+.form { display: none; }
+.form.active { display: block; }
 
 .field {
   display: flex;
@@ -87,9 +83,7 @@ input:focus {
   margin-top: 10px;
 }
 
-.btn:hover {
-  background: #a00000;
-}
+.btn:hover { background: #a00000; }
 
 .msg {
   margin-top: 10px;
@@ -99,3 +93,5 @@ input:focus {
 
 .msg.error { color: var(--danger); }
 .msg.success { color: var(--primary); }
+
+.avatar { border-radius: 50%; }
