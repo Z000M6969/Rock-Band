@@ -6,16 +6,41 @@
     <title>ROCKBAND</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        /* Área do usuário */
+        #userArea {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            background: #111827;
+            color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 150px;
+            text-align: center;
+            z-index: 1000;
+        }
+        #userArea button {
+            margin-top: 10px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            background: #8B0000;
+            color: #fff;
+            cursor: pointer;
+        }
+        #userArea button:hover {
+            background: #a00000;
+        }
+    </style>
 </head>
 <body class="index">
-<script src="script.js"></script>
+<script type="module" src="home.js"></script>
 
 <header>
     <div class="carousel-container">
         <div class="carousel">
-            <img src="04ef201221bdc04b4aa841350ac92fc0.jpg" alt="Rock">
-            <img src="7660bde9840fcbf82f4dc91aae86c9ba.jpg" alt="Show">
-            <img src="89a625a663b59dfd2dbafaa75b98320a.jpg" alt="Banda ao vivo">
             <img src="04ef201221bdc04b4aa841350ac92fc0.jpg" alt="Rock">
             <img src="7660bde9840fcbf82f4dc91aae86c9ba.jpg" alt="Show">
             <img src="89a625a663b59dfd2dbafaa75b98320a.jpg" alt="Banda ao vivo">
@@ -28,10 +53,19 @@
 </header>
 
 <nav>
-    <!-- Botão de login com imagem -->
-  <a href="login.html" class="login-btn">
-    <img src="1177568.png" alt="Login" style="width:32px; height:32px;">  </a>
-    <a href="index.html"  class="active">Início</a>
+    <!-- Botão de login / avatar -->
+    <a href="#" id="userBtn" class="login-btn">
+        <img id="userAvatar" src="1177568.png" alt="Login/Avatar" style="width:32px; height:32px; border-radius:50%;">
+    </a>
+
+    <!-- Área do usuário -->
+    <div id="userArea">
+        <h4 id="userName">Usuário</h4>
+        <button id="logoutBtn">Sair</button>
+    </div>
+
+    <!-- Menu de navegação -->
+    <a href="home.html" class="active">Início</a>
     <a href="noticias.html">Notícias</a>
     <a href="bandas.html">Bandas</a>
     <a href="teorias.html">Teorias</a>
@@ -57,8 +91,8 @@
         <img src="Screenshot_2025-09-11-12-10-40-654_com.instagram.android.jpg" alt="Fundador 2">
     </div>
     <p class="fundador-texto">
-    Nosso fundador é guitarrista e apaixonado por música desde cedo. Sua experiência no mundo musical guia cada conteúdo e funcionalidade do RockBand, garantindo que o site seja feito por quem entende e ama o que faz.
-</p>
+        Nosso fundador é guitarrista e apaixonado por música desde cedo. Sua experiência no mundo musical guia cada conteúdo e funcionalidade do RockBand, garantindo que o site seja feito por quem entende e ama o que faz.
+    </p>
 </section>
 
 <footer>
