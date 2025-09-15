@@ -29,7 +29,6 @@ header
 .carousel-overlay img { width:300px; display:block; margin:0 auto 10px; }
 .carousel-overlay h1 { color:#fff; font-size:36px; text-shadow:2px 2px 8px rgba(0,0,0,0.7); line-height:1.2; }
 
-/* Navegação */
 nav {
     background:#000;
     text-align:center;
@@ -44,10 +43,18 @@ nav a {
     display:inline-block;
     position: relative; /* necessário para a bolinha */
     transition: color 0.3s;
+    vertical-align: middle; /* alinha imagem e texto */
 }
 
 nav a:hover {
     background:#555;
+}
+
+/* Imagem do botão de login */
+nav a.login-btn img {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
 }
 
 /* Link ativo destacado */
@@ -63,9 +70,8 @@ nav a.active::after {
     height: 8px;
     background: #ff4444;
     border-radius: 50%;
-    margin: 5px auto 0; /* centraliza a bolinha */
+    margin: 5px auto 0;
 }
-
 
 /* Seções */
 section { max-width:900px; margin:0 auto; padding:40px 40px 80px 40px; line-height:1.8; text-align:center; }
