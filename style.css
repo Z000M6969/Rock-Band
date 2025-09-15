@@ -23,6 +23,7 @@ body { font-family: 'Bebas Neue', sans-serif; background:#fff; color:#111; paddi
   object-fit: cover;
 }
 
+
 /* Menu */
 nav { background:#000; display:flex; justify-content:center; align-items:center; gap:20px; padding:10px 0; }
 nav a { color:#fff; padding:14px 20px; text-decoration:none; font-size:1.3em; transition: color 0.3s; }
