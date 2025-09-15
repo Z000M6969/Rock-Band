@@ -37,6 +37,15 @@ nav {
     padding:10px 0;
 }
 
+nav {
+    background:#000;
+    display: flex;              /* flex para centralizar */
+    justify-content: center;    /* centraliza horizontalmente */
+    align-items: center;        /* centraliza verticalmente */
+    gap: 20px;                  /* espaço entre itens */
+    padding:10px 0;
+}
+
 nav a {
     color:#fff;
     padding:14px 20px;
@@ -60,7 +69,6 @@ nav a.login-btn img {
     height: 32px;
     vertical-align: middle;
 }
-
 
 /* Seções */
 section { max-width:900px; margin:0 auto; padding:40px 40px 80px 40px; line-height:1.8; text-align:center; }
