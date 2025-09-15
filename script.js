@@ -26,27 +26,34 @@ window.addEventListener('load', () => {
   // ------------------------
   // BANDAS - Carrossel de Bandas
   // ------------------------
-  document.querySelectorAll('.band-track').forEach(track => {
-    if(track){
-      track.innerHTML += track.innerHTML; // Duplica imagens para loop
-      let posBand = 0;
-      const speedBand = 2;
-      let paused = false;
+document.querySelectorAll('.band-track').forEach(track => {
+  if(track){
+    // duplicar slides para loop infinito
+    track.innerHTML += track.innerHTML;
 
-      function animateBand() {
-        if(!paused){
-          posBand += speedBand;
-          if(posBand >= track.scrollWidth / 2) posBand = 0;
-          track.style.transform = `translateX(-${posBand}px)`;
+    let posBand = 0;
+    const speedBand = 1; // pixels por frame
+    let paused = false;
+
+    function animateBand() {
+      if(!paused){
+        posBand += speedBand;
+        // reinicia quando passar metade do conteúdo
+        if(posBand >= track.scrollWidth / 2){
+          posBand = 0;
         }
-        requestAnimationFrame(animateBand);
+        track.style.transform = `translateX(-${posBand}px)`;
       }
-      animateBand();
-
-      track.parentElement.addEventListener('mouseenter', () => paused = true);
-      track.parentElement.addEventListener('mouseleave', () => paused = false);
+      requestAnimationFrame(animateBand);
     }
-  });
+
+    animateBand();
+
+    // pausa quando o mouse estiver sobre o carrossel
+    track.parentElement.addEventListener('mouseenter', () => paused = true);
+    track.parentElement.addEventListener('mouseleave', () => paused = false);
+  }
+});
 
   // ------------------------
   // NOTÍCIAS FALSAS COM LINKS REAIS
