@@ -1,34 +1,38 @@
 window.addEventListener('load', () => {
-  const slides = document.querySelectorAll('.carousel .slide');
-  const prevBtn = document.querySelector('.carousel-controls .prev');
-  const nextBtn = document.querySelector('.carousel-controls .next');
-  let current = 0;
+  const track = document.querySelector('.carousel');
+  const slides = Array.from(track.children);
+  
+  // Duplicar slides para loop infinito
+  track.innerHTML += track.innerHTML;
 
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
-    });
+  let position = 0;
+  const speed = 1; // pixels por frame
+
+  function animate() {
+    position -= speed;
+
+    // Quando passar metade da largura total, reinicia
+    if (Math.abs(position) >= track.scrollWidth / 2) {
+      position = 0;
+    }
+
+    track.style.transform = `translateX(${position}px)`;
+    requestAnimationFrame(animate);
   }
 
-  function nextSlide() {
-    current = (current + 1) % slides.length;
-    showSlide(current);
-  }
-
-  function prevSlide() {
-    current = (current - 1 + slides.length) % slides.length;
-    showSlide(current);
-  }
-
-  // Mostra a primeira imagem
-  showSlide(current);
-
-  // Auto-slide a cada 3s
-  setInterval(nextSlide, 3000);
+  animate();
 
   // Botões
-  nextBtn.addEventListener('click', nextSlide);
-  prevBtn.addEventListener('click', prevSlide);
+  const prevBtn = document.querySelector('.carousel-controls .prev');
+  const nextBtn = document.querySelector('.carousel-controls .next');
+
+  prevBtn.addEventListener('click', () => {
+    position += 200; // move para trás
+  });
+
+  nextBtn.addEventListener('click', () => {
+    position -= 200; // move para frente
+  });
 });
 
 
