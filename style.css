@@ -25,24 +25,49 @@ body { font-family: 'Bebas Neue', sans-serif; background:#fff; color:#111; paddi
   margin-right: 20px;
 }
 
-/* Header específico */
-header .carousel-track .slide {
-  width: 100%;      /* slide ocupa 100% da tela */
+/* ===== HEADER CARROSSEL ===== */
+.header-carousel {
+  position: relative;
+  width: 100%;
   height: 400px;
+  overflow: hidden;
 }
 
+.header-carousel .carousel-track {
+  display: flex;
+  height: 100%;
+}
+
+.header-carousel .slide {
+  flex: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* mantém proporção sem distorcer */
+  object-position: center; /* centraliza imagem */
+}
+
+/* Overlay da logo */
 .carousel-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   text-align: center;
   z-index: 10;
   pointer-events: none;
 }
 
-.carousel-overlay img { width: 300px; margin-bottom: 10px; }
-.carousel-overlay h1 { color: #fff; font-size: 36px; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); }
+.carousel-overlay img {
+  width: 300px;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.carousel-overlay h1 {
+  color: #fff;
+  font-size: 36px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
 
 /* Bandas */
 .band-slide { width: 200px; text-align: center; }
