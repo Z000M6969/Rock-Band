@@ -1,14 +1,9 @@
-// app.js
+// admin.js
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 // ===== CONFIG SUPABASE =====
 const SUPABASE_URL = "https://vwbbzvwluvgllkueixqo.supabase.co";
-const SUPABASE_ANON_KEY = "SUA_CHAVE_ANON_AQUI"; // copie de Settings > API Keys > anon (⚠️ nunca use a service_role!)
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-// ===== CONFIG SUPABASE =====
-const SUPABASE_URL = "https://xxxxxxxxxxxxxxxxxxx.supabase.co&quot;;   // troque
-const SUPABASE_ANON_KEY = "coloque aqui seu API";             // troque
+const SUPABASE_ANON_KEY = "SUA_CHAVE_ANON_AQUI"; // ⚠️ Use só a anon key
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ===== ELEMENTOS =====
@@ -20,7 +15,11 @@ const authMsg = document.getElementById('authMsg');
 const privateArea = document.getElementById('privateArea');
 const welcomeUser = document.getElementById('welcomeUser');
 const logoutBtn = document.getElementById('logoutBtn');
+const usersTableBody = document.querySelector("#usersTable tbody");
+const editFormContainer = document.getElementById("editFormContainer");
+const editForm = document.getElementById("editForm");
 
+// ===== FUNÇÕES =====
 const showMsg = (text, type = "success") => {
   if (!authMsg) return;
   authMsg.textContent = text;
@@ -81,7 +80,7 @@ if (loginForm) {
     e.preventDefault();
     clearMsg();
 
-    let userOrEmail = document.getElementById('loginUser').value.trim().toLowerCase();
+    const userOrEmail = document.getElementById('loginUser').value.trim().toLowerCase();
     const pass = document.getElementById('loginPass').value;
 
     try {
@@ -109,8 +108,10 @@ supabase.auth.onAuthStateChange((_event, session) => {
   if (session?.user) {
     privateArea.classList.remove('hidden');
     welcomeUser.textContent = `Bem-vindo, ${session.user.user_metadata?.full_name || session.user.email}!`;
+    listarUsuarios(); // Atualiza tabela
   } else {
     privateArea.classList.add('hidden');
+    usersTableBody.innerHTML = "";
   }
 });
 
@@ -122,16 +123,78 @@ if (logoutBtn) {
   });
 }
 
+// ===== LISTAR USUÁRIOS =====
+async function listarUsuarios() {
+  const { data, error } = await supabase.from("users").select("*");
+  if (error) return console.error(error);
 
+  usersTableBody.innerHTML = "";
+  data.forEach(user => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${user.full_name || ""}</td>
+      <td>${user.dob || ""}</td>
+      <td>${user.email || ""}</td>
+      <td>${user.phone || ""}</td>
+      <td>${user.username || ""}</td>
+      <td>
+        <button class="btn editBtn">Editar</button>
+      </td>
+    `;
+    usersTableBody.appendChild(tr);
+
+    const editBtn = tr.querySelector(".editBtn");
+    editBtn.addEventListener("click", () => abrirEdicao(user));
+  });
+}
+
+// ===== EDITAR USUÁRIO =====
+function abrirEdicao(user) {
+  editFormContainer.classList.remove("hidden");
+  document.getElementById("editId").value = user.id;
+  document.getElementById("editNome").value = user.full_name || "";
+  document.getElementById("editNascimento").value = user.dob || "";
+  document.getElementById("editEmail").value = user.email || "";
+  document.getElementById("editTelefone").value = user.phone || "";
+  document.getElementById("editUsuario").value = user.username || "";
+}
+
+if (editForm) {
+  editForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const id = document.getElementById("editId").value;
+    const full_name = document.getElementById("editNome").value.trim();
+    const dob = document.getElementById("editNascimento").value;
+    const email = document.getElementById("editEmail").value.trim();
+    const phone = document.getElementById("editTelefone").value.trim();
+    const username = document.getElementById("editUsuario").value.trim();
+
+    const { data, error } = await supabase
+      .from("users")
+      .update({ full_name, dob, email, phone, username })
+      .eq("id", id);
+
+    if (error) {
+      showMsg("Erro ao atualizar: " + error.message, "error");
+    } else {
+      showMsg("Usuário atualizado com sucesso!", "success");
+      editFormContainer.classList.add("hidden");
+      listarUsuarios();
+    }
+  });
+}
+
+document.getElementById("cancelEdit")?.addEventListener("click", () => {
+  editFormContainer.classList.add("hidden");
+});
+
+// ===== CARROSSEL =====
 window.addEventListener('load', () => {
-  // ------------------------
-  // HEADER - Carrossel Principal
-  // ------------------------
   const headerTrack = document.querySelector('.carousel');
   if(headerTrack){
-    headerTrack.innerHTML += headerTrack.innerHTML; // Duplica imagens
+    headerTrack.innerHTML += headerTrack.innerHTML; // duplica imagens
     let posHeader = 0;
-    const speedHeader = 1; // pixels por frame
+    const speedHeader = 1;
 
     function animateHeader() {
       posHeader += speedHeader;
@@ -141,54 +204,5 @@ window.addEventListener('load', () => {
     }
     animateHeader();
   }
-
-  // ------------------------
-  // BANDAS - Carrossel de Bandas
-  // ------------------------
-  document.querySelectorAll('.band-track').forEach(track => {
-    if(track){
-      track.innerHTML += track.innerHTML; // Duplica imagens para loop
-      let posBand = 0;
-      const speedBand = 2;
-      let paused = false;
-
-      function animateBand() {
-        if(!paused){
-          posBand += speedBand;
-          if(posBand >= track.scrollWidth / 2) posBand = 0;
-          track.style.transform = `translateX(-${posBand}px)`;
-        }
-        requestAnimationFrame(animateBand);
-      }
-      animateBand();
-
-      track.parentElement.addEventListener('mouseenter', () => paused = true);
-      track.parentElement.addEventListener('mouseleave', () => paused = false);
-    }
-  });
-
-  // ------------------------
-  // NOTÍCIAS FALSAS COM LINKS REAIS
-  // ------------------------
-  const container = document.getElementById("feed");
-  if(container){
-    container.innerHTML = ""; // Limpa conteúdo inicial
-
-    const noticias = [
-      {title: "Banda X lança novo álbum", link:"https://www.whiplash.net/news/12345.html", description:"Riffs pesados e letras marcantes."},
-      {title: "Festival Rock Y confirmado para 2025", link:"https://www.whiplash.net/news/67890.html", description:"Grandes nomes do cenário nacional."},
-      {title: "Banda Z anuncia turnê pelo Brasil", link:"https://www.whiplash.net/news/11223.html", description:"Shows memoráveis em várias cidades."},
-      {title: "Entrevista exclusiva com Banda W", link:"https://www.whiplash.net/news/44556.html", description:"Banda fala sobre novo projeto."},
-      {title: "Documentário sobre Rock Nacional", link:"https://www.whiplash.net/news/77889.html", description:"História do rock nacional em vídeo."}
-    ];
-
-    noticias.forEach(noticia => {
-      container.innerHTML += `
-        <article>
-          <h3><a href="${noticia.link}" target="_blank">${noticia.title}</a></h3>
-          <p>${noticia.description}</p>
-        </article>
-      `;
-    });
-  }
 });
+
