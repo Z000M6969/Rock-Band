@@ -3,26 +3,23 @@ window.addEventListener('load', () => {
   const slides = Array.from(track.children);
 
   // Clonar slides para loop infinito
-  slides.forEach(slide => {
-    const clone = slide.cloneNode(true);
-    track.appendChild(clone);
-  });
+  slides.forEach(slide => track.appendChild(slide.cloneNode(true)));
 
   let position = 0;
-  const speed = 0.5; // pixels por frame
+  const speed = 1; // pixels por frame
 
   function animate() {
     position -= speed;
-
-    // Se passar a largura total do primeiro conjunto de slides, reinicia
-    const totalWidth = slides.length * track.offsetWidth / slides.length;
-    if (Math.abs(position) >= totalWidth) {
+    
+    // Reinicia quando passar metade do conteúdo (slides duplicados)
+    if (Math.abs(position) >= track.scrollWidth / 2) {
       position = 0;
     }
 
     track.style.transform = `translateX(${position}px)`;
     requestAnimationFrame(animate);
   }
+
   animate();
 });
 
