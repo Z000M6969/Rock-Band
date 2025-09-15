@@ -1,23 +1,36 @@
-// ===== CARROSSEL =====
 window.addEventListener('load', () => {
-  // ------------------------
-  // HEADER - Carrossel Principal
-  // ------------------------
-  const headerTrack = document.querySelector('.carousel');
-  if(headerTrack){
-    headerTrack.innerHTML += headerTrack.innerHTML; // duplica imagens
-    headerTrack.innerHTML += headerTrack.innerHTML; // Duplica imagens
-    let posHeader = 0;
-    const speedHeader = 1;
-    const speedHeader = 1; // pixels por frame
+  const slides = document.querySelectorAll('.carousel .slide');
+  const prevBtn = document.querySelector('.carousel-controls .prev');
+  const nextBtn = document.querySelector('.carousel-controls .next');
+  let current = 0;
 
-    function animateHeader() {
-      posHeader += speedHeader;
-@@ -15,5 +16,54 @@ window.addEventListener('load', () => {
-    }
-    animateHeader();
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
   }
+
+  function nextSlide() {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }
+
+  function prevSlide() {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+  }
+
+  // Mostra a primeira imagem
+  showSlide(current);
+
+  // Auto-slide a cada 3s
+  setInterval(nextSlide, 3000);
+
+  // Botões
+  nextBtn.addEventListener('click', nextSlide);
+  prevBtn.addEventListener('click', prevSlide);
 });
+
 
   // ------------------------
   // BANDAS - Carrossel de Bandas
