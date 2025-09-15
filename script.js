@@ -1,31 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.querySelector('header .carousel');
+  const slides = document.querySelectorAll('header .slide');
+  let index = 0;
 
-  /* =====================
-     CARROSSEL HEADER
-  ===================== */
-  const headerCarousel = document.querySelector('header .carousel');
-  if(headerCarousel){
-    const slides = headerCarousel.querySelectorAll('.slide');
-    const prevBtn = document.querySelector('header .prev');
-    const nextBtn = document.querySelector('header .next');
-    let index = 0;
-    let interval = null;
-
-    function showSlide() {
-      slides.forEach((slide, i) => slide.style.display = i === index ? 'block' : 'none');
-    }
-
-    function next() { index = (index + 1) % slides.length; showSlide(); }
-    function prev() { index = (index - 1 + slides.length) % slides.length; showSlide(); }
-
-    if(nextBtn) nextBtn.addEventListener('click', () => { next(); resetInterval(); });
-    if(prevBtn) prevBtn.addEventListener('click', () => { prev(); resetInterval(); });
-
-    function resetInterval() { clearInterval(interval); interval = setInterval(next, 5000); }
-
-    showSlide();
-    interval = setInterval(next, 5000);
+  function showNextSlide() {
+    slides[index].style.display = 'none';      // Esconde o slide atual
+    index = (index + 1) % slides.length;       // Próximo slide (loop infinito)
+    slides[index].style.display = 'block';     // Mostra o próximo slide
   }
+
+  // Inicializa mostrando o primeiro slide
+  slides.forEach(slide => slide.style.display = 'none');
+  slides[0].style.display = 'block';
+
+  // Troca de slide a cada 3 segundos
+  setInterval(showNextSlide, 3000);
+});
+
 
   /* =====================
      CARROSSEL BANDAS / FOTOS
