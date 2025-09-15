@@ -1,5 +1,10 @@
 // app.js
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm&quot;;
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+// ===== CONFIG SUPABASE =====
+const SUPABASE_URL = "https://vwbbzvwluvgllkueixqo.supabase.co";
+const SUPABASE_ANON_KEY = "SUA_CHAVE_ANON_AQUI"; // copie de Settings > API Keys > anon (⚠️ nunca use a service_role!)
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ===== CONFIG SUPABASE =====
 const SUPABASE_URL = "https://xxxxxxxxxxxxxxxxxxx.supabase.co&quot;;   // troque
