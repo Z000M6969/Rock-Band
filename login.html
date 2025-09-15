@@ -4,61 +4,62 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login / Cadastro</title>
-  <style>
-    :root {
-      --bg:#0f172a; --text:#e5e7eb; --primary:#22c55e; --accent:#60a5fa; --danger:#ef4444;
-    }
-    body{ font-family:Poppins, sans-serif; background:var(--bg); color:var(--text); margin:0; display:flex; justify-content:center; align-items:center; height:100vh; }
-    .container{ background:#1e293b; padding:2rem; border-radius:10px; width:300px; text-align:center; }
-    input{ width:100%; padding:0.5rem; margin:0.5rem 0; border:none; border-radius:5px; }
-    button{ width:100%; padding:0.5rem; margin-top:0.5rem; border:none; border-radius:5px; background:var(--primary); color:#fff; cursor:pointer; }
-    .msg{ margin-top:1rem; padding:0.5rem; border-radius:5px; }
-    .success{ background: #22c55e; }
-    .error{ background: #ef4444; }
-    .toggle{ margin-top:1rem; cursor:pointer; color:var(--accent); text-decoration:underline; }
-    form{ display:none; }
-    form.active{ display:block; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <!-- LOGIN -->
-    <form id="loginForm" class="active">
-      <h2>Login</h2>
-      <input type="email" id="loginEmail" placeholder="Email" required>
-      <input type="password" id="loginPass" placeholder="Senha" required>
-      <button type="submit">Entrar</button>
-      <div id="loginMsg"></div>
-      <div class="toggle" id="showCadastro">Não tem conta? Cadastre-se</div>
+    <!-- Abas -->
+    <div class="tabs">
+      <button id="tabLogin" class="active">Login</button>
+      <button id="tabCadastro">Cadastro</button>
+    </div>
+
+    <!-- Formulário de Login -->
+    <form id="loginForm" class="form active">
+      <div class="field">
+        <input type="email" id="loginEmail" placeholder="Email" required>
+      </div>
+      <div class="field">
+        <input type="password" id="loginPass" placeholder="Senha" required>
+      </div>
+      <button type="submit" class="btn">Entrar</button>
+      <div id="loginMsg" class="msg"></div>
     </form>
 
-    <!-- CADASTRO -->
-    <form id="cadastroForm">
-      <h2>Cadastro</h2>
-      <input type="email" id="cadastroEmail" placeholder="Email" required>
-      <input type="password" id="cadastroPass" placeholder="Senha" required>
-      <button type="submit">Cadastrar</button>
-      <div id="cadastroMsg"></div>
-      <div class="toggle" id="showLogin">Já tem conta? Faça login</div>
+    <!-- Formulário de Cadastro -->
+    <form id="cadastroForm" class="form">
+      <div class="field">
+        <input type="email" id="cadastroEmail" placeholder="Email" required>
+      </div>
+      <div class="field">
+        <input type="password" id="cadastroPass" placeholder="Senha" required>
+      </div>
+      <button type="submit" class="btn">Cadastrar</button>
+      <div id="cadastroMsg" class="msg"></div>
     </form>
   </div>
 
-  <script type="module" src="auth."></script>
+  <!-- JS -->
+  <script type="module" src="auth.js"></script>
   <script>
-    // Alternar entre login e cadastro
+    // Alternar abas
+    const tabLogin = document.getElementById("tabLogin");
+    const tabCadastro = document.getElementById("tabCadastro");
     const loginForm = document.getElementById("loginForm");
     const cadastroForm = document.getElementById("cadastroForm");
-    const showCadastro = document.getElementById("showCadastro");
-    const showLogin = document.getElementById("showLogin");
 
-    showCadastro.addEventListener("click", () => {
-      loginForm.classList.remove("active");
-      cadastroForm.classList.add("active");
+    tabLogin.addEventListener("click", () => {
+      tabLogin.classList.add("active");
+      tabCadastro.classList.remove("active");
+      loginForm.classList.add("active");
+      cadastroForm.classList.remove("active");
     });
 
-    showLogin.addEventListener("click", () => {
-      cadastroForm.classList.remove("active");
-      loginForm.classList.add("active");
+    tabCadastro.addEventListener("click", () => {
+      tabCadastro.classList.add("active");
+      tabLogin.classList.remove("active");
+      cadastroForm.classList.add("active");
+      loginForm.classList.remove("active");
     });
   </script>
 </body>
