@@ -1,26 +1,38 @@
 // ============================
-// CARROSSEL HEADER
+// CARROSSEL HEADER - FAIXA INFINITA
 // ============================
-function startHeaderCarousel(){
+(function() {
   const track = document.querySelector('.header-carousel .carousel-track');
-  if(!track) return;
+  if(!track) {
+    console.warn('Header carousel: elemento .carousel-track não encontrado.');
+    return;
+  }
 
-  track.innerHTML += track.innerHTML; // duplica slides
-  let pos = 0;
-  const speed = 4;
+  // Duplicar slides para loop infinito (mais seguro que innerHTML += innerHTML)
+  const slides = Array.from(track.children);
+  slides.forEach(slide => {
+    const clone = slide.cloneNode(true);
+    track.appendChild(clone);
+  });
 
-  function animate(){
+  let pos = 0;                  // posição atual (px)
+  const speed = 0.5;            // velocidade em px por frame (ajuste conforme quiser)
+  const halfWidth = track.scrollWidth / 2;
+
+  // animação usando requestAnimationFrame
+  function animate() {
     pos += speed;
-    if(pos >= track.scrollWidth / 2) pos = 0;
-    track.style.transform = `translateX(-${pos}px)`;
+
+    // loop infinito: quando passa metade do track, volta ao início
+    if(pos >= halfWidth) pos -= halfWidth;
+
+    // usar translate3d para suavidade (GPU)
+    track.style.transform = `translate3d(-${pos}px, 0, 0)`;
+
     requestAnimationFrame(animate);
   }
+
   animate();
-}
-
-window.addEventListener('load', startHeaderCarousel);
-
-
 
 // ============================
 // CARROSSEL BANDAS ICÔNICAS
