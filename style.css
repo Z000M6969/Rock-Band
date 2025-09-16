@@ -6,8 +6,9 @@ body { font-family: 'Bebas Neue', sans-serif; background:#fff; color:#111; paddi
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background: #FFF;
-    color: #e5e7eb;
+    background: #fff; /* fundo branco */
+    color: #111;       /* texto escuro */
+    padding-bottom:60px;
 }
 
 /* ===== HEADER ===== */
