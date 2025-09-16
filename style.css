@@ -1,197 +1,42 @@
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Reset e corpo */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Bebas Neue', sans-serif; background:#fff; color:#111; padding-bottom:60px; }
 
-/* Corpo */
-body {
-    font-family: 'Bebas Neue', sans-serif;
-    background-color: #fff;
-    color: #111;
-    padding-bottom: 60px;
-}
-
-/* Header e Carrossel */
-header {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-}
-
-.carousel-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.carousel {
-    display: flex;
-    width: max-content;
-    height: 100%;
-    animation: slide 30s linear infinite; /* Header continua animando via CSS */
-}
-
-.carousel img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.carousel-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 10;
-    pointer-events: none;
-}
-
-.carousel-overlay img {
-    width: 300px;
-    height: auto;
-    display: block;
-    margin: 0 auto 10px;
-}
-
-.carousel-overlay h1 {
-    color: #fff;
-    font-size: 36px;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-    margin: 0;
-    line-height: 1.2;
-}
-
-@keyframes slide {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
+/* Header e carrossel */
+header { position: relative; width:100%; height:400px; overflow:hidden; }
+.carousel-container { position:relative; width:100%; height:100%; }
+.carousel { display:flex; width:max-content; height:100%; animation:slide 30s linear infinite; }
+.carousel img { width:100%; height:100%; object-fit:cover; object-position:center; }
+.carousel-overlay { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; z-index:10; pointer-events:none; }
+.carousel-overlay img { width:300px; display:block; margin:0 auto 10px; }
+.carousel-overlay h1 { color:#fff; font-size:36px; text-shadow:2px 2px 8px rgba(0,0,0,0.7); line-height:1.2; }
 
 /* Navegação */
-nav {
-    background-color: #000;
-    text-align: center;
-    padding: 10px 0;
-}
-
-nav a {
-    color: #fff;
-    padding: 14px 20px;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1.3em;
-}
-
-nav a:hover {
-    background-color: #555;
-}
+nav { background:#000; text-align:center; padding:10px 0; }
+nav a { color:#fff; padding:14px 20px; text-decoration:none; font-size:1.3em; display:inline-block; }
+nav a:hover { background:#555; }
 
 /* Seções */
-section {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 40px 80px 40px;
-    line-height: 1.8;
-    text-align: center;
-}
-
-section h2 {
-    font-size: 3em;
-    margin-top: 0;
-    margin-bottom: 30px;
-}
-
-section p {
-    font-size: 1.15em;
-    margin-bottom: 25px;
-}
+section { max-width:900px; margin:0 auto; padding:40px 40px 80px 40px; line-height:1.8; text-align:center; }
+section h2 { font-size:3em; margin:0 0 30px 0; }
+section p { font-size:1.15em; margin-bottom:25px; }
 
 /* Carrossel de bandas */
-.band-carousel {
-    overflow: hidden;
-    width: 100%;
-    margin: 40px 0;
-}
-
-.band-track {
-    display: flex;
-    width: max-content; /* evita quebrar com muitas bandas */
-}
-
-.band-slide {
-    flex: 0 0 auto;
-    width: 200px;
-    margin: 0 10px;
-    text-align: center;
-}
-
-.band-slide img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.band-slide p {
-    margin-top: 10px;
-    font-size: 1.2em;
-    color: #111;
-}
+.band-carousel { overflow:hidden; width:100%; margin:40px 0; position:relative; }
+.band-track { display:flex; gap:20px; white-space:nowrap; }
+.band-slide { flex:0 0 auto; width:200px; text-align:center; }
+.band-slide img { width:200px; height:200px; object-fit:cover; border-radius:10px; }
+.band-slide p { margin-top:10px; font-size:1.2em; color:#111; }
 
 /* Fundador */
-.fundador {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 40px;
-}
-
-.fundador img {
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-}
+.fundador { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:40px; }
+.fundador img { width:400px; height:400px; object-fit:cover; border-radius:10px; }
 
 /* Rodapé */
-footer {
-    background-color: #111;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    z-index: 20;
-}
+footer { background:#111; color:#fff; text-align:center; padding:10px; position:fixed; width:100%; bottom:0; z-index:20; }
 
 /* Responsivo */
-@media (max-width: 900px) {
-    .band-slide img { width: 150px; height: 150px; }
-    .fundador img { width: 300px; height: 300px; }
-}
-
-@media (max-width: 768px) {
-    header { height: 300px; }
-    .carousel-overlay img { width: 200px; }
-    .carousel-overlay h1 { font-size: 28px; }
-}
-
-@media (max-width: 600px) {
-    .band-track { flex-wrap: wrap; justify-content: center; }
-    .band-slide { width: 45%; margin-bottom: 15px; }
-    .band-slide img { width: 100%; height: auto; }
-    .fundador { flex-direction: column; gap: 15px; }
-    .fundador img { width: 90%; height: auto; }
-}
-
-@media (max-width: 480px) {
-    header { height: 250px; }
-    .carousel-overlay img { width: 150px; }
-    .carousel-overlay h1 { font-size: 22px; }
-}
+@media (max-width:900px) { .band-slide img{width:150px;height:150px;} .fundador img{width:300px;height:300px;} }
+@media (max-width:768px) { header{height:300px;} .carousel-overlay img{width:200px;} .carousel-overlay h1{font-size:28px;} }
+@media (max-width:600px) { .band-track{flex-wrap:wrap; justify-content:center;} .band-slide{width:45%; margin-bottom:15px;} .band-slide img{width:100%;height:auto;} .fundador{flex-direction:column;gap:15px;} .fundador img{width:90%;height:auto;} }
+@media (max-width:480px) { header{height:250px;} .carousel-overlay img{width:150px;} .carousel-overlay h1{font-size:22px;} }
