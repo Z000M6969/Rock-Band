@@ -1,204 +1,126 @@
-/* =================================================
-   VARIÁVEIS GLOBAIS
-   ================================================= */
-:root {
-  --bg: #fff;
-  --surface: #f9f9f9;
-  --text: #111;
-  --muted: #666;
-  --primary: #22c55e;
-  --primary-900: #16a34a;
-  --accent: #60a5fa;
-  --danger: #ef4444;
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* =================================================
-   RESET E BODY
-   ================================================= */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body {
-  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color: var(--text);
-  background: var(--bg);
+/* Corpo */
+body {
+    font-family: 'Bebas Neue', sans-serif;
+    background-color: #fff;
+    color: #111;
+    padding-bottom: 60px; /* espaço para rodapé fixo */
 }
-a { color: inherit; text-decoration: none; }
-.container { width: min(1100px, 92%); margin: 0 auto; }
 
-/* =================================================
-   NAVBAR
-   ================================================= */
-.topbar {
-  position: sticky; top: 0; z-index: 10;
-  backdrop-filter: blur(10px);
-  background: #000;
-  border-bottom: 1px solid rgba(255,255,255,.06);
+/* Header e Carrossel */
+header {
+    position: relative;
+    width: 100%;
+    height: 400px; /* altura fixa para todas as páginas */
+    overflow: hidden;
 }
-.nav { display: flex; align-items: center; gap: 16px; padding: 14px 0; }
-.brand {
-  font-weight: 700; letter-spacing: .3px;
-  background: linear-gradient(90deg, #fff, #93c5fd);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-  font-size: 1.05rem;
-}
-.menu { margin-left: auto; display: flex; gap: 18px; align-items: center; }
-.menu a { opacity: .9; padding: 8px 10px; border-radius: 10px; color: #fff; }
-.menu a:hover { opacity: 1; background: rgba(255,255,255,.06); }
-.login-cta {
-  background: linear-gradient(90deg, var(--accent), var(--primary));
-  color: #0a0f1f; font-weight: 600; padding: 8px 14px !important; border-radius: 999px;
-  box-shadow: 0 6px 18px rgba(34,197,94,.25);
-}
-.hamburger { display: none; margin-left: auto; font-size: 20px; background: transparent; color: var(--text); border: 0; cursor: pointer; }
 
-/* =================================================
-   HEADER E CARROSSEL
-   ================================================= */
-header { position: relative; width: 100%; height: 400px; overflow: hidden; background: #fff; }
-.carousel-container { position: relative; width: 100%; height: 100%; }
+/* Container do Carrossel */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Slides do Carrossel */
 .carousel {
-  display: flex;
-  width: max-content;
-  height: 100%;
-  transform: translateX(0);
+    display: flex;
+    width: calc(100% * 6); /* 6 imagens duplicadas */
+    height: 100%;
+    animation: slide 20s linear infinite;
 }
-.carousel img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Overlay: logo + título */
 .carousel-overlay {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  text-align: center; z-index: 10; pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    pointer-events: none;
 }
-.carousel-overlay img { width: 300px; display: block; margin: 0 auto 10px; }
+
+/* Logo */
+.carousel-overlay img {
+    width: 300px;      /* tamanho fixo da logo */
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+/* Título */
 .carousel-overlay h1 {
-  color: #111; font-size: 36px; line-height: 1.2;
+    color: #fff;
+    font-size: 36px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    margin: 0;
+    line-height: 1.2;
 }
 
-/* =================================================
-   NAV HEADER
-   ================================================= */
-nav { background: #000; text-align: center; padding: 10px 0; }
-nav a { color: #fff; padding: 14px 20px; text-decoration: none; font-size: 1.3em; display: inline-block; }
-nav a:hover { background: #555; }
-
-/* =================================================
-   SEÇÕES
-   ================================================= */
-section { max-width: 900px; margin: 0 auto; padding: 40px 40px 80px 40px; line-height: 1.8; text-align: center; background: #fff; }
-section h2 { font-size: 3em; margin-bottom: 30px; color: #111; }
-section p { font-size: 1.15em; margin-bottom: 25px; color: #333; }
-
-/* =================================================
-   BOTÕES
-   ================================================= */
-.btn {
-  display: inline-block; border: 0; border-radius: 12px;
-  padding: 12px 18px; cursor: pointer;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  color: #fff; font-weight: 600;
-  box-shadow: 0 8px 24px rgba(96,165,250,.25);
-}
-.btn:hover { filter: brightness(1.05); }
-.btn.ghost { background: transparent; border: 1px solid rgba(0,0,0,.15); color: var(--text); }
-.btn.full { width: 100%; }
-
-/* =================================================
-   GRID E CARDS
-   ================================================= */
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.card {
-  background: #f5f5f5; border: 1px solid #ddd;
-  border-radius: 16px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,.1);
+/* Animação carrossel */
+@keyframes slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
 }
 
-/* =================================================
-   FORMULÁRIOS
-   ================================================= */
-.auth { max-width: 720px; }
-.tabs { display: flex; gap: 8px; margin-bottom: 16px; }
-.tab {
-  flex: 1; padding: 10px 14px; border-radius: 10px;
-  background: #eee; border: 1px solid #ddd;
-  color: #111; cursor: pointer;
-}
-.tab.active {
-  background: linear-gradient(90deg, var(--accent), var(--primary));
-  color: #fff; font-weight: 700;
-}
-.pane { display: none; }
-.pane.active { display: block; }
-.form { display: grid; gap: 14px; }
-.field { display: grid; gap: 8px; }
-label { font-weight: 600; color: #111; }
-input {
-  background: #fff; color: #111; border: 1px solid #ccc;
-  border-radius: 10px; padding: 12px 14px; outline: 0;
-}
-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(96,165,250,.25); }
-.muted { color: #666; font-size: .9rem; }
-.center { text-align: center; }
-.msg { margin-top: 14px; min-height: 24px; }
-.msg.error { color: var(--danger); }
-.msg.success { color: var(--primary); }
-.private { margin-top: 22px; }
-.hidden { display: none; }
-
-/* =================================================
-   CARROSSEL BANDAS
-   ================================================= */
-.band-carousel { position: relative; margin: 40px 0; overflow: hidden; }
-.band-track { display: flex; transition: transform 0.4s ease; gap: 20px; }
-.band-slide { flex: 0 0 auto; width: 200px; text-align: center; }
-.band-slide img { width: 200px; height: 200px; object-fit: cover; border-radius: 10px; }
-.band-slide p { margin-top: 10px; font-size: 1.2em; }
-
-/* Controles do carrossel */
-.carousel-controls {
-  position: absolute; top: 50%; width: 100%;
-  display: flex; justify-content: space-between;
-  transform: translateY(-50%);
-}
-.carousel-controls button {
-  background: rgba(0,0,0,0.5); color: #fff; border: none;
-  font-size: 2rem; cursor: pointer; padding: 5px 10px;
+/* Navegação */
+nav {
+    background-color: #000;
+    text-align: center;
+    padding: 10px 0;
 }
 
-/* =================================================
-   FUNDADOR
-   ================================================= */
-.fundador {
-  display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 40px;
-}
-.fundador img { width: 400px; height: 400px; object-fit: cover; border-radius: 10px; }
-
-/* =================================================
-   RODAPÉ
-   ================================================= */
-footer {
-  background: #000; color: #fff; text-align: center;
-  padding: 10px; position: fixed; width: 100%; bottom: 0; z-index: 20;
+nav a {
+    color: #fff;
+    padding: 14px 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.3em;
 }
 
-/* =================================================
-   RESPONSIVO
-   ================================================= */
-@media (max-width: 900px) {
-  .cards { grid-template-columns: 1fr 1fr; }
-  .band-slide img { width: 150px; height: 150px; }
-  .fundador img { width: 300px; height: 300px; }
+nav a:hover {
+    background-color: #555;
 }
+
+/* Responsivo: telas pequenas */
 @media (max-width: 768px) {
-  header { height: 300px; }
-  .carousel-overlay img { width: 200px; }
-  .carousel-overlay h1 { font-size: 28px; }
+    header {
+        height: 300px; /* reduz altura do header em telas pequenas */
+    }
+
+    .carousel-overlay img {
+        width: 200px; /* logo menor em telas pequenas */
+    }
+
+    .carousel-overlay h1 {
+        font-size: 28px; /* título menor em telas pequenas */
+    }
 }
-@media (max-width: 600px) {
-  .band-track { flex-wrap: wrap; justify-content: center; }
-  .band-slide { width: 45%; margin-bottom: 15px; }
-  .band-slide img { width: 100%; height: auto; }
-  .fundador { flex-direction: column; gap: 15px; }
-  .fundador img { width: 90%; height: auto; }
-}
+
 @media (max-width: 480px) {
-  header { height: 250px; }
-  .carousel-overlay img { width: 150px; }
-  .carousel-overlay h1 { font-size: 22px; }
+    header {
+        height: 250px;
+    }
+
+    .carousel-overlay img {
+        width: 150px;
+    }
+
+    .carousel-overlay h1 {
+        font-size: 22px;
+    }
 }
