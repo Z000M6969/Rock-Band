@@ -1,34 +1,36 @@
 // Função genérica para carrosséis infinitos
 function startCarousel(trackSelector, speed=1){
-  const track = document.querySelector(trackSelector);
-  if(!track) return;
+    const track = document.querySelector(trackSelector);
+    if(!track) return;
 
-  // duplicar slides para loop infinito
-  track.innerHTML += track.innerHTML;
+    // duplicar slides para loop infinito
+    track.innerHTML += track.innerHTML;
 
-  let pos = 0;
-  let currentSpeed = speed;
+    let pos = 0;
+    let currentSpeed = speed;
 
-  function animate(){
-    pos += currentSpeed;
-    if(pos >= track.scrollWidth / 2) pos = 0;
-    track.style.transform = `translateX(-${pos}px)`;
-    requestAnimationFrame(animate);
-  }
+    function animate(){
+        pos += currentSpeed;
+        if(pos >= track.scrollWidth / 2) pos = 0;
+        track.style.transform = `translateX(-${pos}px)`;
+        requestAnimationFrame(animate);
+    }
 
-  animate();
+    animate();
 
-  // pausa ao passar o mouse
-  track.parentElement.addEventListener('mouseenter', () => currentSpeed = 0);
-  track.parentElement.addEventListener('mouseleave', () => currentSpeed = speed);
+    // pausa ao passar o mouse
+    track.parentElement.addEventListener('mouseenter', () => currentSpeed = 0);
+    track.parentElement.addEventListener('mouseleave', () => currentSpeed = speed);
 }
 
 window.addEventListener('load', () => {
-
-  // CARROSÉIS
-  startCarousel('.header-carousel .carousel-track', 0.5);
-  startCarousel('.band-carousel .carousel-track', 1);
-  startCarousel('.fotos-carousel .carousel-track', 0.7);
+    // Header
+    startCarousel('.header-carousel .carousel-track', 0.5);
+    // Bandas icônicas
+    startCarousel('#bandas .band-carousel:nth-of-type(1) .band-track', 1);
+    // Bandas atuais
+    startCarousel('#bandas .band-carousel:nth-of-type(2) .band-track', 1);
+});
 
   // NOTÍCIAS FALSAS
   const container = document.getElementById("feed");
