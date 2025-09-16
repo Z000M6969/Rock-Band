@@ -1,38 +1,48 @@
 // ============================
-// CARROSSEL HEADER - FAIXA INFINITA
+// CARROSSEL HEADER - INFINITO
 // ============================
-(function() {
+window.addEventListener('load', () => {
   const track = document.querySelector('.header-carousel .carousel-track');
-  if(!track) {
+  if (!track) {
     console.warn('Header carousel: elemento .carousel-track não encontrado.');
     return;
   }
 
-  // Duplicar slides para loop infinito (mais seguro que innerHTML += innerHTML)
+  // ============================
+  // CLONAR SLIDES PARA LOOP INFINITO
+  // ============================
   const slides = Array.from(track.children);
-  slides.forEach(slide => {
-    const clone = slide.cloneNode(true);
-    track.appendChild(clone);
-  });
+  slides.forEach(slide => track.appendChild(slide.cloneNode(true)));
 
-  let pos = 0;                  // posição atual (px)
+  // ============================
+  // CONFIGURAÇÃO INICIAL
+  // ============================
+  let pos = 0;                  // posição atual em px
   const speed = 0.5;            // velocidade em px por frame (ajuste conforme quiser)
-  const halfWidth = track.scrollWidth / 2;
+  let halfWidth = track.scrollWidth / 2;  // metade da largura total (duplicamos os slides)
 
-  // animação usando requestAnimationFrame
+  // ============================
+  // FUNÇÃO DE ANIMAÇÃO
+  // ============================
   function animate() {
     pos += speed;
 
-    // loop infinito: quando passa metade do track, volta ao início
-    if(pos >= halfWidth) pos -= halfWidth;
+    // loop infinito: quando passar da metade, voltar ao início
+    if (pos >= halfWidth) pos -= halfWidth;
 
-    // usar translate3d para suavidade (GPU)
-    track.style.transform = `translate3d(-${pos}px, 0, 0)`;
+    track.style.transform = `translateX(-${pos}px)`;
 
     requestAnimationFrame(animate);
   }
 
   animate();
+
+  // ============================
+  // REAJUSTAR METADADOS AO REDIMENSIONAR
+  // ============================
+  window.addEventListener('resize', () => {
+    halfWidth = track.scrollWidth / 2;
+  });
 
 // ============================
 // CARROSSEL BANDAS ICÔNICAS
