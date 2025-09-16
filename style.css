@@ -5,19 +5,19 @@
     box-sizing: border-box;
 }
 
-
 /* ===================== BODY ===================== */
 body {
-    font-family: 'Anton'
+    font-family: 'Anton', sans-serif; /* corrigido */
     background: #fff;
     color: #111;
     padding-bottom: 60px;
 }
+
 /* ===================== HEADER ===================== */
 header {
     position: relative;
     width: 100%;
-    height: 500px; /* altura adequada para banner */
+    height: 450px; /* altura adequada para banner */
 }
 
 .header-carousel {
@@ -33,10 +33,10 @@ header {
 }
 
 .header-carousel .slide {
-    flex: auto;
+    flex: none;          /* cada slide mantém tamanho próprio */
     width: 100%;
     height: 100%;
-    object-fit: cover; /* mantém proporção e preenche o header */
+    object-fit: cover;   /* preenche o header sem deformar */
 }
 
 .carousel-overlay {
@@ -44,12 +44,13 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #111;
+    color: #fff;
     text-align: center;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
 }
 
 .carousel-overlay img {
-    width: 250px; /* logo proporcional ao header */
+    width: 250px;
     height: auto;
     margin-bottom: 15px;
 }
@@ -58,7 +59,6 @@ header {
     font-size: 3rem;
     margin: 0;
 }
-
 
 /* ===================== NAV ===================== */
 nav {
@@ -105,7 +105,7 @@ nav a.login-btn img {
 }
 
 .band-slide {
-    width: 200px;
+    width: 180px;       /* tamanho estilo capa de disco */
     flex: none;
     text-align: center;
     margin-right: 20px;
@@ -113,14 +113,16 @@ nav a.login-btn img {
 
 .band-slide img {
     width: 100%;
-    height: 250px; /* imagens mais altas sem deformar */
-    object-fit: cover;
+    height: 180px;      /* quadrado ou quase quadrado */
+    object-fit: cover;   /* cobre o espaço mantendo proporção */
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 .band-slide p {
     font-weight: bold;
-    margin-top: 5px;
+    margin-top: 8px;
+    font-size: 0.9em;
 }
 
 /* ===================== SEÇÕES ===================== */
@@ -133,7 +135,7 @@ section {
 }
 
 section h2 {
-    font-size: 3em;
+    font-size: 2.8em;
     margin: 0 0 30px 0;
     color: #60a5fa;
 }
@@ -158,23 +160,23 @@ footer {
 
 /* ===================== RESPONSIVO ===================== */
 @media (max-width: 900px) {
-    .band-slide img { height: 220px; }
+    .band-slide img { height: 160px; }
 }
 
 @media (max-width: 768px) {
-    header { height: 400px; }
+    header { height: 350px; }
     .carousel-overlay img { width: 200px; }
     .carousel-overlay h1 { font-size: 28px; }
-    .band-slide img { height: 200px; }
+    .band-slide img { height: 150px; }
 }
 
 @media (max-width: 600px) {
-    .band-slide img { height: 180px; }
+    .band-slide img { height: 130px; }
 }
 
 @media (max-width: 480px) {
-    header { height: 300px; }
+    header { height: 280px; }
     .carousel-overlay img { width: 150px; }
     .carousel-overlay h1 { font-size: 22px; }
-    .band-slide img { height: 150px; }
+    .band-slide img { height: 110px; }
 }
