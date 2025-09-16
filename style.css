@@ -2,58 +2,102 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: 'Bebas Neue', sans-serif; background:#fff; color:#111; padding-bottom:60px; }
 
-/* ===================== CARROSÉIS ===================== */
-/* ===== HEADER CARROSSEL ===== */
+/* ===== GERAL ===== */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+/* ===== HEADER ===== */
+header {
+    position: relative;
+}
 .header-carousel {
-  position: relative;
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 400px;
 }
-
 .header-carousel .carousel-track {
-  display: flex;
-  height: 100%;
+    display: flex;
+    width: max-content;
 }
-
 .header-carousel .slide {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;   /* agora funciona, pq .slide é <img> */
-  object-position: center;
-  border-radius: 8px;
-  flex: none;
-  display: block;
+    flex: none;
+    width: 100%;
+    object-fit: cover;
 }
-
-/* Overlay da logo */
 .carousel-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 10;
-  pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
 }
-
 .carousel-overlay img {
-  width: 300px;
-  display: block;
-  margin: 0 auto 10px;
+    width: 150px;
+    margin-bottom: 10px;
 }
-
 .carousel-overlay h1 {
-  color: #fff;
-  font-size: 36px;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    font-size: 2rem;
+    margin: 0;
 }
 
-/* Bandas */
-.band-slide { width: 200px; text-align: center; }
-.band-slide img { width: 100%; height: 150px; }
-.band-slide p { font-weight: bold; }
+/* ===== NAV ===== */
+nav {
+    display: flex;
+    gap: 15px;
+    padding: 15px 30px;
+    background: #111827;
+    align-items: center;
+}
+nav a {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a.active {
+    color: #22c55e;
+}
+nav .login-btn img {
+    vertical-align: middle;
+}
 
+/* ===== BANDAS ===== */
+.band-carousel {
+    overflow: hidden;
+    margin: 40px 0;
+}
+.band-track {
+    display: flex;
+    width: max-content;
+}
+.band-slide {
+    width: 200px;
+    flex: none;
+    text-align: center;
+    margin-right: 20px;
+}
+.band-slide img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.band-slide p {
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* ===== H2 ===== */
+section h2 {
+    margin: 20px 0;
+    text-align: center;
+    color: #60a5fa;
+}
 /* ===================== MENU ===================== */
 nav { background:#000; display:flex; justify-content:center; align-items:center; gap:20px; padding:10px 0; }
 nav a { color:#fff; padding:14px 20px; text-decoration:none; font-size:1.3em; transition: color 0.3s; }
