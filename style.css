@@ -1,42 +1,205 @@
-/* Reset e corpo */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Bebas Neue', sans-serif; background:#fff; color:#111; padding-bottom:60px; }
+/* =========================
+   RESET E CORPO
+   ========================= */
+* { 
+  margin: 0;           /* Remove margens padrão de todos os elementos */
+  padding: 0;          /* Remove padding padrão de todos os elementos */
+  box-sizing: border-box; /* Inclui padding e border na largura total */
+}
 
-/* Header e carrossel */
-header { position: relative; width:100%; height:400px; overflow:hidden; }
-.carousel-container { position:relative; width:100%; height:100%; }
-.carousel { display:flex; width:max-content; height:100%; animation:slide 30s linear infinite; }
-.carousel img { width:100%; height:100%; object-fit:cover; object-position:center; }
-.carousel-overlay { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; z-index:10; pointer-events:none; }
-.carousel-overlay img { width:300px; display:block; margin:0 auto 10px; }
-.carousel-overlay h1 { color:#fff; font-size:36px; text-shadow:2px 2px 8px rgba(0,0,0,0.7); line-height:1.2; }
+body { 
+  font-family: 'Bebas Neue', sans-serif; /* Define fonte principal */
+  background: #fff;    /* Fundo branco */
+  color: #111;         /* Cor do texto preto escuro */
+  padding-bottom: 60px; /* Espaço para não sobrepor o rodapé fixo */
+}
 
-/* Navegação */
-nav { background:#000; text-align:center; padding:10px 0; }
-nav a { color:#fff; padding:14px 20px; text-decoration:none; font-size:1.3em; display:inline-block; }
-nav a:hover { background:#555; }
+/* =========================
+   HEADER E CARROSSEL
+   ========================= */
+header { 
+  position: relative; /* Permite posicionamento absoluto de elementos dentro */
+  width: 100%;        /* Ocupa 100% da largura da tela */
+  height: 400px;      /* Altura fixa do header/carrossel */
+  overflow: hidden;   /* Esconde qualquer conteúdo que ultrapasse o container */
+}
 
-/* Seções */
-section { max-width:900px; margin:0 auto; padding:40px 40px 80px 40px; line-height:1.8; text-align:center; }
-section h2 { font-size:3em; margin:0 0 30px 0; }
-section p { font-size:1.15em; margin-bottom:25px; }
+.carousel-container { 
+  position: relative; /* Necessário para overlay absoluto dentro */
+  width: 100%;        /* Largura total do container */
+  height: 100%;       /* Altura igual ao header */
+}
 
-/* Carrossel de bandas */
-.band-carousel { overflow:hidden; width:100%; margin:40px 0; position:relative; }
-.band-track { display:flex; gap:20px; white-space:nowrap; }
-.band-slide { flex:0 0 auto; width:200px; text-align:center; }
-.band-slide img { width:200px; height:200px; object-fit:cover; border-radius:10px; }
-.band-slide p { margin-top:10px; font-size:1.2em; color:#111; }
+.carousel { 
+  display: flex;             /* Alinha imagens em linha horizontal */
+  width: max-content;        /* Largura ajusta ao conteúdo real */
+  height: 100%;              /* Ocupa toda altura do container */
+  animation: slide 30s linear infinite; /* Animação de slide contínuo */
+}
 
-/* Fundador */
-.fundador { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:40px; }
-.fundador img { width:400px; height:400px; object-fit:cover; border-radius:10px; }
+.carousel img { 
+  width: 100%;       /* Imagem ocupa toda largura do slide */
+  height: 100%;      /* Imagem ocupa toda altura do slide */
+  object-fit: cover; /* Ajusta a imagem sem distorcer, cortando excesso */
+  object-position: center; /* Centraliza a imagem no frame */
+}
 
-/* Rodapé */
-footer { background:#111; color:#fff; text-align:center; padding:10px; position:fixed; width:100%; bottom:0; z-index:20; }
+.carousel-overlay { 
+  position: absolute;   /* Posicionamento sobreposto ao carrossel */
+  top: 50%;             /* Centraliza verticalmente */
+  left: 50%;            /* Centraliza horizontalmente */
+  transform: translate(-50%, -50%); /* Ajusta para centro exato */
+  text-align: center;   /* Centraliza conteúdo de texto */
+  z-index: 10;          /* Garante que fique acima das imagens */
+  pointer-events: none; /* Permite clicar através do overlay */
+}
 
-/* Responsivo */
-@media (max-width:900px) { .band-slide img{width:150px;height:150px;} .fundador img{width:300px;height:300px;} }
-@media (max-width:768px) { header{height:300px;} .carousel-overlay img{width:200px;} .carousel-overlay h1{font-size:28px;} }
-@media (max-width:600px) { .band-track{flex-wrap:wrap; justify-content:center;} .band-slide{width:45%; margin-bottom:15px;} .band-slide img{width:100%;height:auto;} .fundador{flex-direction:column;gap:15px;} .fundador img{width:90%;height:auto;} }
-@media (max-width:480px) { header{height:250px;} .carousel-overlay img{width:150px;} .carousel-overlay h1{font-size:22px;} }
+.carousel-overlay img { 
+  width: 300px;         /* Largura do logo/imagem do overlay */
+  display: block;       /* Imagem como bloco */
+  margin: 0 auto 10px;  /* Centraliza e adiciona margem inferior */
+}
+
+.carousel-overlay h1 { 
+  color: #fff;                                  /* Cor do texto branco */
+  font-size: 36px;                              /* Tamanho do título */
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);   /* Sombra para destaque */
+  line-height: 1.2;                             /* Altura da linha */
+}
+
+/* =========================
+   NAVEGAÇÃO
+   ========================= */
+nav { 
+  background: #000;    /* Fundo preto */
+  text-align: center;  /* Centraliza links */
+  padding: 10px 0;     /* Espaçamento vertical */
+}
+
+nav a { 
+  color: #fff;         /* Cor do link branca */
+  padding: 14px 20px;  /* Espaçamento interno dos links */
+  text-decoration: none; /* Remove sublinhado */
+  font-size: 1.3em;    /* Tamanho do texto */
+  display: inline-block; /* Para poder aplicar padding corretamente */
+}
+
+nav a:hover { 
+  background: #555;    /* Fundo cinza escuro ao passar o mouse */
+}
+
+/* =========================
+   SEÇÕES
+   ========================= */
+section { 
+  max-width: 900px;        /* Largura máxima da seção */
+  margin: 0 auto;          /* Centraliza a seção */
+  padding: 40px 40px 80px 40px; /* Espaçamento interno */
+  line-height: 1.8;        /* Espaçamento entre linhas */
+  text-align: center;       /* Centraliza texto */
+}
+
+section h2 { 
+  font-size: 3em;   /* Tamanho do título da seção */
+  margin: 0 0 30px 0; /* Margem inferior */
+}
+
+section p { 
+  font-size: 1.15em;   /* Tamanho do parágrafo */
+  margin-bottom: 25px; /* Espaço inferior */
+}
+
+/* =========================
+   CARROSSEL DE BANDAS
+   ========================= */
+.band-carousel { 
+  overflow: hidden;     /* Esconde excesso de slides */
+  width: 100%;          /* Largura total */
+  margin: 40px 0;       /* Margem superior e inferior */
+  position: relative;   /* Para posicionamentos absolutos internos */
+}
+
+.band-track { 
+  display: flex;        /* Slides em linha horizontal */
+  gap: 20px;            /* Espaçamento entre slides */
+  white-space: nowrap;  /* Impede quebra de linha */
+}
+
+.band-slide { 
+  flex: 0 0 auto;       /* Largura fixa, não cresce */
+  width: 200px;         /* Largura do slide */
+  text-align: center;   /* Centraliza conteúdo */
+}
+
+.band-slide img { 
+  width: 200px;         /* Largura da imagem */
+  height: 200px;        /* Altura da imagem */
+  object-fit: cover;    /* Ajusta sem distorcer */
+  border-radius: 10px;  /* Cantos arredondados */
+}
+
+.band-slide p { 
+  margin-top: 10px;     /* Espaço acima do texto */
+  font-size: 1.2em;     /* Tamanho do texto */
+  color: #111;          /* Cor do texto */
+}
+
+/* =========================
+   FUNDDADOR
+   ========================= */
+.fundador { 
+  display: flex;           /* Exibe imagens em linha */
+  justify-content: center; /* Centraliza horizontalmente */
+  gap: 20px;               /* Espaçamento entre imagens */
+  flex-wrap: wrap;         /* Quebra linha em telas pequenas */
+  margin-top: 40px;        /* Margem superior */
+}
+
+.fundador img { 
+  width: 400px;           /* Largura da imagem */
+  height: 400px;          /* Altura da imagem */
+  object-fit: cover;      /* Ajusta imagem sem distorcer */
+  border-radius: 10px;    /* Cantos arredondados */
+}
+
+/* =========================
+   RODAPÉ
+   ========================= */
+footer { 
+  background: #111;      /* Fundo quase preto */
+  color: #fff;           /* Texto branco */
+  text-align: center;    /* Centraliza conteúdo */
+  padding: 10px;         /* Espaçamento interno */
+  position: fixed;       /* Sempre fixo no rodapé */
+  width: 100%;           /* Largura total */
+  bottom: 0;             /* Posicionado na parte inferior */
+  z-index: 20;           /* Acima de outros elementos */
+}
+
+/* =========================
+   RESPONSIVO
+   ========================= */
+@media (max-width: 900px) { 
+  .band-slide img { width: 150px; height: 150px; } /* Ajuste bandas menores */
+  .fundador img { width: 300px; height: 300px; }   /* Ajuste fundador menor */
+}
+
+@media (max-width: 768px) { 
+  header { height: 300px; }                    /* Header menor */
+  .carousel-overlay img { width: 200px; }      /* Overlay menor */
+  .carousel-overlay h1 { font-size: 28px; }    /* Título menor */
+}
+
+@media (max-width: 600px) { 
+  .band-track { flex-wrap: wrap; justify-content: center; } /* Quebra slides de bandas */
+  .band-slide { width: 45%; margin-bottom: 15px; }          /* Ajusta largura e espaçamento */
+  .band-slide img { width: 100%; height: auto; }           /* Imagem responsiva */
+  .fundador { flex-direction: column; gap: 15px; }          /* Coluna para fundador */
+  .fundador img { width: 90%; height: auto; }              /* Imagem responsiva */
+}
+
+@media (max-width: 480px) { 
+  header { height: 250px; }                    /* Header ainda menor */
+  .carousel-overlay img { width: 150px; }      /* Overlay menor */
+  .carousel-overlay h1 { font-size: 22px; }    /* Título menor */
+}
