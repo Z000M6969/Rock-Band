@@ -39,18 +39,12 @@ body { font-family: 'Bebas Neue', sans-serif; background:#fff; color:#111; paddi
 }
 
 .header-carousel .slide {
-  flex: none;
   width: 100%;
   height: 100%;
-  border-radius: 8px;
-  overflow: hidden; /* garante que a imagem não saia do container */
-}
-
-.header-carousel .slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;   /* preenche o espaço sem distorcer */
+  object-fit: cover;   /* agora funciona, pq .slide é <img> */
   object-position: center;
+  border-radius: 8px;
+  flex: none;
   display: block;
 }
 
