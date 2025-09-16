@@ -1,98 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROCKBAND</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROCKBAND - Info</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
-<body>
-  <script src="script.js"></script>
+<body class="info">
 
 <header>
- <div class="header-carousel">
+  <div class="header-carousel">
     <div class="carousel">
       <img src="04ef201221bdc04b4aa841350ac92fc0.jpg" class="slide" alt="Rock">
       <img src="7660bde9840fcbf82f4dc91aae86c9ba.jpg" class="slide" alt="Show">
       <img src="89a625a663b59dfd2dbafaa75b98320a.jpg" class="slide" alt="Banda ao vivo">
     </div>
-
-    <!-- Overlay da logo -->
     <div class="carousel-overlay">
       <img src="Rock-Band-Logo-PNG-File.png" alt="Logo do Rockband">
-            <h1>Informações e Contato 🎸</h1>
-        </div>
+      <h1>Informações e Contato 🎸</h1>
+    </div>
+  </div>
 </header>
 
+<nav>
+  <a href="login.html" class="login-btn">
+    <img src="1177568.png" alt="Login" style="width:32px;height:32px;">
+  </a>
+  <a href="home.html">Início</a>
+  <a href="noticias.html">Notícias</a>
+  <a href="bandas.html">Bandas</a>
+  <a href="teorias.html">Teorias</a>
+  <a href="shows.html">Shows</a>
+  <a href="info.html" class="active">Info</a>
+</nav>
 
-    <!-- Navegação -->
-    <nav>
-         <!-- Botão de login com imagem -->
-  <a href="usuário.html" class="login-btn">
-    <img src="1177568.png" alt="Login" style="width:32px; height:32px;">  </a>
-        <a href="home.html">Início</a>
-        <a href="noticias.html">Notícias</a>
-        <a href="bandas.html">Bandas</a>
-        <a href="teorias.html">Teorias</a>
-        <a href="shows.html">Shows</a>
-        <a href="info.html" class="active">Info</a>
-    </nav>
+<section id="info">
+  <h2>Sobre o ROCKBAND</h2>
+  <p>O ROCKBAND é um site dedicado a todos os fãs de rock. Aqui você encontra notícias, informações sobre bandas, teorias, shows e muito mais.</p>
 
-    <!-- Conteúdo principal -->
-  <section id="info">
-    <h2>Sobre o ROCKBAND</h2>
-    <p>O ROCKBAND é um site dedicado a todos os fãs de rock. Aqui você encontra notícias, informações sobre bandas, teorias, shows e muito mais.</p>
-
-    <!-- Criador -->
-    <div class="fundador">
-        <img src="IMG_20240924_220318~3.jpg" alt="Foto do criador">
-        <div class="creator-details">
-            <h3>Nathan Souza Gusso</h3>
-            <p>Desenvolvedor do site ROCKBAND</p>
-            <p>Email: <a href="nathan.gusso@escola.pr.gov.br">contato@rockband.com</a></p>
-            <p>Formação: Ensino Médio/ Tecnico Analise e Desenvolvimento de Sistemas</p>
-        </div>
+  <div class="fundador">
+    <img src="IMG_20240924_220318~3.jpg" alt="Foto do criador">
+    <div class="creator-details">
+      <h3>Nathan Souza Gusso</h3>
+      <p>Desenvolvedor do site ROCKBAND</p>
+      <p>Email: <a href="mailto:nathan.gusso@escola.pr.gov.br">contato@rockband.com</a></p>
+      <p>Formação: Ensino Médio/ Técnico em Análise e Desenvolvimento de Sistemas</p>
     </div>
+  </div>
 
-    <!-- Carrossel de fotos em grupo -->
-    <div class="band-carousel">
-        <h3>Fotos em Grupo</h3>
-        <div class="band-track" id="groupCarousel">
-            <div class="band-slide"><img src="IMG-20250331-WA0017.jpg" alt="Foto do grupo 1"><p>Evento 1</p></div>
-            <div class="band-slide"><img src="IMG-20250408-WA0004.jpg" alt="Foto do grupo 2"><p>Evento 2</p></div>
-            <div class="band-slide"><img src="IMG-20250609-WA0007.jpg" alt="Foto do grupo 3"><p>Evento 3</p></div>
-            <div class="band-slide"><img src="IMG_20240912_123501_328.webp" alt="Foto do grupo 4"><p>Evento 4</p></div>
-             <div class="band-slide"><img src="IMG_20250206_120054.jpg" alt="Foto do grupo 3"><p>Evento 3</p></div>
-             <div class="band-slide"><img src="IMG_20250313_122345.jpg" alt="Foto do grupo 3"><p>Evento 3</p></div>
-             <div class="band-slide"><img src="IMG_20250319_122317.jpg" alt="Foto do grupo 3"><p>Evento 3</p></div>
-             <div class="band-slide"><img src="IMG_20250325_123338_1.jpg" alt="Foto do grupo 3"><p>Evento 3</p></div>
-             <div class="band-slide"><img src="IMG_20250423_114805.jpg" alt="Foto do grupo 3"><p>Evento 3</p></div>
-             <div class="band-slide"><img src="IMG_20250429_085941.jpg" alt="Foto do grupo 3"><p>Evento 3</p></div>
-            <div class="band-slide"><img src="IMG_20250503_202932.jpg" alt="Foto do grupo 3"><p>Evento 3</p></div>
-        </div>
-        <div class="carousel-controls">
-            <button id="prevGroup">❮</button>
-            <button id="nextGroup">❯</button>
-        </div>
+  <div class="band-carousel">
+    <h3>Fotos em Grupo</h3>
+    <div class="band-track" id="groupCarousel">
+      <div class="band-slide"><img src="IMG-20250331-WA0017.jpg" alt="Evento 1"><p>Evento 1</p></div>
+      <div class="band-slide"><img src="IMG-20250408-WA0004.jpg" alt="Evento 2"><p>Evento 2</p></div>
+      <div class="band-slide"><img src="IMG-20250609-WA0007.jpg" alt="Evento 3"><p>Evento 3</p></div>
+      <div class="band-slide"><img src="IMG_20240912_123501_328.webp" alt="Evento 4"><p>Evento 4</p></div>
+      <div class="band-slide"><img src="IMG_20250206_120054.jpg" alt="Evento 5"><p>Evento 5</p></div>
     </div>
+    <div class="carousel-controls">
+      <button id="prevGroup">❮</button>
+      <button id="nextGroup">❯</button>
+    </div>
+  </div>
 
-    <!-- Dedicação -->
-    <div class="dedication">
-        <h3>Dedicatória</h3>
-        <p>Este site foi dedicado à minha família, aos amantes de rock e, principalmente, aos meus amigos. Vocês provaram que a amizade verdadeira existe, pois estiveram ao meu lado nos momentos mais difíceis, sem nunca me abandonar.
+  <div class="dedication">
+    <h3>Dedicatória</h3>
+    <p>Este site foi dedicado à minha família, aos amantes de rock e, principalmente, aos meus amigos. Vocês provaram que a amizade verdadeira existe, pois estiveram ao meu lado nos momentos mais difíceis, sem nunca me abandonar.
 
 As cartas que recebi de vocês, cheias de vida e da energia do nosso grupo, foram o que me ajudou a seguir em frente. A primeira delas me fez chorar de emoção, e todas as outras me deram a esperança que eu precisava para continuar. Sem o apoio e a dedicação de vocês, este trabalho simplesmente não teria a mesma alma.
 
-Vocês são mais que amigos, são minha família. Cada risada perdida, cada momento que não vivemos juntos, eu prometo que vamos recuperar. Não troco a amizade de vocês por nada no mundo. Mal posso esperar para nos reencontrarmos e celebrar a vida.
-</p>
-    </div>
+Vocês são mais que amigos, são minha família. Cada risada perdida, cada momento que não vivemos juntos, eu prometo que vamos recuperar. Não troco a amizade de vocês por nada no mundo. Mal posso esperar para nos reencontrarmos e celebrar a vida.</p>
+  </div>
 </section>
 
+<footer>
+  <p>&copy; 2025 ROCKBAND - NTH</p>
+</footer>
 
-    <!-- Rodapé -->
-    <footer>
-        <p>&copy; 2025 ROCKBAND - NTH</p>
-    </footer>
+<script src="script.js"></script>
 </body>
 </html>
