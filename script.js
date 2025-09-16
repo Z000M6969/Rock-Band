@@ -27,7 +27,7 @@ function startCarousel(trackSelector, speed=1, pauseOnHover=false){
 
 window.addEventListener('load', () => {
     // Header (não pausa)
-    startCarousel('.header-carousel .carousel-track', 0.5, false);
+   startCarousel('.header-carousel .carousel-track', 4, false);
     
     // Bandas icônicas (pausa ao passar o mouse)
     startCarousel('#bandas .band-carousel:nth-of-type(1) .band-track', 1, true);
