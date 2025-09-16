@@ -2,55 +2,57 @@
    RESET E CORPO
    ========================= */
 * {
-  margin: 0;              /* Remove margens padrão */
-  padding: 0;             /* Remove padding padrão */
-  box-sizing: border-box; /* Inclui padding e border na largura total */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Bebas Neue', sans-serif; /* Fonte principal */
-  background: #fff;       /* Fundo branco */
-  color: #111;            /* Cor do texto preto escuro */
-  padding-bottom: 60px;   /* Espaço para rodapé fixo */
+  font-family: 'Bebas Neue', sans-serif;
+  background: #fff;
+  color: #111;
+  padding-bottom: 100px; /* espaço para rodapé fixo */
 }
 
 /* =========================
    HEADER E CARROSSEL
    ========================= */
 header {
-  position: relative; /* Permite posicionamento absoluto dentro */
-  width: 100%;        /* Largura total */
-  height: 400px;      /* Altura do header/carrossel */
-  overflow: hidden;   /* Esconde conteúdo que extrapola o container */
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
 }
 
 .carousel-container {
-  position: relative; /* Para overlay absoluto */
+  position: relative;
   width: 100%;
   height: 100%;
 }
 
 .carousel {
-  display: flex;               /* Alinha imagens horizontalmente */
-  width: max-content;          /* Ajusta largura ao conteúdo */
+  display: flex;
+  width: max-content; 
   height: 100%;
-  animation: slide 30s linear infinite; /* Animação contínua */
+  animation: slide 30s linear infinite;
 }
 
 .carousel img {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;      /* Ajusta sem distorcer */
-  object-position: center;/* Centraliza imagem */
+  object-fit: cover; /* cobre sem distorcer */
+  object-position: center;
 }
 
 .carousel-overlay {
-  position: absolute;           /* Sobreposto ao carrossel */
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%); /* Centraliza exatamente */
-  text-align: center;           /* Centraliza conteúdo */
-  z-index: 10;                  /* Fica acima das imagens */
-  pointer-events: none;         /* Permite clicar através */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  pointer-events: none;
 }
 
 .carousel-overlay img {
@@ -64,6 +66,14 @@ header {
   font-size: 36px;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
   line-height: 1.2;
+}
+
+/* =========================
+   ANIMAÇÃO DO CARROSSEL
+   ========================= */
+@keyframes slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* =========================
@@ -85,6 +95,10 @@ nav a {
 
 nav a:hover {
   background: #555;
+}
+
+nav a.active {
+  background: #222;
 }
 
 /* =========================
@@ -122,6 +136,7 @@ section p {
   display: flex;
   gap: 20px;
   white-space: nowrap;
+  transition: transform 0.5s ease-in-out;
 }
 
 .band-slide {
@@ -144,7 +159,7 @@ section p {
 }
 
 /* =========================
-   FUNDADOR
+   FUNDADOR / CRIADOR
    ========================= */
 .fundador {
   display: flex;
@@ -159,6 +174,11 @@ section p {
   height: 400px;
   object-fit: cover;
   border-radius: 10px;
+}
+
+.creator-details {
+  max-width: 400px;
+  text-align: left;
 }
 
 /* =========================
@@ -178,22 +198,20 @@ footer {
 /* =========================
    RESPONSIVO
    ========================= */
-
-/* Tablets maiores */
-@media (max-width: 900px) {
+@media (max-width: 900px){
+  header { height: 300px; }
+  .carousel-overlay img { width: 200px; }
+  .carousel-overlay h1 { font-size: 28px; }
   .band-slide img { width: 150px; height: 150px; }
   .fundador img { width: 300px; height: 300px; }
 }
 
-/* Tablets menores */
-@media (max-width: 768px) {
-  header { height: 300px; }
-  .carousel-overlay img { width: 200px; }
-  .carousel-overlay h1 { font-size: 28px; }
+@media (max-width: 768px){
+  .band-slide { width: 45%; }
+  .band-track { gap: 10px; }
 }
 
-/* Smartphones médios */
-@media (max-width: 600px) {
+@media (max-width: 600px){
   .band-track { flex-wrap: wrap; justify-content: center; }
   .band-slide { width: 45%; margin-bottom: 15px; }
   .band-slide img { width: 100%; height: auto; }
@@ -201,8 +219,7 @@ footer {
   .fundador img { width: 90%; height: auto; }
 }
 
-/* Smartphones pequenos */
-@media (max-width: 480px) {
+@media (max-width: 480px){
   header { height: 250px; }
   .carousel-overlay img { width: 150px; }
   .carousel-overlay h1 { font-size: 22px; }
