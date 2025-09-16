@@ -1,14 +1,10 @@
 /* Reset e corpo */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Bebas Neue', sans-serif; background:#fff; color:#111; padding-bottom:60px; }
-
-/* ===== GERAL ===== */
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    background: #fff; /* fundo branco */
-    color: #111;       /* texto escuro */
-    padding-bottom:60px;
+    font-family: 'Anton', sans-serif;
+    background: #fff;
+    color: #111;
+    padding-bottom: 60px;
 }
 
 /* ===== HEADER ===== */
