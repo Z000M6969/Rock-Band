@@ -26,14 +26,15 @@ body {
 }
 
 /* =================================================
-   HEADER + CARROSSEL PRINCIPAL
+   HEADER + CARROSSEL INFINITO
    ================================================= */
 header {
     position: relative;
     width: 100%;
-    height: 450px;
+    height: 450px; /* altura padrão */
 }
 
+/* ===================== CARROSSEL ===================== */
 .header-carousel {
     overflow: hidden;
     position: relative;
@@ -43,24 +44,27 @@ header {
 
 .header-carousel .carousel-track {
     display: flex;
-    will-change: transform; /* melhora performance */
+    width: max-content;        /* garante que todos os slides fiquem lado a lado */
+    will-change: transform;    /* melhora performance */
 }
 
 .header-carousel .slide {
-    flex: none;
-    width: 100vw;     
+    flex: none;                /* cada slide mantém seu tamanho */
+    width: 100vw;              /* ocupa toda a largura da tela */
     height: 100%;
+    object-fit: cover;         /* mantém proporção sem distorcer */
 }
 
-/* ===== Overlay (logo + título) ===== */
+/* ===================== OVERLAY (LOGO + TÍTULO) ===================== */
 .carousel-overlay {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: var(--light);
+    color: #fff;
     text-align: center;
     text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    pointer-events: none;      /* permite clicar nos slides sem bloquear */
 }
 
 .carousel-overlay img {
@@ -72,6 +76,24 @@ header {
 .carousel-overlay h1 {
     font-size: clamp(1.5rem, 5vw, 3rem); /* responsivo */
     margin: 0;
+}
+
+/* ===================== RESPONSIVO ===================== */
+@media (max-width: 1024px) {
+    header { height: 400px; }
+    .carousel-overlay img { width: 220px; }
+}
+
+@media (max-width: 768px) {
+    header { height: 350px; }
+    .carousel-overlay img { width: 180px; }
+    .carousel-overlay h1 { font-size: 2rem; }
+}
+
+@media (max-width: 480px) {
+    header { height: 280px; }
+    .carousel-overlay img { width: 150px; }
+    .carousel-overlay h1 { font-size: 1.5rem; }
 }
 
 /* =================================================
