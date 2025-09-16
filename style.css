@@ -17,11 +17,10 @@ body {
 header {
     position: relative;
     width: 100%;
-    height: 400px; /* altura fixa para todas as páginas */
+    height: 400px; /* altura fixa */
     overflow: hidden;
 }
 
-/* Container do Carrossel */
 .carousel-container {
     position: relative;
     width: 100%;
@@ -54,15 +53,13 @@ header {
     pointer-events: none;
 }
 
-/* Logo */
 .carousel-overlay img {
-    width: 300px;      /* tamanho fixo da logo */
+    width: 300px; /* tamanho fixo */
     height: auto;
     display: block;
     margin: 0 auto 10px;
 }
 
-/* Título */
 .carousel-overlay h1 {
     color: #fff;
     font-size: 36px;
@@ -96,31 +93,64 @@ nav a:hover {
     background-color: #555;
 }
 
-/* Responsivo: telas pequenas */
+/* Seções */
+section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 40px 80px 40px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 3em;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+section p {
+    font-size: 1.15em;
+    margin-bottom: 25px;
+}
+
+section ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+section ul li {
+    margin-bottom: 20px;
+    font-size: 1.25em;
+}
+
+section ul li strong {
+    display: block;
+    font-size: 1.4em;
+    margin-bottom: 5px;
+}
+
+/* Rodapé */
+footer {
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 20;
+}
+
+/* Responsivo */
 @media (max-width: 768px) {
-    header {
-        height: 300px; /* reduz altura do header em telas pequenas */
-    }
-
-    .carousel-overlay img {
-        width: 200px; /* logo menor em telas pequenas */
-    }
-
-    .carousel-overlay h1 {
-        font-size: 28px; /* título menor em telas pequenas */
-    }
+    header { height: 300px; }
+    .carousel-overlay img { width: 200px; }
+    .carousel-overlay h1 { font-size: 28px; }
 }
 
 @media (max-width: 480px) {
-    header {
-        height: 250px;
-    }
-
-    .carousel-overlay img {
-        width: 150px;
-    }
-
-    .carousel-overlay h1 {
-        font-size: 22px;
-    }
+    header { height: 250px; }
+    .carousel-overlay img { width: 150px; }
+    .carousel-overlay h1 { font-size: 22px; }
 }
