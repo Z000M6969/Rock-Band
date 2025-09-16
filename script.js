@@ -1,56 +1,24 @@
-// =================================================
-// CARROSSEL HEADER
-// =================================================
-window.addEventListener('load', () => {
-  const headerTrack = document.querySelector('.carousel');
-  if (headerTrack) {
-    // Duplica imagens para loop infinito
-    headerTrack.innerHTML += headerTrack.innerHTML;
+// Função para criar carrossel infinito
+function makeCarouselInfinite(trackId, speed) {
+    const track = document.getElementById(trackId);
+    // Duplica os slides automaticamente
+    track.innerHTML += track.innerHTML; 
+    let scrollAmount = 0;
 
-    let posHeader = 0;
-    const speedHeader = 1; // pixels por frame
-
-    function animateHeader() {
-      posHeader += speedHeader;
-      if (posHeader >= headerTrack.scrollWidth / 2) posHeader = 0;
-      headerTrack.style.transform = `translateX(-${posHeader}px)`;
-      requestAnimationFrame(animateHeader);
+    function animate() {
+        scrollAmount += speed;
+        // Quando chegar na metade, reinicia o scroll
+        if(scrollAmount >= track.scrollWidth / 2) scrollAmount = 0;
+        track.style.transform = `translateX(-${scrollAmount}px)`;
+        requestAnimationFrame(animate);
     }
 
-    animateHeader();
-  }
-   // BANDAS - Carrossel de Bandas
-  // ------------------------
-  document.querySelectorAll('.band-track').forEach(track => {
-    track.innerHTML += track.innerHTML; // Duplica para loop
-    let posBand = 0;
-    const speedBand = 2;
-    let paused = false;
-    if(track){
-      track.innerHTML += track.innerHTML; // Duplica imagens para loop
-      let posBand = 0;
-      const speedBand = 2;
-      let paused = false;
+    animate();
+}
 
-      function animateBand() {
-        if(!paused){
-          posBand += speedBand;
-          if(posBand >= track.scrollWidth / 2) posBand = 0;
-          track.style.transform = `translateX(-${posBand}px)`;
-        }
-        requestAnimationFrame(animateBand);
-      }
-      requestAnimationFrame(animateBand);
-    }
-    animateBand();
-      animateBand();
-
-    track.parentElement.addEventListener('mouseenter', () => paused = true);
-    track.parentElement.addEventListener('mouseleave', () => paused = false);
-      track.parentElement.addEventListener('mouseenter', () => paused = true);
-      track.parentElement.addEventListener('mouseleave', () => paused = false);
-    }
-  });
+// Inicia os carrosséis
+makeCarouselInfinite('bandTrack', 1);   // Carrossel de bandas icônicas
+makeCarouselInfinite('modernTrack', 1); // Carrossel de bandas modernas
 
 
 // ============================
