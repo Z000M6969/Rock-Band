@@ -37,7 +37,7 @@ header {
     flex: none;
     width: 100%;
     height: 100%;
-    object-fit: none; /* mantém proporção e preenche o header */
+    object-fit: cover; /* mantém proporção e preenche o header */
 }
 
 .carousel-overlay {
@@ -113,7 +113,7 @@ nav a.login-btn img {
 
 .band-slide img {
     width: 100%;
-    height: 300px; /* imagens mais altas sem deformar */
+    height: 280px; /* imagens mais altas sem deformar */
     object-fit: cover;
     border-radius: 8px;
 }
