@@ -14,7 +14,7 @@
       <button id="tabCadastro">Cadastro</button>
     </div>
 
-    <!-- Login -->
+    <!-- Formulário de Login -->
     <form id="loginForm" class="form active">
       <div class="field">
         <input type="email" id="loginEmail" placeholder="Email" required>
@@ -26,7 +26,7 @@
       <div id="loginMsg" class="msg"></div>
     </form>
 
-    <!-- Cadastro -->
+    <!-- Formulário de Cadastro -->
     <form id="cadastroForm" class="form">
       <div class="field">
         <input type="email" id="cadastroEmail" placeholder="Email" required>
@@ -42,7 +42,10 @@
     </form>
   </div>
 
-  <script type="module" src="auth.js"></script>
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
+  <script src="auth.js"></script>
+
   <script>
     // Alternar abas
     const tabLogin = document.getElementById("tabLogin");
