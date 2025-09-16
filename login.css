@@ -1,33 +1,31 @@
-:root {
-  --bg: #0f172a;
-  --card: rgba(17,24,39,0.9);
-  --text: #e5e7eb;
-  --primary: #8B0000;
-  --accent: #60a5fa;
-  --danger: #ef4444;
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: Poppins, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+  background-color: #0f172a;
+  color: #e5e7eb;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
+  min-height: 100vh;
 }
 
+/* ===== CONTAINER ===== */
 .container {
-  background: var(--card);
-  padding: 30px;
+  background-color: #1e293b;
+  padding: 40px;
   border-radius: 16px;
   width: 100%;
-  max-width: 380px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
 }
 
+/* ===== ABAS ===== */
 .tabs {
   display: flex;
   justify-content: space-around;
@@ -35,64 +33,69 @@ body {
 }
 
 .tabs button {
-  flex: 1;
-  padding: 10px;
-  background: none;
+  background: transparent;
   border: none;
-  color: var(--text);
-  font-size: 1.1em;
+  color: #94a3b8;
+  font-size: 18px;
   cursor: pointer;
+  padding: 10px 20px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
 }
 
 .tabs button.active {
-  border-bottom: 2px solid var(--primary);
-  font-weight: bold;
-  color: var(--primary);
+  color: #22c55e;
+  border-bottom: 2px solid #22c55e;
 }
 
-.form { display: none; }
-.form.active { display: block; }
+/* ===== FORMULÁRIOS ===== */
+.form {
+  display: none;
+  flex-direction: column;
+}
+
+.form.active {
+  display: flex;
+}
 
 .field {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-input {
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  background: #1f2937;
-  color: var(--text);
-}
-
-input:focus {
-  outline: 2px solid var(--accent);
-}
-
-.btn {
+.field input {
   width: 100%;
   padding: 12px;
-  border: none;
   border-radius: 8px;
-  background: var(--primary);
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 10px;
+  border: none;
+  font-size: 16px;
 }
 
-.btn:hover { background: #a00000; }
+/* ===== BOTÕES ===== */
+.btn {
+  background-color: #22c55e;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
 
+.btn:hover {
+  background-color: #16a34a;
+}
+
+/* ===== MENSAGENS ===== */
 .msg {
   margin-top: 10px;
-  font-size: 0.9em;
-  min-height: 20px;
+  font-size: 14px;
 }
 
-.msg.error { color: var(--danger); }
-.msg.success { color: var(--primary); }
+.msg.error {
+  color: #ef4444;
+}
 
-.avatar { border-radius: 50%; }
-
+.msg.success {
+  color: #22c55e;
+}
