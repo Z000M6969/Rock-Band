@@ -1,5 +1,5 @@
 window.addEventListener("load", () => {
-  // Simulação: pegar dados salvos no login
+  // Recuperar dados do localStorage
   const nome = localStorage.getItem("nome") || "Usuário";
   const email = localStorage.getItem("email") || "email@email.com";
   const senha = localStorage.getItem("senha") || "********";
@@ -14,6 +14,6 @@ window.addEventListener("load", () => {
   // Botão logout
   document.getElementById("logoutBtn").addEventListener("click", () => {
     localStorage.clear();
-    window.location.href = "login.html"; // volta pra tela de login
+    window.location.href = "login.html";
   });
 });
