@@ -1,5 +1,5 @@
 // Função genérica para carrosséis infinitos
-function startCarousel(trackSelector, speed=1){
+function startCarousel(trackSelector, speed=1, pauseOnHover=false){
     const track = document.querySelector(trackSelector);
     if(!track) return;
 
@@ -18,18 +18,22 @@ function startCarousel(trackSelector, speed=1){
 
     animate();
 
-    // pausa ao passar o mouse
-    track.parentElement.addEventListener('mouseenter', () => currentSpeed = 0);
-    track.parentElement.addEventListener('mouseleave', () => currentSpeed = speed);
+    // pausa ao passar o mouse (opcional)
+    if(pauseOnHover){
+        track.parentElement.addEventListener('mouseenter', () => currentSpeed = 0);
+        track.parentElement.addEventListener('mouseleave', () => currentSpeed = speed);
+    }
 }
 
 window.addEventListener('load', () => {
-    // Header
-    startCarousel('.header-carousel .carousel-track', 0.5);
-    // Bandas icônicas
-    startCarousel('#bandas .band-carousel:nth-of-type(1) .band-track', 1);
-    // Bandas atuais
-    startCarousel('#bandas .band-carousel:nth-of-type(2) .band-track', 1);
+    // Header (não pausa)
+    startCarousel('.header-carousel .carousel-track', 0.5, false);
+    
+    // Bandas icônicas (pausa ao passar o mouse)
+    startCarousel('#bandas .band-carousel:nth-of-type(1) .band-track', 1, true);
+    
+    // Bandas atuais (pausa ao passar o mouse)
+    startCarousel('#bandas .band-carousel:nth-of-type(2) .band-track', 1, true);
 });
 
   // NOTÍCIAS FALSAS
