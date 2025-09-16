@@ -1,17 +1,23 @@
-/* Reset e corpo */
-* { margin:0; padding:0; box-sizing:border-box; }
+/* ===================== RESET ===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===================== BODY ===================== */
 body {
-    font-family: 'Anton', sans-serif;
-    background: #fff;
-    color: #111;
+    font-family: 'Anton', sans-serif; /* Fonte Anton */
+    background: #fff;                 /* Fundo branco */
+    color: #111;                      /* Texto escuro */
     padding-bottom: 60px;
 }
 
-/* ===== HEADER ===== */
+/* ===================== HEADER ===================== */
 header {
     position: relative;
     width: 100%;
-    height: 450px; /* aumenta altura do header */
+    height: 500px;  /* altura maior */
 }
 
 .header-carousel {
@@ -29,8 +35,8 @@ header {
 .header-carousel .slide {
     flex: none;
     width: 100%;
-    height: 100%;      /* garante que a imagem preencha o header */
-    object-fit: cover; /* mantém proporção e cobre o espaço */
+    height: 100%;
+    object-fit: cover; /* cobre o header mantendo proporção */
 }
 
 .carousel-overlay {
@@ -38,7 +44,7 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #fff;
+    color: #111; /* texto escuro */
     text-align: center;
 }
 
@@ -48,101 +54,160 @@ header {
 }
 
 .carousel-overlay h1 {
-    font-size: 2.5rem; /* aumenta o título para header maior */
+    font-size: 3rem;
     margin: 0;
 }
 
-/* ===== BANDAS ===== */
-.band-slide img {
-    width: 100%;
-    height: 200px;  /* aumenta altura das imagens das bandas */
-    object-fit: cover;
-    border-radius: 8px;
+/* ===================== NAV ===================== */
+nav {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 0;
 }
 
-/* ===== NAV ===== */
-nav {
-    display: flex;
-    gap: 15px;
-    padding: 15px 30px;
-    background: #111827;
-    align-items: center;
-}
 nav a {
-    color: #e5e7eb;
+    color: #fff;
+    padding: 14px 20px;
     text-decoration: none;
-    font-weight: bold;
+    font-size: 1.3em;
+    transition: 0.3s;
 }
+
+nav a:hover {
+    background: #555;
+}
+
 nav a.active {
-    color: #22c55e;
+    color: #8B0000;
 }
-nav .login-btn img {
+
+nav a.login-btn img {
+    width: 32px;
+    height: 32px;
     vertical-align: middle;
 }
 
-/* ===== BANDAS ===== */
+/* ===================== BANDAS ===================== */
 .band-carousel {
     overflow: hidden;
     margin: 40px 0;
 }
+
 .band-track {
-    display: flex;          /* Garante que fique horizontal */
-    flex-direction: row;    /* linha horizontal */
+    display: flex;
+    flex-direction: row;
     width: max-content;
 }
+
 .band-slide {
     width: 200px;
     flex: none;
     text-align: center;
     margin-right: 20px;
 }
+
 .band-slide img {
     width: 100%;
-    height: 150px;
+    height: 250px;  /* imagens mais altas */
     object-fit: cover;
     border-radius: 8px;
 }
+
 .band-slide p {
     font-weight: bold;
     margin-top: 5px;
 }
 
-/* ===== H2 ===== */
-section h2 {
-    margin: 20px 0;
+/* ===================== SEÇÕES ===================== */
+section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 40px 80px 40px;
+    line-height: 1.8;
     text-align: center;
+}
+
+section h2 {
+    font-size: 3em;
+    margin: 0 0 30px 0;
     color: #60a5fa;
 }
-/* ===================== MENU ===================== */
-nav { background:#000; display:flex; justify-content:center; align-items:center; gap:20px; padding:10px 0; }
-nav a { color:#fff; padding:14px 20px; text-decoration:none; font-size:1.3em; transition: color 0.3s; }
-nav a:hover { background:#555; }
-nav a.active { color:#8B0000; }
-nav a.login-btn img { width:32px; height:32px; vertical-align:middle; }
 
-/* ===================== SEÇÕES ===================== */
-section { max-width:900px; margin:0 auto; padding:40px 40px 80px 40px; line-height:1.8; text-align:center; }
-section h2 { font-size:3em; margin:0 0 30px 0; }
-section p, section ul { font-size:1.15em; margin-bottom:25px; }
-.fundador { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:40px; }
-.fundador img { width:400px; height:400px; object-fit:cover; border-radius:10px; }
+section p,
+section ul {
+    font-size: 1.15em;
+    margin-bottom: 25px;
+}
+
+.fundador {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.fundador img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
 
 /* ===================== RODAPÉ ===================== */
-footer { background:#111; color:#fff; text-align:center; padding:10px; position:fixed; width:100%; bottom:0; z-index:20; }
+footer {
+    background: #111;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 20;
+}
 
 /* ===================== RESPONSIVO ===================== */
-@media (max-width:900px) { .fundador img{width:300px;height:300px;} }
-@media (max-width:768px) { 
-  header{height:300px;} 
-  .carousel-overlay img{width:200px;} 
-  .carousel-overlay h1{font-size:28px;} 
+@media (max-width: 900px) {
+    .fundador img {
+        width: 300px;
+        height: 300px;
+    }
 }
-@media (max-width:600px) { 
-  .fundador{flex-direction:column;gap:15px;} 
-  .fundador img{width:90%;height:auto;} 
+
+@media (max-width: 768px) {
+    header {
+        height: 350px;
+    }
+    .carousel-overlay img {
+        width: 120px;
+    }
+    .carousel-overlay h1 {
+        font-size: 28px;
+    }
 }
-@media (max-width:480px) { 
-  header{height:250px;} 
-  .carousel-overlay img{width:150px;} 
-  .carousel-overlay h1{font-size:22px;} 
+
+@media (max-width: 600px) {
+    .fundador {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .fundador img {
+        width: 90%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        height: 250px;
+    }
+    .carousel-overlay img {
+        width: 100px;
+    }
+    .carousel-overlay h1 {
+        font-size: 22px;
+    }
 }
