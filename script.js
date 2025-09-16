@@ -1,24 +1,30 @@
-// Função para criar carrossel infinito
-function makeCarouselInfinite(trackId, speed) {
-    const track = document.getElementById(trackId);
-    // Duplica os slides automaticamente
-    track.innerHTML += track.innerHTML; 
+// Função para carrossel infinito
+function setupCarousel(trackSelector, speed = 1) {
+    const track = document.querySelector(trackSelector);
     let scrollAmount = 0;
 
     function animate() {
         scrollAmount += speed;
-        // Quando chegar na metade, reinicia o scroll
-        if(scrollAmount >= track.scrollWidth / 2) scrollAmount = 0;
+        if (scrollAmount >= track.scrollWidth / 2) {
+            scrollAmount = 0;
+        }
         track.style.transform = `translateX(-${scrollAmount}px)`;
         requestAnimationFrame(animate);
     }
 
+    // Duplicar conteúdo para efeito infinito
+    track.innerHTML += track.innerHTML;
     animate();
 }
 
-// Inicia os carrosséis
-makeCarouselInfinite('bandTrack', 1);   // Carrossel de bandas icônicas
-makeCarouselInfinite('modernTrack', 1); // Carrossel de bandas modernas
+// Carrossel do header
+setupCarousel('.carousel', 0.5); // ajuste a velocidade (menor = mais lento)
+
+// Carrosséis das bandas
+document.querySelectorAll('.band-track').forEach(track => {
+    setupCarousel('.band-track', 0.3); // velocidade menor para bandas
+});
+
 
 
 // ============================
