@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalWidth = slides.reduce((sum, slide) => sum + slide.getBoundingClientRect().width + gap, 0);
 
         let position = 0;
-        const speed = 4;
+        const speed = 8; // <<< AQUI aumentei a velocidade (pode testar 6, 8, 10...)
         let paused = false;
 
         function animate() {
@@ -57,69 +57,4 @@ document.addEventListener('DOMContentLoaded', () => {
         headerTrack.parentElement.addEventListener('mouseenter', () => headerPaused = true);
         headerTrack.parentElement.addEventListener('mouseleave', () => headerPaused = false);
     }
-});
-
-/* =========================
-   FEED DE NOTÍCIAS (FAKE NEWS)
-   ========================= */
-window.addEventListener('load', () => {
-    const container = document.getElementById("feed");
-    if (!container) return;
-
-    // Notícia 4
-    container.innerHTML += `
-        <article>
-            <h3>
-                <a href="https://www.whiplash.net/news/44556.html" target="_blank">
-                    Entrevista exclusiva com Banda W
-                </a>
-            </h3>
-            <p>Banda fala sobre novo projeto.</p>
-        </article>
-    `;
-
-    // Notícia 5
-    container.innerHTML += `
-        <article>
-            <h3>
-                <a href="https://www.whiplash.net/news/77889.html" target="_blank">
-                    Documentário sobre Rock Nacional
-                </a>
-            </h3>
-            <p>História do rock nacional em vídeo.</p>
-        </article>
-    `;
-});
-
-
-/* =========================
-   FEED DE NOTÍCIAS (FAKE NEWS)
-   ========================= */
-window.addEventListener('load', () => {
-    const container = document.getElementById("feed");
-    if (!container) return;
-
-    // Notícia 4
-    container.innerHTML += `
-        <article>
-            <h3>
-                <a href="https://www.whiplash.net/news/44556.html" target="_blank">
-                    Entrevista exclusiva com Banda W
-                </a>
-            </h3>
-            <p>Banda fala sobre novo projeto.</p>
-        </article>
-    `;
-
-    // Notícia 5
-    container.innerHTML += `
-        <article>
-            <h3>
-                <a href="https://www.whiplash.net/news/77889.html" target="_blank">
-                    Documentário sobre Rock Nacional
-                </a>
-            </h3>
-            <p>História do rock nacional em vídeo.</p>
-        </article>
-    `;
 });
