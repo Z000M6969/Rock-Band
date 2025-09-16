@@ -33,10 +33,10 @@ header {
 }
 
 .header-carousel .slide {
-    flex: none;          /* cada slide mantém tamanho próprio */
-    width: 100%;
+    flex: none;
+    width: 100vw;     /* ocupa a largura da tela */
     height: 100%;
-    object-fit: cover;   /* preenche o header sem deformar */
+    object-fit: cover;
 }
 
 .carousel-overlay {
