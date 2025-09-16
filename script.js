@@ -1,61 +1,170 @@
-// Função genérica para carrosséis infinitos
-function startCarousel(trackSelector, speed=1, pauseOnHover=false){
-    const track = document.querySelector(trackSelector);
-    if(!track) return;
+// ============================
+// CARROSSEL HEADER
+// ============================
+function startHeaderCarousel(){
+  const track = document.querySelector('.header-carousel .carousel-track');
+  if(!track) return;
 
-    // duplicar slides para loop infinito
-    track.innerHTML += track.innerHTML;
+  track.innerHTML += track.innerHTML; // duplica slides
+  let pos = 0;
+  const speed = 4;
 
-    let pos = 0;
-    let currentSpeed = speed;
-
-    function animate(){
-        pos += currentSpeed;
-        if(pos >= track.scrollWidth / 2) pos = 0;
-        track.style.transform = `translateX(-${pos}px)`;
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    // pausa ao passar o mouse (opcional)
-    if(pauseOnHover){
-        track.parentElement.addEventListener('mouseenter', () => currentSpeed = 0);
-        track.parentElement.addEventListener('mouseleave', () => currentSpeed = speed);
-    }
+  function animate(){
+    pos += speed;
+    if(pos >= track.scrollWidth / 2) pos = 0;
+    track.style.transform = `translateX(-${pos}px)`;
+    requestAnimationFrame(animate);
+  }
+  animate();
 }
 
-window.addEventListener('load', () => {
-    // Header (não pausa)
-   startCarousel('.header-carousel .carousel-track', 4, false);
-    
-    // Bandas icônicas (pausa ao passar o mouse)
-    startCarousel('#bandas .band-carousel:nth-of-type(1) .band-track', 1, true);
-    
-    // Bandas atuais (pausa ao passar o mouse)
-    startCarousel('#bandas .band-carousel:nth-of-type(2) .band-track', 1, true);
-});
+window.addEventListener('load', startHeaderCarousel);
 
-  // NOTÍCIAS FALSAS
-  const container = document.getElementById("feed");
-  if(container){
-    container.innerHTML = "";
-    const noticias = [
-      {title: "Banda X lança novo álbum", link:"https://www.whiplash.net/news/12345.html", description:"Riffs pesados e letras marcantes."},
-      {title: "Festival Rock Y confirmado para 2025", link:"https://www.whiplash.net/news/67890.html", description:"Grandes nomes do cenário nacional."},
-      {title: "Banda Z anuncia turnê pelo Brasil", link:"https://www.whiplash.net/news/11223.html", description:"Shows memoráveis em várias cidades."},
-      {title: "Entrevista exclusiva com Banda W", link:"https://www.whiplash.net/news/44556.html", description:"Banda fala sobre novo projeto."},
-      {title: "Documentário sobre Rock Nacional", link:"https://www.whiplash.net/news/77889.html", description:"História do rock nacional em vídeo."}
-    ];
 
-    noticias.forEach(noticia => {
-      container.innerHTML += `
-        <article>
-          <h3><a href="${noticia.link}" target="_blank">${noticia.title}</a></h3>
-          <p>${noticia.description}</p>
-        </article>
-      `;
-    });
+
+// ============================
+// CARROSSEL BANDAS ICÔNICAS
+// ============================
+function startIconicasCarousel(){
+  const track = document.querySelector('#bandas .band-carousel:nth-of-type(1) .band-track');
+  if(!track) return;
+
+  track.innerHTML += track.innerHTML;
+  let pos = 0;
+  let speed = 1;
+
+  function animate(){
+    pos += speed;
+    if(pos >= track.scrollWidth / 2) pos = 0;
+    track.style.transform = `translateX(-${pos}px)`;
+    requestAnimationFrame(animate);
   }
 
+  animate();
+
+  // pausa ao passar o mouse
+  track.parentElement.addEventListener('mouseenter', () => speed = 0);
+  track.parentElement.addEventListener('mouseleave', () => speed = 1);
+}
+
+window.addEventListener('load', startIconicasCarousel);
+
+
+
+// ============================
+// CARROSSEL BANDAS ATUAIS
+// ============================
+function startAtuaisCarousel(){
+  const track = document.querySelector('#bandas .band-carousel:nth-of-type(2) .band-track');
+  if(!track) return;
+
+  track.innerHTML += track.innerHTML;
+  let pos = 0;
+  let speed = 1;
+
+  function animate(){
+    pos += speed;
+    if(pos >= track.scrollWidth / 2) pos = 0;
+    track.style.transform = `translateX(-${pos}px)`;
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  // pausa ao passar o mouse
+  track.parentElement.addEventListener('mouseenter', () => speed = 0);
+  track.parentElement.addEventListener('mouseleave', () => speed = 1);
+}
+
+window.addEventListener('load', startAtuaisCarousel);
+
+
+
+// ============================
+// NOTÍCIAS FALSAS - 1
+// ============================
+window.addEventListener('load', () => {
+  const container = document.getElementById("feed");
+  if(container){
+    container.innerHTML += `
+      <article>
+        <h3><a href="https://www.whiplash.net/news/12345.html" target="_blank">
+          Banda X lança novo álbum
+        </a></h3>
+        <p>Riffs pesados e letras marcantes.</p>
+      </article>
+    `;
+  }
+});
+
+
+// ============================
+// NOTÍCIAS FALSAS - 2
+// ============================
+window.addEventListener('load', () => {
+  const container = document.getElementById("feed");
+  if(container){
+    container.innerHTML += `
+      <article>
+        <h3><a href="https://www.whiplash.net/news/67890.html" target="_blank">
+          Festival Rock Y confirmado para 2025
+        </a></h3>
+        <p>Grandes nomes do cenário nacional.</p>
+      </article>
+    `;
+  }
+});
+
+
+// ============================
+// NOTÍCIAS FALSAS - 3
+// ============================
+window.addEventListener('load', () => {
+  const container = document.getElementById("feed");
+  if(container){
+    container.innerHTML += `
+      <article>
+        <h3><a href="https://www.whiplash.net/news/11223.html" target="_blank">
+          Banda Z anuncia turnê pelo Brasil
+        </a></h3>
+        <p>Shows memoráveis em várias cidades.</p>
+      </article>
+    `;
+  }
+});
+
+
+// ============================
+// NOTÍCIAS FALSAS - 4
+// ============================
+window.addEventListener('load', () => {
+  const container = document.getElementById("feed");
+  if(container){
+    container.innerHTML += `
+      <article>
+        <h3><a href="https://www.whiplash.net/news/44556.html" target="_blank">
+          Entrevista exclusiva com Banda W
+        </a></h3>
+        <p>Banda fala sobre novo projeto.</p>
+      </article>
+    `;
+  }
+});
+
+
+// ============================
+// NOTÍCIAS FALSAS - 5
+// ============================
+window.addEventListener('load', () => {
+  const container = document.getElementById("feed");
+  if(container){
+    container.innerHTML += `
+      <article>
+        <h3><a href="https://www.whiplash.net/news/77889.html" target="_blank">
+          Documentário sobre Rock Nacional
+        </a></h3>
+        <p>História do rock nacional em vídeo.</p>
+      </article>
+    `;
+  }
 });
