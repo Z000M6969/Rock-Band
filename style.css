@@ -3,28 +3,6 @@
 body { font-family: 'Bebas Neue', sans-serif; background:#fff; color:#111; padding-bottom:60px; }
 
 /* ===================== CARROSÉIS ===================== */
-
-/* Containers gerais */
-.carousel-container {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  margin-bottom: 40px;
-}
-
-/* Track comum para todos carrosséis */
-.carousel-track {
-  display: flex;
-  width: max-content;
-}
-
-.slide, .band-slide {
-  flex: none;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-right: 20px;
-}
-
 /* ===== HEADER CARROSSEL ===== */
 .header-carousel {
   position: relative;
