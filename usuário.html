@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROCKBAND</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROCKBAND - Usuário</title>
+  <link rel="stylesheet" href="usuario.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 <body>
-<script src="script.js"></script>
-    <!-- Rodapé -->
-    <footer>
-        <p>&copy; 2025 ROCKBAND - NTH</p>
-    </footer>
+
+  <!-- Cabeçalho -->
+  <header class="user-header">
+    <div class="logo">ROCKBAND</div>
+    <button id="logoutBtn" class="logout-btn">Sair</button>
+  </header>
+
+  <!-- Área principal -->
+  <main class="user-container">
+    <section class="user-profile">
+      <img id="userPhoto" src="default-user.png" alt="Foto do usuário" class="user-photo">
+      <h2 id="userName" class="user-name">Usuário</h2>
+      <p id="userEmail" class="user-email">email@email.com</p>
+      <p id="userPassword" class="user-password">********</p>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 ROCKBAND - NTH</p>
+  </footer>
+
+  <script src="usuario.js"></script>
 </body>
 </html>
