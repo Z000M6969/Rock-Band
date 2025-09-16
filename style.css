@@ -72,7 +72,8 @@ nav .login-btn img {
     margin: 40px 0;
 }
 .band-track {
-    display: flex;
+    display: flex;          /* Garante que fique horizontal */
+    flex-direction: row;    /* linha horizontal */
     width: max-content;
 }
 .band-slide {
