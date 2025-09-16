@@ -10,14 +10,14 @@ body {
     font-family: 'Bebas Neue', sans-serif;
     background-color: #fff;
     color: #111;
-    padding-bottom: 60px; /* espaço para rodapé fixo */
+    padding-bottom: 60px;
 }
 
 /* Header e Carrossel */
 header {
     position: relative;
     width: 100%;
-    height: 400px; /* altura fixa */
+    height: 400px;
     overflow: hidden;
 }
 
@@ -27,12 +27,11 @@ header {
     height: 100%;
 }
 
-/* Slides do Carrossel */
 .carousel {
     display: flex;
-    width: calc(100% * 6); /* 6 imagens duplicadas */
+    width: max-content;
     height: 100%;
-    animation: slide 20s linear infinite;
+    animation: slide 30s linear infinite; /* Header continua animando via CSS */
 }
 
 .carousel img {
@@ -42,7 +41,6 @@ header {
     object-position: center;
 }
 
-/* Overlay: logo + título */
 .carousel-overlay {
     position: absolute;
     top: 50%;
@@ -54,7 +52,7 @@ header {
 }
 
 .carousel-overlay img {
-    width: 300px; /* tamanho fixo */
+    width: 300px;
     height: auto;
     display: block;
     margin: 0 auto 10px;
@@ -68,10 +66,9 @@ header {
     line-height: 1.2;
 }
 
-/* Animação carrossel */
 @keyframes slide {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 /* Navegação */
@@ -113,21 +110,52 @@ section p {
     margin-bottom: 25px;
 }
 
-section ul {
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 30px;
+/* Carrossel de bandas */
+.band-carousel {
+    overflow: hidden;
+    width: 100%;
+    margin: 40px 0;
 }
 
-section ul li {
-    margin-bottom: 20px;
-    font-size: 1.25em;
+.band-track {
+    display: flex;
+    width: max-content; /* evita quebrar com muitas bandas */
 }
 
-section ul li strong {
-    display: block;
-    font-size: 1.4em;
-    margin-bottom: 5px;
+.band-slide {
+    flex: 0 0 auto;
+    width: 200px;
+    margin: 0 10px;
+    text-align: center;
+}
+
+.band-slide img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.band-slide p {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #111;
+}
+
+/* Fundador */
+.fundador {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.fundador img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 /* Rodapé */
@@ -143,10 +171,23 @@ footer {
 }
 
 /* Responsivo */
+@media (max-width: 900px) {
+    .band-slide img { width: 150px; height: 150px; }
+    .fundador img { width: 300px; height: 300px; }
+}
+
 @media (max-width: 768px) {
     header { height: 300px; }
     .carousel-overlay img { width: 200px; }
     .carousel-overlay h1 { font-size: 28px; }
+}
+
+@media (max-width: 600px) {
+    .band-track { flex-wrap: wrap; justify-content: center; }
+    .band-slide { width: 45%; margin-bottom: 15px; }
+    .band-slide img { width: 100%; height: auto; }
+    .fundador { flex-direction: column; gap: 15px; }
+    .fundador img { width: 90%; height: auto; }
 }
 
 @media (max-width: 480px) {
