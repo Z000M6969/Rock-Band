@@ -1,28 +1,27 @@
-// Função para carrossel infinito
-function setupCarousel(trackSelector, speed = 1) {
-    const track = document.querySelector(trackSelector);
-    let scrollAmount = 0;
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.band-track').forEach(track => {
+        // Duplica conteúdo para loop infinito
+        track.innerHTML += track.innerHTML;
 
-    function animate() {
-        scrollAmount += speed;
-        if (scrollAmount >= track.scrollWidth / 2) {
-            scrollAmount = 0;
+        let position = 0;
+        const speed = 4; // pixels por frame, aumente para mais rápido
+        let paused = false;
+
+        function animate() {
+            if(!paused){
+                position += speed;
+                if(position >= track.scrollWidth / 2) position = 0;
+                track.style.transform = `translateX(-${position}px)`;
+            }
+            requestAnimationFrame(animate);
         }
-        track.style.transform = `translateX(-${scrollAmount}px)`;
-        requestAnimationFrame(animate);
-    }
 
-    // Duplicar conteúdo para efeito infinito
-    track.innerHTML += track.innerHTML;
-    animate();
-}
+        animate();
 
-// Carrossel do header
-setupCarousel('.carousel', 0.5); // ajuste a velocidade (menor = mais lento)
-
-// Carrosséis das bandas
-document.querySelectorAll('.band-track').forEach(track => {
-    setupCarousel('.band-track', 0.3); // velocidade menor para bandas
+        // Pausa ao passar o mouse
+        track.parentElement.addEventListener('mouseenter', () => paused = true);
+        track.parentElement.addEventListener('mouseleave', () => paused = false);
+    });
 });
 
 
