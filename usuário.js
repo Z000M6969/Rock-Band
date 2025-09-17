@@ -30,6 +30,12 @@ window.addEventListener("load", async () => {
     document.getElementById("userEmail").textContent = user.email;
     document.getElementById("userPhoto").src = profile.avatar_url || "default-user.png";
 
+    // Mostrando que a senha existe (não mostra a real!)
+    const userPasswordField = document.createElement("p");
+    userPasswordField.className = "user-password";
+    userPasswordField.textContent = "Senha cadastrada ✅";
+    document.querySelector(".user-profile").appendChild(userPasswordField);
+
     // Botão de logout
     const logoutBtn = document.getElementById("logoutBtn");
     logoutBtn.addEventListener("click", async () => {
