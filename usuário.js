@@ -6,17 +6,14 @@ const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 window.addEventListener("load", async () => {
   try {
-    // Pegar usuário logado
     const { data: { user }, error: userError } = await supabase.auth.getUser();
     if(userError) throw userError;
 
     if(!user){
-      // Se não estiver logado, volta para login
       window.location.href = "login.html";
       return;
     }
 
-    // Pegar perfil do usuário
     const { data: profile, error: profileError } = await supabase
       .from("profiles")
       .select("*")
@@ -25,18 +22,11 @@ window.addEventListener("load", async () => {
 
     if(profileError) throw profileError;
 
-    // Preencher dados no HTML
     document.getElementById("userName").textContent = profile.name;
     document.getElementById("userEmail").textContent = user.email;
     document.getElementById("userPhoto").src = profile.avatar_url || "default-user.png";
 
-    // Mostrando que a senha existe (não mostra a real!)
-    const userPasswordField = document.createElement("p");
-    userPasswordField.className = "user-password";
-    userPasswordField.textContent = "Senha cadastrada ✅";
-    document.querySelector(".user-profile").appendChild(userPasswordField);
-
-    // Botão de logout
+    // Botão logout
     const logoutBtn = document.getElementById("logoutBtn");
     logoutBtn.addEventListener("click", async () => {
       try {
@@ -50,7 +40,6 @@ window.addEventListener("load", async () => {
 
   } catch(err) {
     console.error("Erro ao carregar perfil:", err);
-    // Se algo deu errado, redireciona para login
     window.location.href = "login.html";
   }
 });
