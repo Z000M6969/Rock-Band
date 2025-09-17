@@ -4,32 +4,29 @@
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ROCKBAND - Usuário</title>
-  <link rel="stylesheet" href="usuário.css">
+  <link rel="stylesheet" href="usuario.css">
 </head>
 <body>
 
-  <!-- Cabeçalho -->
-  <header class="user-header">
+  <div class="user-container">
+    <!-- Logo -->
     <div class="logo">ROCKBAND</div>
-    <button id="logoutBtn" class="logout-btn">Sair</button>
-  </header>
 
-  <!-- Área principal -->
-  <main class="user-container">
+    <!-- Perfil do usuário -->
     <section class="user-profile">
       <img id="userPhoto" src="default-user.png" alt="Foto do usuário" class="user-photo">
       <h2 id="userName">Usuário</h2>
       <p id="userEmail">email@email.com</p>
+      <p class="user-password">Senha cadastrada ✅</p>
     </section>
-  </main>
 
-  <!-- Rodapé -->
-  <footer>
-    <p>&copy; 2025 ROCKBAND - NTH</p>
-  </footer>
+    <!-- Logout -->
+    <button id="logoutBtn" class="logout-btn">Sair</button>
+  </div>
 
   <!-- Supabase CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
   <script src="usuario.js"></script>
 </body>
 </html>
+
