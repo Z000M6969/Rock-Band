@@ -1,4 +1,3 @@
-// cadastro.js
 import { supabase } from "./supabaseClient.js";
 
 const cadastroForm = document.getElementById("cadastroForm");
@@ -9,7 +8,6 @@ function showMsg(el, text, type="success") {
   el.className = `msg ${type}`;
 }
 
-
 cadastroForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -18,12 +16,13 @@ cadastroForm.addEventListener("submit", async (e) => {
   const name = document.getElementById("cadastroName").value.trim();
 
   try {
+    // Criar usuário
     const { data: signUpData, error: signUpError } = await supabase.auth.signUp({ email, password });
     if(signUpError) throw signUpError;
 
-    const userId = signUpData.user?.id || signUpData.session?.user.id;
+    const userId = signUpData.user?.id || signUpData.session?.user?.id;
 
-    // Criar perfil na tabela 'profiles'
+    // Criar perfil
     const { error: profileError } = await supabase.from('profiles').insert([
       { id: userId, full_name: name, username: name.toLowerCase(), phone: '', created_at: new Date() }
     ]);
