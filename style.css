@@ -92,6 +92,7 @@ nav a {
   font-size: 1.3em;
   display: inline-block;
   transition: all 0.3s ease; /* animação suave */
+  background: none; /* garante que não tenha fundo */
 }
 
 nav a:hover {
@@ -102,8 +103,8 @@ nav a:hover {
 nav a.active {
   color: red; /* texto vermelho quando ativo */
   font-weight: bold; /* opcional: deixa em negrito */
+  background: none; /* remove qualquer fundo */
 }
-
 
 /* =========================
    SEÇÕES
