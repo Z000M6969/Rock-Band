@@ -1,6 +1,6 @@
 // === CONFIGURAÇÃO SUPABASE ===
 const SUPABASE_URL = "https://vwbbzvwluvgllkueixqo.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ3YmJ6dndsdXZnbGxrdWVpeHFvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc5Mzg4NzksImV4cCI6MjA3MzUxNDg3OX0.vap3Az_gUqwYJ1MxFHdFDAjBx51iI9ucbGYNVb8lBfY";
+const SUPABASE_ANON_KEY = "SEU_ANON_KEY_AQUI";
 
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -10,7 +10,7 @@ window.addEventListener("load", async () => {
     if(userError) throw userError;
 
     if(!user){
-      window.location.href = "login.html";
+      window.location.href = "index.html"; // redireciona para index
       return;
     }
 
@@ -26,13 +26,13 @@ window.addEventListener("load", async () => {
     document.getElementById("userEmail").textContent = user.email;
     document.getElementById("userPhoto").src = profile.avatar_url || "default-user.png";
 
-    // Botão logout
+    // Logout
     const logoutBtn = document.getElementById("logoutBtn");
     logoutBtn.addEventListener("click", async () => {
       try {
         const { error } = await supabase.auth.signOut();
         if(error) throw error;
-        window.location.href = "login.html";
+        window.location.href = "index.html"; // logout vai para index
       } catch(err) {
         console.error("Erro ao deslogar:", err);
       }
@@ -40,6 +40,6 @@ window.addEventListener("load", async () => {
 
   } catch(err) {
     console.error("Erro ao carregar perfil:", err);
-    window.location.href = "login.html";
+    window.location.href = "index.html";
   }
 });
