@@ -20,7 +20,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #1a1a1a; /* fundo escuro */
+  background-color: #1e293b; /* fundo escuro igual login */
   padding: 40px 30px;
   border-radius: 16px;
   width: 100%;
@@ -32,20 +32,17 @@ body {
 .logo {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 36px;
-  color: #ef4444; /* vermelho escuro */
+  color: #22c55e; /* verde do login */
   margin-bottom: 30px;
   text-align: center;
 }
 
 /* ===== PERFIL ===== */
 .user-profile {
-  background-color: #111;
-  padding: 30px;
-  border-radius: 16px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  margin-bottom: 30px;
-  box-shadow: 0 8px 16px rgba(255,0,0,0.2);
 }
 
 .user-photo {
@@ -54,35 +51,35 @@ body {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 20px;
-  border: 3px solid #ef4444;
+  border: 3px solid #22c55e; /* verde */
 }
 
 #userName {
-  font-size: 28px;
+  font-size: 24px;
   color: #ef4444; /* vermelho escuro */
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 #userEmail {
-  font-size: 18px;
+  font-size: 16px;
   color: #fff;
-  margin-bottom: 10px;
-  word-wrap: break-word;
+  margin-bottom: 5px;
 }
 
 .user-password {
-  font-size: 16px;
-  color: #f87171; /* vermelho mais claro */
-  margin-top: 5px;
+  font-size: 14px;
+  color: #f87171; /* vermelho claro */
+  margin-bottom: 20px;
 }
 
 /* ===== LOGOUT ===== */
 .logout-btn {
-  background-color: #ef4444;
+  width: 100%;
+  background-color: #ef4444; /* vermelho escuro */
   color: #fff;
   border: none;
-  padding: 12px 20px;
-  border-radius: 10px;
+  padding: 12px;
+  border-radius: 8px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
@@ -90,5 +87,25 @@ body {
 }
 
 .logout-btn:hover {
-  background-color: #b91c1c; /* vermelho escuro no hover */
+  background-color: #b91c1c; /* vermelho ainda mais escuro */
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 500px){
+  .user-container {
+    padding: 30px 20px;
+  }
+  .logo {
+    font-size: 28px;
+  }
+  .user-photo {
+    width: 120px;
+    height: 120px;
+  }
+  #userName {
+    font-size: 20px;
+  }
+  #userEmail, .user-password {
+    font-size: 14px;
+  }
 }
