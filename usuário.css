@@ -8,92 +8,87 @@
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #000; /* fundo preto */
-  color: #fff;            /* texto branco */
+  color: #fff;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
 }
 
-/* ===== CABEÇALHO ===== */
-.user-header {
+/* ===== CONTAINER ===== */
+.user-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding: 20px 40px;
-  background-color: #111; /* header preto */
-  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+  background-color: #1a1a1a; /* fundo escuro */
+  padding: 40px 30px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 20px rgba(255,0,0,0.3); /* sombra vermelha */
 }
 
-.user-header .logo {
+/* ===== LOGO ===== */
+.logo {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 36px;
-  color: #ef4444; /* logo vermelho escuro */
+  color: #ef4444; /* vermelho escuro */
+  margin-bottom: 30px;
+  text-align: center;
 }
 
+/* ===== PERFIL ===== */
+.user-profile {
+  background-color: #111;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 16px rgba(255,0,0,0.2);
+}
+
+.user-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 3px solid #ef4444;
+}
+
+#userName {
+  font-size: 28px;
+  color: #ef4444; /* vermelho escuro */
+  margin-bottom: 10px;
+}
+
+#userEmail {
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.user-password {
+  font-size: 16px;
+  color: #f87171; /* vermelho mais claro */
+  margin-top: 5px;
+}
+
+/* ===== LOGOUT ===== */
 .logout-btn {
-  background-color: #ef4444; /* botão vermelho escuro */
+  background-color: #ef4444;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 16px;
   font-weight: bold;
+  cursor: pointer;
   transition: background 0.3s;
 }
 
 .logout-btn:hover {
-  background-color: #b91c1c; /* vermelho ainda mais escuro ao passar o mouse */
-}
-
-/* ===== CONTAINER PRINCIPAL ===== */
-.user-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
-}
-
-/* ===== PERFIL DO USUÁRIO ===== */
-.user-profile {
-  background-color: #1a1a1a; /* fundo escuro */
-  padding: 30px;
-  border-radius: 16px;
-  text-align: center;
-  box-shadow: 0 8px 16px rgba(255,0,0,0.3); /* sombra vermelha */
-  width: 100%;
-  max-width: 400px;
-}
-
-.user-photo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 20px;
-  border: 3px solid #ef4444; /* borda vermelha escura */
-}
-
-.user-name {
-  font-size: 28px;
-  color: #ef4444; /* nome vermelho escuro */
-  margin-bottom: 10px;
-}
-
-.user-email,
-.user-password {
-  font-size: 18px;
-  color: #fff; /* texto branco */
-  word-wrap: break-word;
-  margin-bottom: 8px;
-}
-
-/* ===== RODAPÉ ===== */
-footer {
-  background-color: #111; /* fundo preto */
-  text-align: center;
-  padding: 15px 0;
-  font-size: 14px;
-  color: #ef4444; /* texto vermelho escuro */
-  box-shadow: 0 -4px 6px rgba(0,0,0,0.5);
+  background-color: #b91c1c; /* vermelho escuro no hover */
 }
