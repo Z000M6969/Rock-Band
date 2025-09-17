@@ -5,14 +5,14 @@
   box-sizing: border-box;
 }
 
-/* ===== BACKGROUND ===== */
+/* ===== BODY / BACKGROUND ===== */
 body {
   font-family: 'Poppins', sans-serif;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('carrossel1.jpg') no-repeat center center fixed;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('carrossel1.jpg') no-repeat center center fixed;
   background-size: cover;
   position: relative;
 }
@@ -22,7 +22,7 @@ body {
   position: absolute;
   top: 20px;
   left: 20px;
-  color: #ef4444;
+  color: #ff4c4c;
   font-size: 24px;
   font-weight: bold;
   text-decoration: none;
@@ -30,10 +30,12 @@ body {
   background-color: rgba(0,0,0,0.5);
   padding: 8px 12px;
   border-radius: 8px;
-  transition: background 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
 }
 .back-btn:hover {
   background-color: rgba(0,0,0,0.8);
+  transform: translateX(-3px);
 }
 
 /* ===== CONTAINER ===== */
@@ -41,22 +43,28 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(0,0,0,0.85); /* quadrado preto semi-transparente */
+  background-color: rgba(10,10,10,0.9);
   padding: 40px 30px;
-  border-radius: 16px;
+  border-radius: 20px;
   width: 100%;
   max-width: 400px;
-  box-shadow: 0 8px 20px rgba(255,0,0,0.3); /* sombra vermelha */
+  box-shadow: 0 10px 30px rgba(255,0,0,0.4);
+  border: 2px solid #22c55e; /* borda verde neon */
   z-index: 1;
+  transition: transform 0.3s ease;
+}
+.user-container:hover {
+  transform: scale(1.02);
 }
 
 /* ===== LOGO ===== */
 .logo {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 36px;
-  color: #22c55e; /* verde */
-  margin-bottom: 20px;
+  font-size: 38px;
+  color: #22c55e;
+  margin-bottom: 25px;
   text-align: center;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
 }
 
 /* ===== FOTO DO GATINHO ===== */
@@ -66,7 +74,12 @@ body {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 20px;
-  border: 3px solid #22c55e; /* verde */
+  border: 4px solid #22c55e;
+  box-shadow: 0 4px 20px rgba(255,255,255,0.2);
+  transition: transform 0.3s ease;
+}
+.user-photo:hover {
+  transform: scale(1.1) rotate(-5deg);
 }
 
 /* ===== PERFIL ===== */
@@ -75,42 +88,47 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 #userName {
-  font-size: 24px;
-  color: #ef4444; /* vermelho */
+  font-size: 26px;
+  color: #ef4444;
   margin-bottom: 5px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
 }
 
 #userEmail {
   font-size: 16px;
   color: #fff;
   margin-bottom: 5px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
 }
 
 .user-password {
   font-size: 14px;
-  color: #f87171; /* vermelho claro */
+  color: #f87171;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 /* ===== LOGOUT ===== */
 .logout-btn {
   width: 100%;
-  background-color: #ef4444; /* vermelho escuro */
+  background-color: #ef4444;
   color: #fff;
   border: none;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 14px;
+  border-radius: 10px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
 }
-
 .logout-btn:hover {
-  background-color: #b91c1c; /* vermelho mais escuro */
+  background-color: #b91c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 
 /* ===== RESPONSIVO ===== */
@@ -119,14 +137,14 @@ body {
     padding: 30px 20px;
   }
   .logo {
-    font-size: 28px;
+    font-size: 30px;
   }
   .user-photo {
     width: 120px;
     height: 120px;
   }
   #userName {
-    font-size: 20px;
+    font-size: 22px;
   }
   #userEmail, .user-password {
     font-size: 14px;
