@@ -1,13 +1,13 @@
 import { supabase } from "./supabaseClient.js";
 
-window.addEventListener("load", async () => {
+async function loadUser() {
   try {
     // Pega sessão ativa
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
     if(sessionError) throw sessionError;
 
     if(!session || !session.user){
-      window.location.href = "index.html"; // se não estiver logado
+      window.location.href = "index.html";
       return;
     }
 
@@ -24,22 +24,25 @@ window.addEventListener("load", async () => {
 
     document.getElementById("userName").textContent = profile.name || "Usuário";
     document.getElementById("userEmail").textContent = user.email;
-    document.getElementById("userPhoto").src = profile.avatar_url || "default-user.png";
+    document.getElementById("userPhoto").src = "gatinho-rock.png"; // imagem fixa
 
     // Logout
-    const logoutBtn = document.getElementById("logoutBtn");
-    logoutBtn.addEventListener("click", async () => {
-      try {
-        const { error } = await supabase.auth.signOut();
-        if(error) throw error;
-        window.location.href = "index.html"; // logout vai para index
-      } catch(err) {
-        console.error("Erro ao deslogar:", err);
-      }
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+      const { error } = await supabase.auth.signOut();
+      if(error) console.error("Erro ao deslogar:", error);
+      else window.location.href = "index.html";
     });
 
   } catch(err) {
     console.error("Erro ao carregar perfil:", err);
     window.location.href = "index.html";
   }
+}
+
+// Garantir que qualquer mudança na sessão redireciona corretamente
+supabase.auth.onAuthStateChange((event, session) => {
+  if(!session) window.location.href = "index.html";
 });
+
+// Chama a função ao carregar
+window.addEventListener("load", loadUser);
