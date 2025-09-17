@@ -36,3 +36,35 @@ cadastroForm.addEventListener("submit", async (e) => {
     console.error("Cadastro erro:", err);
   }
 });
+
+import { supabase } from "./supabaseClient.js";
+
+const loginForm = document.getElementById("loginForm");
+const loginMsg = document.getElementById("loginMsg");
+
+function showMsg(el, text, type="success") {
+  el.textContent = text;
+  el.className = `msg ${type}`;
+}
+
+loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById("loginEmail").value.trim().toLowerCase();
+  const password = document.getElementById("loginPass").value;
+
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    if(error) throw error;
+
+    showMsg(loginMsg, "Login realizado com sucesso!", "success");
+
+    setTimeout(() => {
+      window.location.href = "home.html"; // login ok vai para home
+    }, 500);
+
+  } catch(err) {
+    showMsg(loginMsg, "Erro: " + err.message, "error");
+    console.error("Login erro:", err);
+  }
+});
