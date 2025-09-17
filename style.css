@@ -81,29 +81,31 @@ header {
    ========================= */
 nav {
   background: #000;
-  text-align: center;
-  padding: 10px 0;
+  display: flex;
+  justify-content: center; /* centraliza horizontal */
+  align-items: center;     /* centraliza vertical */
+  height: 60px;            /* altura fixa do nav */
 }
 
 nav a {
-  color: #fff; /* cor padrão do texto */
-  padding: 14px 20px;
+  color: #fff;             /* cor padrão do texto */
+  padding: 0 20px;         /* espaço horizontal entre links */
   text-decoration: none;
   font-size: 1.3em;
   display: inline-block;
-  transition: all 0.3s ease; /* animação suave */
-  background: none; /* garante que não tenha fundo */
+  transition: all 0.3s ease;
+  background: none;
 }
 
 nav a:hover {
-  background: #555; /* fundo escuro no hover */
+  background: #555;        /* fundo escuro no hover */
   color: #fff;
 }
 
 nav a.active {
-  color: red; /* texto vermelho quando ativo */
-  font-weight: bold; /* opcional: deixa em negrito */
-  background: none; /* remove qualquer fundo */
+  color: red;              /* texto vermelho quando ativo */
+  font-weight: bold;       /* opcional: deixa em negrito */
+  background: none;        /* garante que não tenha fundo */
 }
 
 /* =========================
