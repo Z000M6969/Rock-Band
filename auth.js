@@ -9,6 +9,7 @@ function showMsg(el, text, type="success") {
   el.className = `msg ${type}`;
 }
 
+
 cadastroForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
