@@ -20,7 +20,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #1e293b; /* fundo escuro igual login */
+  background-color: #1a1a1a; /* fundo escuro */
   padding: 40px 30px;
   border-radius: 16px;
   width: 100%;
@@ -87,7 +87,15 @@ body {
 }
 
 .logout-btn:hover {
-  background-color: #b91c1c; /* vermelho ainda mais escuro */
+  background-color: #b91c1c; /* vermelho mais escuro */
+}
+
+/* Força inputs, caso existam */
+input {
+  background-color: #111 !important;
+  color: #fff !important;
+  border: 1px solid #333;
+  border-radius: 8px;
 }
 
 /* ===== RESPONSIVO ===== */
