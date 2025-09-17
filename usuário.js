@@ -13,7 +13,6 @@ window.addEventListener("load", async () => {
       window.location.href = "index.html"; // redireciona para index
       return;
     }
-
     const { data: profile, error: profileError } = await supabase
       .from("profiles")
       .select("*")
