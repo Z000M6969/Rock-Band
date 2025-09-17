@@ -7,8 +7,8 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #0f172a;
-  color: #e5e7eb;
+  background-color: #000; /* fundo preto */
+  color: #fff;            /* texto branco */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -20,18 +20,18 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background-color: #111827;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  background-color: #111; /* header preto */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
 }
 
 .user-header .logo {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 36px;
-  color: #22c55e;
+  color: #ef4444; /* logo vermelho escuro */
 }
 
 .logout-btn {
-  background-color: #ef4444;
+  background-color: #ef4444; /* botão vermelho escuro */
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -42,7 +42,7 @@ body {
 }
 
 .logout-btn:hover {
-  background-color: #dc2626;
+  background-color: #b91c1c; /* vermelho ainda mais escuro ao passar o mouse */
 }
 
 /* ===== CONTAINER PRINCIPAL ===== */
@@ -56,11 +56,11 @@ body {
 
 /* ===== PERFIL DO USUÁRIO ===== */
 .user-profile {
-  background-color: #1e293b;
+  background-color: #1a1a1a; /* fundo escuro */
   padding: 30px;
   border-radius: 16px;
   text-align: center;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 16px rgba(255,0,0,0.3); /* sombra vermelha */
   width: 100%;
   max-width: 400px;
 }
@@ -71,27 +71,29 @@ body {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 20px;
-  border: 3px solid #22c55e;
+  border: 3px solid #ef4444; /* borda vermelha escura */
 }
 
 .user-name {
   font-size: 28px;
-  color: #60a5fa;
+  color: #ef4444; /* nome vermelho escuro */
   margin-bottom: 10px;
 }
 
-.user-email {
+.user-email,
+.user-password {
   font-size: 18px;
-  color: #e5e7eb;
+  color: #fff; /* texto branco */
   word-wrap: break-word;
+  margin-bottom: 8px;
 }
 
 /* ===== RODAPÉ ===== */
 footer {
-  background-color: #111827;
+  background-color: #111; /* fundo preto */
   text-align: center;
   padding: 15px 0;
   font-size: 14px;
-  color: #94a3b8;
-  box-shadow: 0 -4px 6px rgba(0,0,0,0.3);
+  color: #ef4444; /* texto vermelho escuro */
+  box-shadow: 0 -4px 6px rgba(0,0,0,0.5);
 }
