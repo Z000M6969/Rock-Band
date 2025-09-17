@@ -5,7 +5,6 @@
   box-sizing: border-box;
 }
 
-
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #000; /* fundo preto */
@@ -45,8 +44,9 @@ body {
 }
 
 .tabs button.active {
-  color: #ef4444;          /* ativo vermelho */
-  border-bottom: 2px solid #ef4444; /* underline vermelho */
+  color: #b91c1c !important;  /* vermelho escuro */
+  background: transparent !important; /* garante sem fundo */
+  border-bottom: 2px solid #b91c1c; /* underline vermelho escuro */
 }
 
 /* ===== FORMULÁRIOS ===== */
@@ -75,7 +75,7 @@ body {
 
 /* ===== BOTÕES ===== */
 .btn {
-  background-color: #ef4444; /* botão vermelho */
+  background-color: #b91c1c; /* botão vermelho escuro */
   color: #fff;
   border: none;
   padding: 12px;
@@ -86,7 +86,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #b91c1c; /* vermelho mais escuro ao passar o mouse */
+  background-color: #7f1212; /* vermelho mais escuro ao passar o mouse */
 }
 
 /* ===== MENSAGENS ===== */
@@ -96,7 +96,7 @@ body {
 }
 
 .msg.error {
-  color: #f87171; /* vermelho claro para erros */
+  color: #b91c1c; /* vermelho escuro para erros */
 }
 
 .msg.success {
