@@ -1,4 +1,3 @@
-// usuario.js
 import { supabase } from "./supabaseClient.js";
 
 window.addEventListener("load", async () => {
@@ -30,7 +29,7 @@ window.addEventListener("load", async () => {
       try {
         const { error } = await supabase.auth.signOut();
         if(error) throw error;
-        window.location.href = "index.html";
+        window.location.href = "index.html"; // logout vai para index
       } catch(err) {
         console.error("Erro ao deslogar:", err);
       }
