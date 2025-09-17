@@ -22,7 +22,7 @@ body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.7);
   backdrop-filter: blur(4px);
   z-index: 0;
 }
@@ -54,40 +54,40 @@ body::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(0,0,0,0.9);
+  background-color: rgba(10,10,10,0.95);
   padding: 45px 35px;
   border-radius: 20px;
   width: 100%;
   max-width: 420px;
   z-index: 1;
-  border: 3px solid #22c55e;
-  box-shadow: 0 0 20px #22c55e, 0 0 40px #ef4444, 0 0 60px #22c55e;
+  border: 3px solid #b91c1c; /* vermelho escuro */
+  box-shadow: 0 0 20px #b91c1c, 0 0 40px #7f1212, 0 0 60px #b91c1c;
   animation: neonBorder 2.5s ease-in-out infinite alternate;
 }
 
 /* ===== ANIMAÇÃO BORDAS NEON ===== */
 @keyframes neonBorder {
-  0% { box-shadow: 0 0 15px #22c55e, 0 0 30px #ef4444; }
-  50% { box-shadow: 0 0 25px #22c55e, 0 0 50px #ef4444; }
-  100% { box-shadow: 0 0 15px #22c55e, 0 0 30px #ef4444; }
+  0% { box-shadow: 0 0 15px #b91c1c, 0 0 30px #7f1212; }
+  50% { box-shadow: 0 0 25px #b91c1c, 0 0 50px #7f1212; }
+  100% { box-shadow: 0 0 15px #b91c1c, 0 0 30px #7f1212; }
 }
 
 /* ===== LOGO ===== */
 .logo {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 40px;
-  color: #22c55e;
+  color: #ef4444; /* vermelho neon */
   margin-bottom: 25px;
   text-align: center;
-  text-shadow: 0 0 5px #22c55e, 0 0 10px #22c55e, 0 0 20px #22c55e;
+  text-shadow: 0 0 5px #ef4444, 0 0 15px #7f1212;
   animation: neonText 2s ease-in-out infinite alternate;
 }
 
 /* ===== ANIMAÇÃO NEON TEXT ===== */
 @keyframes neonText {
-  0% { text-shadow: 0 0 5px #22c55e, 0 0 10px #22c55e; }
-  50% { text-shadow: 0 0 15px #22c55e, 0 0 25px #22c55e; }
-  100% { text-shadow: 0 0 5px #22c55e, 0 0 10px #22c55e; }
+  0% { text-shadow: 0 0 5px #ef4444, 0 0 15px #7f1212; }
+  50% { text-shadow: 0 0 10px #ef4444, 0 0 25px #7f1212; }
+  100% { text-shadow: 0 0 5px #ef4444, 0 0 15px #7f1212; }
 }
 
 /* ===== FOTO DO GATINHO ===== */
@@ -97,13 +97,13 @@ body::before {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 25px;
-  border: 4px solid #22c55e;
-  box-shadow: 0 0 10px #22c55e, 0 0 20px #ef4444;
+  border: 4px solid #b91c1c;
+  box-shadow: 0 0 10px #b91c1c, 0 0 20px #7f1212;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 .user-photo:hover {
   transform: scale(1.15) rotate(-7deg);
-  box-shadow: 0 0 25px #22c55e, 0 0 40px #ef4444, 0 0 60px #22c55e;
+  box-shadow: 0 0 25px #b91c1c, 0 0 40px #7f1212, 0 0 60px #b91c1c;
 }
 
 /* ===== PERFIL ===== */
@@ -119,26 +119,26 @@ body::before {
   font-size: 28px;
   color: #ef4444;
   margin-bottom: 5px;
-  text-shadow: 0 0 5px #ef4444, 0 0 15px #ef4444;
+  text-shadow: 0 0 5px #ef4444, 0 0 15px #7f1212;
 }
 
 #userEmail {
   font-size: 16px;
   color: #fff;
   margin-bottom: 5px;
-  text-shadow: 0 0 3px #fff, 0 0 8px #fff;
+  text-shadow: 0 0 3px #fff, 0 0 8px #7f1212;
 }
 
 .user-password {
   font-size: 14px;
   color: #f87171;
-  text-shadow: 0 0 3px #f87171, 0 0 8px #f87171;
+  text-shadow: 0 0 3px #f87171, 0 0 8px #7f1212;
 }
 
 /* ===== LOGOUT ===== */
 .logout-btn {
   width: 100%;
-  background-color: #ef4444;
+  background-color: #b91c1c;
   color: #fff;
   border: none;
   padding: 14px;
@@ -146,21 +146,21 @@ body::before {
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 0 10px #ef4444, 0 0 20px #ff4c4c;
+  box-shadow: 0 0 10px #b91c1c, 0 0 20px #7f1212;
   transition: all 0.3s ease;
   animation: pulseButton 2s infinite;
 }
 .logout-btn:hover {
-  background-color: #b91c1c;
+  background-color: #7f1212;
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 0 20px #ef4444, 0 0 40px #ff4c4c, 0 0 60px #ef4444;
+  box-shadow: 0 0 20px #b91c1c, 0 0 40px #7f1212, 0 0 60px #b91c1c;
 }
 
 /* ===== PULSE BUTTON ANIMATION ===== */
 @keyframes pulseButton {
-  0% { box-shadow: 0 0 10px #ef4444, 0 0 20px #ff4c4c; }
-  50% { box-shadow: 0 0 20px #ef4444, 0 0 40px #ff4c4c; }
-  100% { box-shadow: 0 0 10px #ef4444, 0 0 20px #ff4c4c; }
+  0% { box-shadow: 0 0 10px #b91c1c, 0 0 20px #7f1212; }
+  50% { box-shadow: 0 0 20px #b91c1c, 0 0 40px #7f1212; }
+  100% { box-shadow: 0 0 10px #b91c1c, 0 0 20px #7f1212; }
 }
 
 /* ===== RESPONSIVO ===== */
