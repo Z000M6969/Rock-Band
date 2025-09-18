@@ -73,7 +73,7 @@ header {
    ====================== */
 #noticias {
   padding: 80px 20px 40px 20px; /* maior padding-top para separar do nav */
-  background-color: #121212; /* cor de fundo */
+  background-color: #fff; /* cor de fundo */
 }
 
 /* Título da seção */
