@@ -71,22 +71,21 @@ header {
 /* ======================
    Seção de Notícias
    ====================== */
-#noticias {
+#noticias h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* Grid somente para os cards */
+.cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px; /* espaço entre os cards */
-  padding: 20px;
-  justify-items: center; /* centraliza os cards */
+  gap: 20px;
+  justify-items: center;
 }
 
-#noticias h2 {
-  width: 100%;
-  text-align: center;  /* centraliza o título */
-  margin-bottom: 20px; /* espaço entre título e cards */
-  grid-column: 1 / -1; /* força o título ocupar toda a largura do grid */
-}
-
-#noticias article {
+.cards-container article {
   background-color: #111;
   color: #fff;
   padding: 15px;
@@ -95,39 +94,40 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.3s, box-shadow 0.3s; /* efeito hover */
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-#noticias article:hover {
+.cards-container article:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0,0,0,0.5);
 }
 
-#noticias article img {
+.cards-container article img {
   width: 100%;
-  height: 250px;     /* altura fixa */
-  object-fit: cover; /* mantém retângulo e corta excesso */
+  height: 250px;
+  object-fit: cover;
   border-radius: 6px;
   margin-bottom: 10px;
 }
 
-#noticias article h3 {
+.cards-container article h3 {
   text-align: center;
   margin: 10px 0;
 }
 
-#noticias article h3 a {
+.cards-container article h3 a {
   color: #fff;
   text-decoration: none;
 }
 
-#noticias article h3 a:hover {
-  color: #f39c12; /* cor ao passar o mouse */
+.cards-container article h3 a:hover {
+  color: #f39c12;
 }
 
-#noticias article p {
+.cards-container article p {
   text-align: justify;
 }
+
 
 
 /* =========================
