@@ -23,9 +23,17 @@ if (cadastroForm) {
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
-        options: { data: { full_name: name } } // salva no user_metadata
+        options: { data: { full_name: name } }
       });
       if (error) throw error;
+
+      // Cria perfil na tabela profiles (opcional)
+      if (data.user) {
+        const { error: profileError } = await supabase.from('profiles').insert([
+          { user_id: data.user.id, name: name, avatar_url: 'default-user.png' }
+        ]);
+        if (profileError) throw profileError;
+      }
 
       showMsg(cadastroMsg, "Cadastro realizado! Verifique seu email.", "success");
       cadastroForm.reset();
@@ -51,10 +59,11 @@ if (loginForm) {
     try {
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
+      if (!data.session) throw new Error("Sessão não iniciada. Verifique suas credenciais.");
 
       showMsg(loginMsg, "Login realizado com sucesso!", "success");
 
-      // Redireciona para usuário.html após login
+      // Redireciona após login
       setTimeout(() => window.location.href = "usuário.html", 500);
 
     } catch (err) {
@@ -65,33 +74,20 @@ if (loginForm) {
 }
 
 // ===== VERIFICAÇÃO DE SESSÃO =====
-async function checkSession() {
-  try {
-    const { data: { session }, error } = await supabase.auth.getSession();
-    if (error) throw error;
+supabase.auth.onAuthStateChange((event, session) => {
+  const userNameEl = document.getElementById("userName");
+  const userEmailEl = document.getElementById("userEmail");
 
-    if (!session || !session.user) {
-      // Redireciona para login se não estiver logado
-      if (!window.location.pathname.endsWith("index.html")) {
-        window.location.href = "index.html";
-      }
-    } else {
-      // Preenche dados do usuário se estiver logado
-      const user = session.user;
-      const nameEl = document.getElementById("userName");
-      const emailEl = document.getElementById("userEmail");
-
-      if (nameEl) nameEl.textContent = user.user_metadata?.full_name || "Usuário";
-      if (emailEl) emailEl.textContent = user.email;
+  if (!session || !session.user) {
+    if (!window.location.pathname.endsWith("index.html")) {
+      window.location.href = "index.html";
     }
-  } catch (err) {
-    console.error("Erro ao verificar sessão:", err);
-    window.location.href = "index.html";
+  } else if (userNameEl && userEmailEl) {
+    // Preenche dados do usuário
+    userNameEl.textContent = session.user.user_metadata?.full_name || "Usuário";
+    userEmailEl.textContent = session.user.email;
   }
-}
-
-// Chama a verificação ao carregar a página
-window.addEventListener("DOMContentLoaded", checkSession);
+});
 
 // ===== LOGOUT =====
 const logoutBtn = document.getElementById("logoutBtn");
