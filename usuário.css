@@ -74,14 +74,17 @@ body::before {
 
 /* ===== LOGO ===== */
 .logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 40px;
-  color: #ef4444; /* vermelho neon */
   margin-bottom: 25px;
   text-align: center;
-  text-shadow: 0 0 5px #ef4444, 0 0 15px #7f1212;
-  animation: neonText 2s ease-in-out infinite alternate;
 }
+
+.logo img {
+  max-width: 220px;   /* largura máxima da logo */
+  height: auto;       /* mantém proporção */
+  filter: drop-shadow(0 0 10px #ef4444) drop-shadow(0 0 20px #7f1212);
+  animation: neonLogo 2s ease-in-out infinite alternate;
+}
+
 
 /* ===== ANIMAÇÃO NEON TEXT ===== */
 @keyframes neonText {
