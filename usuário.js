@@ -1,17 +1,16 @@
+// usuario.js
 import { supabase } from "./supabaseClient.js";
 
 async function loadUser() {
   try {
-    // Pega sessão ativa
-    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-    if(sessionError) throw sessionError;
+    // Pega usuário ativo
+    const { data: { user }, error: userError } = await supabase.auth.getUser();
+    if (userError) throw userError;
 
-    if(!session || !session.user){
+    if (!user) {
       window.location.href = "index.html";
       return;
     }
-
-    const user = session.user;
 
     // Busca perfil
     const { data: profile, error: profileError } = await supabase
@@ -20,29 +19,33 @@ async function loadUser() {
       .eq("user_id", user.id)
       .single();
 
-    if(profileError) throw profileError;
+    if (profileError) throw profileError;
 
+    // Atualiza DOM
     document.getElementById("userName").textContent = profile.name || "Usuário";
     document.getElementById("userEmail").textContent = user.email;
-    document.getElementById("userPhoto").src = "gatinho-rock.png"; // imagem fixa
+    document.getElementById("userPhoto").src = "gatinho-rock.png";
 
     // Logout
     document.getElementById("logoutBtn").addEventListener("click", async () => {
       const { error } = await supabase.auth.signOut();
-      if(error) console.error("Erro ao deslogar:", error);
-      else window.location.href = "index.html";
+      if (error) {
+        console.error("Erro ao deslogar:", error);
+      } else {
+        window.location.href = "index.html";
+      }
     });
 
-  } catch(err) {
+  } catch (err) {
     console.error("Erro ao carregar perfil:", err);
     window.location.href = "index.html";
   }
 }
 
-// Garantir que qualquer mudança na sessão redireciona corretamente
+// Redireciona se perder a sessão
 supabase.auth.onAuthStateChange((event, session) => {
-  if(!session) window.location.href = "index.html";
+  if (!session) window.location.href = "index.html";
 });
 
-// Chama a função ao carregar
+// Chama ao carregar
 window.addEventListener("load", loadUser);
