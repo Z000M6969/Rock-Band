@@ -8,14 +8,14 @@
 /* ===== BODY / BACKGROUND ===== */
 body {
   font-family: 'Bebas Neue', sans-serif;
-  height: 100vh;                  /* ocupa toda a altura da tela */
-  width: 100vw;                   /* ocupa toda a largura da tela */
-  margin: 0;                      /* tira margens padrão */
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background: url('04ef201221bdc04b4aa841350ac92fc0.jpg') no-repeat center center fixed;
-  background-size: cover;         /* cobre a tela inteira */
+  background-size: cover;
   position: relative;
   overflow: hidden;
 }
@@ -24,35 +24,31 @@ body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.7);    /* camada preta transparente */
-  backdrop-filter: blur(4px);     /* blur no fundo */
+  background: rgba(0,0,0,0.7);
   z-index: 0;
 }
-
 
 /* ===== SETA VOLTAR ===== */
 .back-btn {
   position: absolute;
   top: 20px;
   left: 20px;
-  color: #fff;                     /* texto branco */
+  color: #fff;
   font-size: 26px;
   font-weight: bold;
   text-decoration: none;
   z-index: 2;
-  background-color: rgba(0,0,0,0.5); /* fundo sem neon */
+  background-color: rgba(0,0,0,0.5);
   padding: 10px 14px;
   border-radius: 12px;
-  border: 2px solid #7f1212;          /* contorno branco */
+  border: 2px solid #7f1212; /* contorno vermelho escuro */
   transition: all 0.3s ease;
 }
 
 .back-btn:hover {
   transform: translateX(-4px) scale(1.05);
-  background-color: rgba(0,0,0,0.7); /* leve escurecimento no hover */
-  /* sem box-shadow neon */
+  background-color: rgba(0,0,0,0.7);
 }
-
 
 /* ===== CONTAINER ===== */
 .user-container {
@@ -66,16 +62,8 @@ body::before {
   width: 100%;
   max-width: 420px;
   z-index: 1;
-  border: 3px solid #b91c1c; /* vermelho escuro */
-  box-shadow: 0 0 20px #b91c1c, 0 0 40px #7f1212, 0 0 60px #b91c1c;
-  animation: neonBorder 2.5s ease-in-out infinite alternate;
-}
-
-/* ===== ANIMAÇÃO BORDAS NEON ===== */
-@keyframes neonBorder {
-  0% { box-shadow: 0 0 15px #b91c1c, 0 0 30px #7f1212; }
-  50% { box-shadow: 0 0 25px #b91c1c, 0 0 50px #7f1212; }
-  100% { box-shadow: 0 0 15px #b91c1c, 0 0 30px #7f1212; }
+  border: 3px solid #7f1212; /* contorno vermelho escuro */
+  box-shadow: none;
 }
 
 /* ===== LOGO ===== */
@@ -85,12 +73,10 @@ body::before {
 }
 
 .logo img {
-  max-width: 220px;   /* largura máxima da logo */
-  height: auto;       /* mantém proporção */
-  filter: drop-shadow(0 0 10px #ef4444) drop-shadow(0 0 20px #7f1212);
-  animation: neonLogo 2s ease-in-out infinite alternate;
+  max-width: 220px;
+  height: auto;
+  filter: none;
 }
-
 
 /* ===== FOTO DO GATINHO ===== */
 .user-photo {
@@ -99,13 +85,13 @@ body::before {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 25px;
-  border: 4px solid #b91c1c;
-  box-shadow: 0 0 10px #b91c1c, 0 0 20px #7f1212;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border: 4px solid #7f1212; /* contorno vermelho escuro */
+  box-shadow: none;
+  transition: transform 0.4s ease;
 }
+
 .user-photo:hover {
-  transform: scale(1.15) rotate(-7deg);
-  box-shadow: 0 0 25px #b91c1c, 0 0 40px #7f1212, 0 0 60px #b91c1c;
+  transform: scale(1.05);
 }
 
 /* ===== PERFIL ===== */
@@ -119,50 +105,40 @@ body::before {
 
 #userName {
   font-size: 28px;
-  color: #ef4444;
+  color: #7f1212; /* vermelho escuro */
   margin-bottom: 5px;
-  text-shadow: 0 0 5px #ef4444, 0 0 15px #7f1212;
 }
 
 #userEmail {
   font-size: 16px;
   color: #fff;
   margin-bottom: 5px;
-  text-shadow: 0 0 3px #fff, 0 0 8px #7f1212;
 }
 
 .user-password {
   font-size: 14px;
   color: #f87171;
-  text-shadow: 0 0 3px #f87171, 0 0 8px #7f1212;
 }
 
 /* ===== LOGOUT ===== */
 .logout-btn {
   width: 100%;
-  background-color: #b91c1c;
+  background-color: #7f1212; /* vermelho escuro */
   color: #fff;
-  border: none;
+  border: 2px solid #7f1212; /* contorno vermelho escuro */
   padding: 14px;
   border-radius: 12px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 0 10px #b91c1c, 0 0 20px #7f1212;
+  box-shadow: none;
   transition: all 0.3s ease;
-  animation: pulseButton 2s infinite;
-}
-.logout-btn:hover {
-  background-color: #7f1212;
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 0 20px #b91c1c, 0 0 40px #7f1212, 0 0 60px #b91c1c;
 }
 
-/* ===== PULSE BUTTON ANIMATION ===== */
-@keyframes pulseButton {
-  0% { box-shadow: 0 0 10px #b91c1c, 0 0 20px #7f1212; }
-  50% { box-shadow: 0 0 20px #b91c1c, 0 0 40px #7f1212; }
-  100% { box-shadow: 0 0 10px #b91c1c, 0 0 20px #7f1212; }
+.logout-btn:hover {
+  background-color: #5f0f0f; /* tom mais escuro no hover */
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: none;
 }
 
 /* ===== RESPONSIVO ===== */
