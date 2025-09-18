@@ -71,10 +71,15 @@ header {
 /* ======================
    Seção de Notícias
    ====================== */
+#noticias {
+  padding: 20px;
+}
+
 #noticias h2 {
   text-align: center;
   margin-bottom: 20px;
   color: #fff;
+  font-size: 2rem;
 }
 
 /* Grid somente para os cards */
@@ -127,8 +132,6 @@ header {
 .cards-container article p {
   text-align: justify;
 }
-
-
 
 /* =========================
    ANIMAÇÃO DO CARROSSEL HEADER
