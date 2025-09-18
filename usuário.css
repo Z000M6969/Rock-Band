@@ -8,12 +8,14 @@
 /* ===== BODY / BACKGROUND ===== */
 body {
   font-family: 'Poppins', sans-serif;
-  min-height: 100vh;
+  height: 100vh;                  /* ocupa toda a altura da tela */
+  width: 100vw;                   /* ocupa toda a largura da tela */
+  margin: 0;                      /* tira margens padrão */
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('carrossel1.jpg') no-repeat center center fixed;
-  background-size: cover;
+  background: url('04ef201221bdc04b4aa841350ac92fc0.jpg') no-repeat center center fixed;
+  background-size: cover;         /* cobre a tela inteira */
   position: relative;
   overflow: hidden;
 }
@@ -22,10 +24,11 @@ body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(4px);
+  background: rgba(0,0,0,0.7);    /* camada preta transparente */
+  backdrop-filter: blur(4px);     /* blur no fundo */
   z-index: 0;
 }
+
 
 /* ===== SETA VOLTAR ===== */
 .back-btn {
