@@ -3,7 +3,7 @@ import { supabase } from "./supabaseClient.js";
 // ===== Função para mostrar mensagens =====
 function showMsg(el, text, type = "success") {
   el.textContent = text;
-  el.className = `msg ${type}`;
+  el.className = `msg $ {type}`;
 }
 
 // ================== CADASTRO ==================
