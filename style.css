@@ -69,16 +69,15 @@ header {
 }
 
 
-
 #noticias article img {
-  width: 100%;       /* Faz a imagem ocupar toda a largura do artigo */
-  max-width: 400px;  /* Limite máximo de largura */
-  height: 250px;     /* Altura fixa */
-  object-fit: cover; /* Mantém a proporção e corta o excesso */
+  width: 100%;       /* ocupa toda a largura do artigo */
+  height: 250px;     /* altura fixa */
+  object-fit: cover;
   display: block;
   margin-bottom: 10px;
-  border-radius: 8px; /* Opcional, para deixar arredondado */
+  border-radius: 4px;
 }
+
 
 
 /* =========================
