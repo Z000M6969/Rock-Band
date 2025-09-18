@@ -6,7 +6,7 @@ function showMsg(el, text, type = "success") {
   el.className = `msg ${type}`;
 }
 
-// ===== CADASTRO =====
+// ================== CADASTRO ==================
 const cadastroForm = document.getElementById("cadastroForm");
 const cadastroMsg = document.getElementById("cadastroMsg");
 
@@ -19,15 +19,26 @@ if (cadastroForm) {
     const name = document.getElementById("cadastroName").value.trim();
 
     try {
-      const { data, error } = await supabase.auth.signUp({
+      // Criar usuário
+      const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
         email,
         password,
-        options: { data: { full_name: name } }
       });
+      if (signUpError) throw signUpError;
 
-      if (error) throw error;
+      const userId = signUpData.user?.id || signUpData.session?.user?.id;
 
-      showMsg(cadastroMsg, "Cadastro realizado! Verifique seu email.", "success");
+      // Criar perfil na tabela "profiles"
+      const { error: profileError } = await supabase.from("profiles").insert([
+        {
+          user_id: userId,   // coluna certa na sua tabela
+          name: name,        // nome do usuário
+          created_at: new Date(),
+        },
+      ]);
+      if (profileError) throw profileError;
+
+      showMsg(cadastroMsg, "Cadastro realizado com sucesso!", "success");
       cadastroForm.reset();
 
     } catch (err) {
@@ -37,7 +48,7 @@ if (cadastroForm) {
   });
 }
 
-// ===== LOGIN =====
+// ================== LOGIN ==================
 const loginForm = document.getElementById("loginForm");
 const loginMsg = document.getElementById("loginMsg");
 
@@ -64,7 +75,7 @@ if (loginForm) {
   });
 }
 
-// ===== VERIFICAÇÃO DE SESSÃO =====
+// ================== VERIFICAÇÃO DE SESSÃO ==================
 async function checkSession() {
   try {
     const { data: { session }, error } = await supabase.auth.getSession();
@@ -72,26 +83,45 @@ async function checkSession() {
 
     if (!session || !session.user) {
       // Redireciona para login se não estiver logado
-      window.location.href = "index.html";
-    } else {
-      // Preenche dados do usuário se estiver logado
-      const user = session.user;
-      const nameEl = document.getElementById("userName");
-      const emailEl = document.getElementById("userEmail");
-
-      if (nameEl) nameEl.textContent = user.user_metadata?.full_name || "Usuário";
-      if (emailEl) emailEl.textContent = user.email;
+      if (!window.location.pathname.endsWith("index.html")) {
+        window.location.href = "index.html";
+      }
+      return;
     }
+
+    // Usuário logado
+    const user = session.user;
+
+    // Puxa perfil da tabela
+    const { data: profile, error: profileError } = await supabase
+      .from("profiles")
+      .select("*")
+      .eq("user_id", user.id)
+      .single();
+
+    if (profileError) throw profileError;
+
+    // Preenche dados na página usuário
+    const nameEl = document.getElementById("userName");
+    const emailEl = document.getElementById("userEmail");
+    const photoEl = document.getElementById("userPhoto");
+
+    if (nameEl) nameEl.textContent = profile.name || "Usuário";
+    if (emailEl) emailEl.textContent = user.email;
+    if (photoEl) photoEl.src = profile.avatar_url || "gatinho-rock.png";
+
   } catch (err) {
     console.error("Erro ao verificar sessão:", err);
-    window.location.href = "index.html";
+    if (!window.location.pathname.endsWith("index.html")) {
+      window.location.href = "index.html";
+    }
   }
 }
 
-// Chama a verificação ao carregar qualquer página que precise de login
+// Roda a verificação ao carregar a página
 window.addEventListener("DOMContentLoaded", checkSession);
 
-// ===== LOGOUT =====
+// ================== LOGOUT ==================
 const logoutBtn = document.getElementById("logoutBtn");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", async () => {
