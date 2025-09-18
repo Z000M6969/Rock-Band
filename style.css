@@ -68,12 +68,22 @@ header {
   line-height: 1.2;
 }
 
+/* ======================
+   Seção de Notícias
+   ====================== */
 #noticias {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px; /* espaço entre os cards */
   padding: 20px;
   justify-items: center; /* centraliza os cards */
+}
+
+#noticias h2 {
+  width: 100%;
+  text-align: center;  /* centraliza o título */
+  margin-bottom: 20px; /* espaço entre título e cards */
+  grid-column: 1 / -1; /* força o título ocupar toda a largura do grid */
 }
 
 #noticias article {
@@ -85,12 +95,18 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: transform 0.3s, box-shadow 0.3s; /* efeito hover */
+}
+
+#noticias article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
 }
 
 #noticias article img {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
+  height: 250px;     /* altura fixa */
+  object-fit: cover; /* mantém retângulo e corta excesso */
   border-radius: 6px;
   margin-bottom: 10px;
 }
@@ -98,6 +114,15 @@ header {
 #noticias article h3 {
   text-align: center;
   margin: 10px 0;
+}
+
+#noticias article h3 a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#noticias article h3 a:hover {
+  color: #f39c12; /* cor ao passar o mouse */
 }
 
 #noticias article p {
