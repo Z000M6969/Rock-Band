@@ -3,10 +3,10 @@ import { supabase } from "./supabaseClient.js";
 // ===== Função para mostrar mensagens =====
 function showMsg(el, text, type = "success") {
   el.textContent = text;
-  el.className = `msg $ {type}`;
+  el.className = `msg ${type}`; // Corrigido template string
 }
 
-// ================== CADASTRO ==================
+// ===== CADASTRO =====
 const cadastroForm = document.getElementById("cadastroForm");
 const cadastroMsg = document.getElementById("cadastroMsg");
 
@@ -20,25 +20,22 @@ if (cadastroForm) {
 
     try {
       // Criar usuário
-      const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
+        options: { data: { full_name: name } } // salva no user_metadata
       });
-      if (signUpError) throw signUpError;
+      if (error) throw error;
 
-      const userId = signUpData.user?.id || signUpData.session?.user?.id;
+      // Criar perfil na tabela profiles
+      if (data.user) {
+        const { error: profileError } = await supabase.from('profiles').insert([
+          { user_id: data.user.id, name: name, avatar_url: 'default-user.png' }
+        ]);
+        if (profileError) throw profileError;
+      }
 
-      // Criar perfil na tabela "profiles"
-      const { error: profileError } = await supabase.from("profiles").insert([
-        {
-          user_id: userId,   // coluna certa na sua tabela
-          name: name,        // nome do usuário
-          created_at: new Date(),
-        },
-      ]);
-      if (profileError) throw profileError;
-
-      showMsg(cadastroMsg, "Cadastro realizado com sucesso!", "success");
+      showMsg(cadastroMsg, "Cadastro realizado! Verifique seu email.", "success");
       cadastroForm.reset();
 
     } catch (err) {
@@ -48,7 +45,7 @@ if (cadastroForm) {
   });
 }
 
-// ================== LOGIN ==================
+// ===== LOGIN =====
 const loginForm = document.getElementById("loginForm");
 const loginMsg = document.getElementById("loginMsg");
 
@@ -62,6 +59,7 @@ if (loginForm) {
     try {
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
+      if (!data.session) throw new Error("Sessão não iniciada. Verifique suas credenciais.");
 
       showMsg(loginMsg, "Login realizado com sucesso!", "success");
 
@@ -75,53 +73,24 @@ if (loginForm) {
   });
 }
 
-// ================== VERIFICAÇÃO DE SESSÃO ==================
-async function checkSession() {
-  try {
-    const { data: { session }, error } = await supabase.auth.getSession();
-    if (error) throw error;
+// ===== VERIFICAÇÃO DE SESSÃO =====
+supabase.auth.onAuthStateChange((event, session) => {
+  const userNameEl = document.getElementById("userName");
+  const userEmailEl = document.getElementById("userEmail");
 
-    if (!session || !session.user) {
-      // Redireciona para login se não estiver logado
-      if (!window.location.pathname.endsWith("index.html")) {
-        window.location.href = "index.html";
-      }
-      return;
-    }
-
-    // Usuário logado
-    const user = session.user;
-
-    // Puxa perfil da tabela
-    const { data: profile, error: profileError } = await supabase
-      .from("profiles")
-      .select("*")
-      .eq("user_id", user.id)
-      .single();
-
-    if (profileError) throw profileError;
-
-    // Preenche dados na página usuário
-    const nameEl = document.getElementById("userName");
-    const emailEl = document.getElementById("userEmail");
-    const photoEl = document.getElementById("userPhoto");
-
-    if (nameEl) nameEl.textContent = profile.name || "Usuário";
-    if (emailEl) emailEl.textContent = user.email;
-    if (photoEl) photoEl.src = profile.avatar_url || "gatinho-rock.png";
-
-  } catch (err) {
-    console.error("Erro ao verificar sessão:", err);
-    if (!window.location.pathname.endsWith("index.html")) {
+  if (!session || !session.user) {
+    // Redireciona para login se não estiver logado
+    if (window.location.pathname !== "/index.html") {
       window.location.href = "index.html";
     }
+  } else if (userNameEl && userEmailEl) {
+    // Preenche dados do usuário
+    userNameEl.textContent = session.user.user_metadata?.full_name || "Usuário";
+    userEmailEl.textContent = session.user.email;
   }
-}
+});
 
-// Roda a verificação ao carregar a página
-window.addEventListener("DOMContentLoaded", checkSession);
-
-// ================== LOGOUT ==================
+// ===== LOGOUT =====
 const logoutBtn = document.getElementById("logoutBtn");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", async () => {
