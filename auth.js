@@ -22,14 +22,12 @@ if (cadastroForm) {
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
-        options: {
-          data: { name } // envia para trigger criar o perfil
-        }
+        options: { data: { full_name: name } }
       });
 
       if (error) throw error;
 
-      showMsg(cadastroMsg, "Cadastro realizado com sucesso! Verifique seu email.", "success");
+      showMsg(cadastroMsg, "Cadastro realizado! Verifique seu email.", "success");
       cadastroForm.reset();
 
     } catch (err) {
@@ -56,14 +54,54 @@ if (loginForm) {
 
       showMsg(loginMsg, "Login realizado com sucesso!", "success");
 
-      // redireciona após 0.5s
-      setTimeout(() => {
-        window.location.href = "home.html";
-      }, 500);
+      // Redireciona após 0,5s
+      setTimeout(() => window.location.href = "usuário.html", 500);
 
     } catch (err) {
       showMsg(loginMsg, "Erro: " + err.message, "error");
       console.error("Login erro:", err);
+    }
+  });
+}
+
+// ===== VERIFICAÇÃO DE SESSÃO =====
+async function checkSession() {
+  try {
+    const { data: { session }, error } = await supabase.auth.getSession();
+    if (error) throw error;
+
+    if (!session || !session.user) {
+      // Redireciona para login se não estiver logado
+      window.location.href = "index.html";
+    } else {
+      // Preenche dados do usuário se estiver logado
+      const user = session.user;
+      const nameEl = document.getElementById("userName");
+      const emailEl = document.getElementById("userEmail");
+
+      if (nameEl) nameEl.textContent = user.user_metadata?.full_name || "Usuário";
+      if (emailEl) emailEl.textContent = user.email;
+    }
+  } catch (err) {
+    console.error("Erro ao verificar sessão:", err);
+    window.location.href = "index.html";
+  }
+}
+
+// Chama a verificação ao carregar qualquer página que precise de login
+window.addEventListener("DOMContentLoaded", checkSession);
+
+// ===== LOGOUT =====
+const logoutBtn = document.getElementById("logoutBtn");
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      window.location.href = "index.html";
+    } catch (err) {
+      console.error("Erro ao deslogar:", err);
+      alert("Não foi possível sair. Tente novamente.");
     }
   });
 }
